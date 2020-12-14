@@ -1,91 +1,89 @@
-    <?php include 'templates/header.php'; 
-    $titlePage = "TipoAvion";
-    $subPage = "TipoAvion";
-    $activeTipoAvion = $activeAirplane = "active";
-    $openAirplane = " menu-open";
-    $listaStaff = $tipoAvionBO->getAllByEmpresa("TipoAvion");
-    ?>
-    <div class="wrapper">
+<?php include 'templates/header.php'; 
+$titlePage = "Tipo de Avion";
+$subPage = "Tipo de Avion";
+$activeTipoAvion = $activeAirplane = "active";
+$openAirplane = " menu-open";
+$listaTipos = $tipoAvionBO->getAllByEmpresa($currentCompany->getIdEmpresa());
+?>
+<div class="wrapper">
 
-      <?php include 'templates/menu.php'; ?>
+  <?php include 'templates/menu.php'; ?>
 
-      <!-- Content Wrapper. Contains page content -->
-      <div class="content-wrapper">
-        <?php include 'templates/breadcumb.php'; ?>
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <?php include 'templates/breadcumb.php'; ?>
 
-        <!-- Main content -->
-        <div class="content">
-          <div class="container-fluid">
-            <div class="row">
-                <!-- Horizontal Form -->
-                <div class="card card-info col-lg-12">
-                  <div class="card-header">
-                      <h3 class="card-title">Lista de Tipos de Aviones</h3>
-                      <div class="text-right">
-                          <a href="addTipoAvion.php?type=TipoAvion" class="btn btn-default text-info"><i class="fa fa-plus"></i> Agregar Tipo de Avion</a>
-                    </div>
-                  </div>
-                  <!-- /.card-header -->
-                  <!-- form start -->
-                  <form class="form-horizontal" id='formDeleteRuta' method='POST'>
-                    <input type="hidden" name='deleteTipoAvion' value="1" />
-                    <input type="hidden" name='idDelete' id="idDelete" value="" />
-                    <div class="card-body">
-                        <table id="example1" class="table table-bordered table-striped">
-                          <thead>
-                              <tr>
-                                <th>Año</th>
-                                <th>Modelo</th>
-                                <th>Marca</th>
-                                <th>Cantidad de Filas</th>
-                                <th>Cantidad de Pasajeros</th>
-                                <th>Cantidad de Asientos</th>
-                                <th></th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                            <?php foreach ($listaStaff as $staffTipoAvion) { 
-                                if($staffTipoAvion["idTipoAvion"] != $currentCompany->getIdTipoAvion()) { ?>
-                                    <tr>
-                                        <td><?php echo $staffTipoAvion["Año"]; ?></td>
-                                        <td><?php echo $staffTipoAvion["Modelo"]; ?></td> 
-                                        <td><?php echo $staffTipoAvion["Marca"]; ?></td> 
-                                        <td><?php echo $staffTipoAvion["Cantidad"]; ?></td> 
-                                        <td><?php echo $staffTipoAvion["Modelo"]; ?></td> 
-                                        <td><?php echo $staffTipoAvion["Modelo"]; ?></td> 
-                                        <td><button type="button" class="btn btn-danger" onclick="ConfirmDeleteTipoAvion(<?php echo $staffTipoAvion["idTipoAvion"]; ?>);">Eliminar</button></td>
-                                    </tr>
-                                <?php }
-                            } ?>
-                          </tbody>
-                          <tfoot>
-                              <tr>
-                                <th>Año</th>
-                                <th>Modelo</th>
-                                <th>Marca</th>
-                                <th>Cantidad de Filas</th>
-                                <th>Cantidad de Pasajeros</th>
-                                <th>Cantidad de Asientos</th>
-                                <th></th>
-                              </tr>
-                          </tfoot>
-                    </table>
-                    </div>
-                  </form>
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+            <!-- Horizontal Form -->
+            <div class="card card-info col-lg-12">
+              <div class="card-header">
+                  <h3 class="card-title">Lista de Tipos de Aviones</h3>
+                  <div class="text-right">
+                      <a href="addTipoAvion.php" class="btn btn-default text-info"><i class="fa fa-plus"></i> Agregar Tipo de Avion</a>
                 </div>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form class="form-horizontal" id='formDeleteTipo' method='POST'>
+                <input type="hidden" name='deleteTipoAvion' value="1" />
+                <input type="hidden" name='idDelete' id="idDelete" value="" />
+                <div class="card-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                      <thead>
+                          <tr>
+                            <th>Año</th>
+                            <th>Modelo</th>
+                            <th>Marca</th>
+                            <th>Cantidad de Filas</th>
+                            <th>Cantidad de Pasajeros</th>
+                            <th>Cantidad de Asientos</th>
+                            <th></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        <?php foreach ($listaTipos as $tipo) { ?>
+                            <tr>
+                                <td><?php echo $tipo["Año"]; ?></td>
+                                <td><?php echo $tipo["Modelo"]; ?></td> 
+                                <td><?php echo $tipo["Marca"]; ?></td> 
+                                <td><?php echo $tipo["Cant_pasajeros"]; ?></td> 
+                                <td><?php echo $tipo["Cant_filas"]; ?></td> 
+                                <td><?php echo $tipo["Cant_asientos"]; ?></td> 
+                                <td><a href="editTipoAvion.php?id=<?php echo $tipo["idTipo_Avion"]; ?>" type="button" class="btn btn-info">Editar</a> <button type="button" class="btn btn-danger" onclick="ConfirmDeleteTipoAvion(<?php echo $tipo["idTipo_Avion"]; ?>);">Eliminar</button></td>
+                            </tr>
+                        <?php } ?>
+                      </tbody>
+                      <tfoot>
+                          <tr>
+                            <th>Año</th>
+                            <th>Modelo</th>
+                            <th>Marca</th>
+                            <th>Cantidad de Filas</th>
+                            <th>Cantidad de Pasajeros</th>
+                            <th>Cantidad de Asientos</th>
+                            <th></th>
+                          </tr>
+                      </tfoot>
+                </table>
+                </div>
+              </form>
             </div>
-            <!-- /.row -->
-          </div>
-          <!-- /.container-fluid -->
         </div>
-        <!-- /.content -->
+        <!-- /.row -->
       </div>
-      <!-- /.content-wrapper -->
+      <!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
 
-    <?php include 'templates/footer.php'; ?>
+<?php include 'templates/footer.php'; ?>
 
-    <script type="text/javascript">
-      jQuery(document).ready(function () {
-        initTable("#example1");
-      });
-    </script>
+<script type="text/javascript">
+  jQuery(document).ready(function () {
+    initTable("#example1");
+  });
+</script>

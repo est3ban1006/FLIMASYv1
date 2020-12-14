@@ -1,6 +1,9 @@
 <?php include 'templates/header.php'; 
 $titlePage = "Nuevo Tipo de Avion";
 $subPage = "Nuevo Tipo de Avion";
+$activeTipoAvion = $activeAirplane = "active";
+  $openAirplane = " menu-open";
+  $listaTipos = $tipoAvionBO->getAllByEmpresa($currentCompany->getIdEmpresa());
 ?>
 <div class="wrapper">
 
@@ -21,7 +24,7 @@ $subPage = "Nuevo Tipo de Avion";
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" id='formAddPerson' method='POST' onsubmit="return ValidateFormAddPerson();">
+              <form class="form-horizontal" id='formAddPerson' method='POST' onsubmit="return ValidateFormAddTipoAvion();">
                 <input type="hidden" name='addTipoAvion' value="1" />
                 <div class="card-body">
                     <table class='table'>

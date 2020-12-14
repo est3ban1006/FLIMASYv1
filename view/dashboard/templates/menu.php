@@ -61,7 +61,7 @@
               </ul>
             </li>
             <li class="nav-item <?php echo $openAirplane;?>">
-              <a href="#" class="nav-link <?php echo $activePersonas;?>">
+              <a href="#" class="nav-link <?php echo $activeAirplane;?>">
                 <i class="nav-icon fas fa-plane"></i>
                 <p>
                   Aeropuerto
