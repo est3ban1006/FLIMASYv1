@@ -401,6 +401,104 @@ function toggleBounce() {
         marker.setAnimation(google.maps.Animation.BOUNCE);
     }
 }
+function ValidateFormAddDescuento() {
+    var flag = true;
+    if ($.trim($('#nombre').val()) === "") {
+        flag = false;
+        $('#nombre').css('border', '1px solid red');
+    } else {
+        $('#nombre').css('border', '1px solid gray');
+    }
+    if ($.trim($('#porcentaje').val()) === "") {
+        flag = false;
+        $('#porcentaje').css('border', '1px solid red');
+    } else {
+        $('#porcentaje').css('border', '1px solid gray');
+    }
+    if ($.trim($('#valor').val()) === "") {
+        flag = false;
+        $('#valor').css('border', '1px solid red');
+    } else {
+        $('#valor').css('border', '1px solid gray');
+    }
+    if (flag) {} else {
+        alertify.error("Por favor ingrese los valores de los campos en rojo");
+    }
+    return flag;
+}
+
+function ConfirmDeleteDescuento(idDescuento) {
+    //mostrar un confirm box
+    alertify.confirm('Desea eliminar el descuento?', 'Una vez realizada la accion no se podran recuperar los datos', function() {
+        $('#idDelete').val(idDescuento);
+        $('#formDeleteDescuento').submit();
+    }, function() {
+        $('#idDelete').val(0);
+    }).set('closable', false).set('defaultFocus', 'cancel');
+}
+
+function ValidateFormAddRuta() {
+    var flag = true;
+    if ($.trim($('#ruta').val()) === "") {
+        flag = false;
+        $('#ruta').css('border', '1px solid red');
+    } else {
+        $('#ruta').css('border', '1px solid gray');
+    }
+    if ($.trim($('#duracion').val()) === "") {
+        flag = false;
+        $('#duracion').css('border', '1px solid red');
+    } else {
+        $('#duracion').css('border', '1px solid gray');
+    }
+    if (flag) {} else {
+        alertify.error("Por favor ingrese los valores de los campos en rojo");
+    }
+    return flag;
+}
+function ValidateFormAddHorario() {
+    var flag = true;
+    if ($.trim($('#fecha').val()) === "") {
+        flag = false;
+        $('#fecha').css('border', '1px solid red');
+    } else {
+        $('#fecha').css('border', '1px solid gray');
+    }
+    if ($.trim($('#status').val()) === "") {
+        flag = false;
+        $('#status').css('border', '1px solid red');
+    } else {
+        $('#status').css('border', '1px solid gray');
+    }
+    if ($.trim($('#precio').val()) === "") {
+        flag = false;
+        $('#precio').css('border', '1px solid red');
+    } else {
+        $('#precio').css('border', '1px solid gray');
+    }
+    if ($.trim($('#horaDespliegue').val()) === "") {
+        flag = false;
+        $('#horaDespliegue').css('border', '1px solid red');
+    } else {
+        $('#horaDespliegue').css('border', '1px solid gray');
+    }
+    if ($.trim($('#horaLlegada').val()) === "") {
+        flag = false;
+        $('#horaLlegada').css('border', '1px solid red');
+    } else {
+        $('#horaLlegada').css('border', '1px solid gray');
+    }
+    if ($.trim($('#cantAsientosDispo').val()) === "") {
+        flag = false;
+        $('#cantAsientosDispo').css('border', '1px solid red');
+    } else {
+        $('#cantAsientosDispo').css('border', '1px solid gray');
+    }
+    if (flag) {} else {
+        alertify.error("Por favor ingrese los valores de los campos en rojo");
+    }
+    return flag;
+}
 
 //LLAMAR FUNCION PARA CERRAR SESION EN PHP
 function ConfirmCloseSession(){

@@ -3,7 +3,7 @@
     $subPage = "Descuentos";
     $activeStaff = $activeAvion = "active";
     $openHorario = " menu-open";
-    $listaStaff = $descuentoBO->getAllByEmpresa("idEmpresa");
+    $listaDescuento = $descuentoBO->getAllByEmpresa($currentCompany->getIdEmpresa());
     ?>
     <div class="wrapper">
 
@@ -27,7 +27,7 @@
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
-                  <form class="form-horizontal" id='formDeletePerson' method='POST'>
+                  <form class="form-horizontal" id='formDeleteDescuento' method='POST'>
                     <input type="hidden" name='deleteDescuento' value="1" />
                     <input type="hidden" name='idDelete' id="idDelete" value="" />
 
@@ -42,16 +42,16 @@
                               </tr>
                           </thead>
                           <tbody>
-                            <?php foreach ($listaStaff as $staffDescuento) { 
-                                if($staffDescuento["idDescuento"] != $currentCompany->getAllByEmpresa()) { ?>
+                            <?php foreach ($listaDescuento as $staffDescuento) { 
+                              ?>
                                     <tr>
-                                        <td><?php echo $$staffDescuento["Nombre"]; ?></td>
+                                        <td><?php echo $staffDescuento["Nombre"]; ?></td>
                                         <td><?php echo $staffDescuento["Porcentaje"]; ?></td>
-                                        <td><?php echo $$staffDescuento["Valor"]; ?></td>
+                                        <td><?php echo $staffDescuento["Valor"]; ?></td>
                                         <td><button type="button" class="btn btn-danger" onclick="ConfirmDeleteDescuento(<?php echo $staffDescuento["idDescuento"]; ?>);">Eliminar</button></td>
                                     </tr>
                                 <?php }
-                            } ?>
+                             ?>
                           </tbody>
                           <tfoot>
                               <tr>

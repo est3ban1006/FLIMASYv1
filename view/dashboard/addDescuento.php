@@ -21,7 +21,7 @@ $subPage = "Nuevo Descuento";
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" id='formAddPerson' method='POST' onsubmit="return ValidateFormAddPerson();">
+              <form class="form-horizontal" id='formAddPerson' method='POST' onsubmit="return ValidateFormAddDescuento();">
                 <input type="hidden" name='addDescuento' value="1" />
                 <div class="card-body">
                     <table class='table'>
@@ -35,13 +35,13 @@ $subPage = "Nuevo Descuento";
                             <td style="width: 33%;">
                                 <div class="form-group ">
                                     <label for="porcentaje" class="col-form-label">Porcentaje</label><br>
-                                    <input type="text" class="form-control" name="porcentaje" id="porcentaje" placeholder="Porcentaje" value="<?php echo $newName;?>">
+                                    <input type="number" class="form-control" step="any" name="porcentaje" id="porcentaje" placeholder="Porcentaje" value="<?php echo $newName;?>">
                                 </div>
                             </td>
                             <td style="width: 33%;">
                                 <div class="form-group ">
                                     <label for="valor" class="col-form-label">Valor</label><br>
-                                    <input type="text" class="form-control" name="valor" id="valor" placeholder="Valor" value="<?php echo $newName;?>">
+                                    <input type="number" class="form-control" step="any" name="valor" id="valor" placeholder="Valor" value="<?php echo $newName;?>">
                                 </div>
                             </td>
                         </tr>

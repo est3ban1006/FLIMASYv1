@@ -21,8 +21,8 @@ $subPage = "Nuevo Ruta";
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" id='formAddPerson' method='POST' onsubmit="return ValidateFormAddPerson();">
-                <input type="hidden" name='addPerson' value="1" />
+              <form class="form-horizontal" id='formAddRuta' method='POST' onsubmit="return ValidateFormAddRuta();">
+                <input type="hidden" name='addRuta' value="1" />
                 <div class="card-body">
                     <table class='table'>
                         <tr>

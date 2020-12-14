@@ -118,6 +118,22 @@
               </a>
             </li>
             <li class="nav-item">
+              <a href="pages/gallery.html" class="nav-link">
+                <i class="nav-icon far fa-card"></i>
+                <p>
+                  Reservaciones
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="pages/gallery.html" class="nav-link">
+                <i class="nav-icon far fa "></i>
+                <p>
+                  Vuelos
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
               <a href="javascript:;" onclick="ConfirmCloseSession();" class="nav-link">
                 <i class="nav-icon fas fa-unlock-alt"></i>
                 <p>
