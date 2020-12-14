@@ -83,6 +83,10 @@ class Tipo_Avion implements \JsonSerializable{
         $this->idEmpresa = $idEmpresa;
     }
 
+    function getDetailTipoAvion(){
+        return $this->Año."<br>".$this->Modelo."<br>".$this->Marca;
+    }
+
     public function jsonSerialize() {
         return get_object_vars($this);
     }

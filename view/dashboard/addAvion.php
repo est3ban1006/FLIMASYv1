@@ -1,6 +1,7 @@
 <?php include 'templates/header.php'; 
 $titlePage = "Nuevo Avion";
 $subPage = "Nuevo Avion";
+$tipos = $tipoAvionBO->getAllByEmpresa($currentCompany->getIdEmpresa());
 ?>
 <div class="wrapper">
 
@@ -21,15 +22,26 @@ $subPage = "Nuevo Avion";
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" id='formAddPerson' method='POST' onsubmit="return ValidateFormAddPerson();">
+              <form class="form-horizontal" id='formAddAvion' method='POST' onsubmit="return ValidateFormAddAvion();">
                 <input type="hidden" name='addAvion' value="1" />
                 <div class="card-body">
                     <table class='table'>
                         <tr>
-                            <td style="width: 33%;">
+                            <td style="width: 50%;">
+                              <div class="form-group">
+                                <label>Tipo de Avion</label>
+                                <select class="form-control" id="tipoAvion" name="tipoAvion">
+                                  <option value="">Seleccion una opcion</option>
+                                  <?php foreach ($tipos as $tipo) { ?>
+                                      <option value="<?php echo $tipo['idTipo_Avion'];?>" <?php if($newTipoAvion ==$tipo['idTipo_Avion']){echo "selected";}?>><?php echo $tipo[2]." - ".$tipo['Modelo']." ".$tipo['Marca'];?> </option>
+                                  <?php } ?>
+                                </select>
+                              </div>
+                            </td>
+                            <td style="width: 50%;">
                                 <div class="form-group ">
                                     <label for="nombre" class="col-form-label">Nombre</label><br>
-                                    <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $newName;?>">
+                                    <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $newNameAvion;?>">
                                 </div>
                             </td>
                         </tr>
