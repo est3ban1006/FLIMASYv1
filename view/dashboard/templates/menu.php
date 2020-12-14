@@ -118,7 +118,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="pages/gallery.html" class="nav-link">
+              <a href="javascript:;" onclick="ConfirmCloseSession();" class="nav-link">
                 <i class="nav-icon fas fa-unlock-alt"></i>
                 <p>
                   Cerrar Sesion

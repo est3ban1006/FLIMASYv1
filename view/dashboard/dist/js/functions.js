@@ -167,8 +167,8 @@ initMap = function() {
         coords = {
             lng: position.coords.longitude,
             lat: position.coords.latitude
-        };
-        setMapa(coords); //pasamos las coordenadas al metodo para crear el mapa
+        }; 
+        //setMapa(coords); //pasamos las coordenadas al metodo para crear el mapa
     }, function(error) {
         console.log(error);
     });
@@ -204,4 +204,12 @@ function toggleBounce() {
     } else {
         marker.setAnimation(google.maps.Animation.BOUNCE);
     }
+}
+
+//LLAMAR FUNCION PARA CERRAR SESION EN PHP
+function ConfirmCloseSession(){
+    alertify.confirm('Cerrar Sesion', 'Esta seguro que desea salir del sistema?', function() {
+        $('#formCloseSession').submit();
+    }, function() {
+    }).set('closable', false).set('defaultFocus', 'cancel');
 }

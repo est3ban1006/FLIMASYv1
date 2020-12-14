@@ -122,3 +122,13 @@ if(!empty($_POST['addPerson'])){
         $msgAlert = "El usuario ya existe. Por favor ingrese un correo diferente.";
     }
 }
+
+//ACCION PARA CERRAR LA SWESION
+if(!empty($_POST['closeSession'])){
+    //RESET VARIABLES DE SESION
+    $_SESSION['idUsuario'] = "";
+    $_SESSION['idPersona'] = "";
+    $_SESSION['idEmpresa'] = "";
+
+    header("Location: ../website/siteView.php");
+}
