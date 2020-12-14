@@ -1,6 +1,6 @@
 <?php include 'templates/header.php'; 
-$titlePage = "Nuevo Ruta";
-$subPage = "Nuevo Ruta";
+$titlePage = "Nuevo Avion";
+$subPage = "Nuevo Avion";
 ?>
 <div class="wrapper">
 
@@ -22,21 +22,15 @@ $subPage = "Nuevo Ruta";
               <!-- /.card-header -->
               <!-- form start -->
               <form class="form-horizontal" id='formAddPerson' method='POST' onsubmit="return ValidateFormAddPerson();">
-                <input type="hidden" name='addPerson' value="1" />
+                <input type="hidden" name='addAvion' value="1" />
                 <div class="card-body">
                     <table class='table'>
                         <tr>
                             <td style="width: 33%;">
                                 <div class="form-group ">
-                                    <label for="ruta" class="col-form-label">Ruta</label><br>
-                                    <input type="text" class="form-control" name="ruta" id="ruta" placeholder="Ruta" value="<?php echo $newName;?>">
+                                    <label for="nombre" class="col-form-label">Nombre</label><br>
+                                    <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $newName;?>">
                                 </div>
-                            <td style="width: 33%;">
-                                <div class="form-group ">
-                                    <label for="duracion" class="col-form-label">Duracion</label><br>
-                                    <input type="text" class="form-control" name="duracion" id="duracion" placeholder="Duracion"  value="<?php echo $newCedula;?>">
-                                </div>   
-                            </td>
                         </tr>
                     </table>
                 </div>

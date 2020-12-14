@@ -23,7 +23,7 @@ class Conexion {
         $this->conn->setCharset('utf8');
         $this->conn->setConnectionParameter('CharacterSet', 'WE8ISO8859P15');
         //los cados de conexión   host,       user,   pass,   basedatos
-    $this->conn->Connect("localhost", "root", "1006", "mydb");   
+    $this->conn->Connect("localhost", "root", "", "mydb");   
         
         //si se desea hacer debug del SQL que se genera en la base de datos
         //dependiendo del error es necesario ver si es un error directamente

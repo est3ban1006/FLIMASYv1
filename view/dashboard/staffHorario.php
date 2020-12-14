@@ -1,9 +1,9 @@
     <?php include 'templates/header.php'; 
-    $titlePage = "Administradores";
-    $subPage = "Administradores";
-    $activeStaff = $activePersonas = "active";
-    $openPersonas = " menu-open";
-    $listaStaff = $personaBO->getAllByRol("Administrador");
+    $titlePage = "Horarios";
+    $subPage = "Horarios";
+    $activeStaff = $activeAvion = "active";
+    $openHorario = " menu-open";
+    $listaStaff = $horariBO->getAllByAvion("Horarios");
     ?>
     <div class="wrapper">
 
@@ -20,53 +20,53 @@
                 <!-- Horizontal Form -->
                 <div class="card card-info col-lg-12">
                   <div class="card-header">
-                      <h3 class="card-title">Lista de administradores</h3>
+                      <h3 class="card-title">Lista de Horarios</h3>
                       <div class="text-right">
-                        <a href="addPerson.php?type=Administrador" class="btn btn-default text-info"><i class="fa fa-plus"></i> Agregar Usuario</a>
+                          <a href="addHorario.php.php?type=Horarios" class="btn btn-default text-info"><i class="fa fa-plus"></i> Agregar Horario</a>
                     </div>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
                   <form class="form-horizontal" id='formDeletePerson' method='POST'>
-                    <input type="hidden" name='deletePerson' value="1" />
+                    <input type="hidden" name='deleteHorario' value="1" />
                     <input type="hidden" name='idDelete' id="idDelete" value="" />
 
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">
                           <thead>
                               <tr>
-                                <th>Correo</th>
-                                <th>Cedula</th>
-                                <th>Nombre Completo</th>
-                                <th>Telefono</th>
-                                <th>Celular</th>
-                                <th>Fecha Nacimiento</th>
+                                <th>Fecha</th>
+                                <th>Status</th>
+                                <th>Precio</th>
+                                <th>Hora de Despliegue</th>
+                                <th>Hora de Llegada</th>
+                                <th>Cantidad de Asientos Disponibles</th>
                                 <th></th>
                               </tr>
                           </thead>
                           <tbody>
-                            <?php foreach ($listaStaff as $staff) { 
-                                if($staff["idPersona"] != $currentPerson->getIdPersona()) { ?>
+                            <?php foreach ($listaStaff as $staffHorario) { 
+                                if($staffHorario["idHorario"] != $currentCompany->getAllByAvion()) { ?>
                                     <tr>
-                                        <td><?php echo $staff["Correo"]; ?></td>
-                                        <td><?php echo $staff["Cedula"]; ?></td>
-                                        <td><?php echo $staff["Nombre"]." ".$staff["Apellido1"]." ".$staff["Apellido2"]; ?></td>
-                                        <td><?php echo $staff["Telefono"]; ?></td>
-                                        <td><?php echo $staff["Celular"]; ?></td>
-                                        <td><?php echo $staff["FechaNacimiento"]; ?></td>
-                                        <td><button type="button" class="btn btn-danger" onclick="ConfirmDeletePerson(<?php echo $staff["idPersona"]; ?>);">Eliminar</button></td>
+                                        <td><?php echo $staffAvion["Fecha"]; ?></td>
+                                        <td><?php echo $staffAvion["Nombre"]; ?></td>
+                                        <td><?php echo $staffAvion["Nombre"]; ?></td>
+                                        <td><?php echo $staffAvion["Nombre"]; ?></td>
+                                        <td><?php echo $staffAvion["Nombre"]; ?></td>
+                                        <td><?php echo $currentCompany->getIdTipoAvion(); ?></td>
+                                        <td><button type="button" class="btn btn-danger" onclick="ConfirmDeleteAvion(<?php echo $staffAvion["idAvion"]; ?>);">Eliminar</button></td>
                                     </tr>
                                 <?php }
                             } ?>
                           </tbody>
                           <tfoot>
                               <tr>
-                                <th>Correo</th>
-                                <th>Cedula</th>
-                                <th>Nombre Completo</th>
-                                <th>Telefono</th>
-                                <th>Celular</th>
-                                <th>Fecha Nacimiento</th>
+                                <th>Fecha</th>
+                                <th>Status</th>
+                                <th>Precio</th>
+                                <th>Hora de Despliegue</th>
+                                <th>Hora de Llegada</th>
+                                <th>Cantidad de Asientos Disponibles</th>
                                 <th></th>
                               </tr>
                           </tfoot>
@@ -90,3 +90,4 @@
         initTable("#example1");
       });
     </script>
+

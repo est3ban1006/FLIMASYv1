@@ -3,10 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+//inicializar tabla si hay 
+function initTable(name) {
+    $(name).DataTable({
+        "responsive": true,
+        "lengthChange": false,
+        "autoWidth": false,
+        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+}
 
 function ValidateFormUpdatePerson() {
     var flag = true;
-
     if ($.trim($('#nombre').val()) === "") {
         flag = false;
         $('#nombre').css('border', '1px solid red');
@@ -55,6 +63,10 @@ function ValidateFormUpdatePerson() {
     } else {
         $('#correo').css('border', '1px solid gray');
     }
+    if ($.trim($('#direccion').val()) === "") {
+        flag = false;
+        alertify.error("Por favor marque su direccion en el mapa");
+    }
     if ($.trim($('#contraseña').val()) !== $.trim($('#confirmpass').val())) {
         flag = false;
         $('#contraseña').css('border', '1px solid red');
@@ -64,103 +76,43 @@ function ValidateFormUpdatePerson() {
         $('#contraseña').css('border', '1px solid gray');
         $('#confirmpass').css('border', '1px solid gray');
     }
-
-    if (flag) {
-
-    } else {
+    if (flag) {} else {
         alertify.error("Por favor ingrese los valores de los campos en rojo");
     }
-
     return flag;
-
-
 }
-function ValidateFormUpdateEmpresa() {
-    var flag = true;
 
-    if ($.trim($('#nombreEmpresa').val()) === "") {
+function ValidateFormAddPerson() {
+    var flag = true;
+    if ($.trim($('#nombre').val()) === "") {
         flag = false;
-        $('#nombreEmpresa').css('border', '1px solid red');
+        $('#nombre').css('border', '1px solid red');
     } else {
-        $('#nombreEmpresa').css('border', '1px solid gray');
+        $('#nombre').css('border', '1px solid gray');
     }
-    if ($.trim($('#vision').val()) === "") {
+    if ($.trim($('#primerApellido').val()) === "") {
         flag = false;
-        $('#vision').css('border', '1px solid red');
+        $('#primerApellido').css('border', '1px solid red');
     } else {
-        $('#vision').css('border', '1px solid gray');
+        $('#primerApellido').css('border', '1px solid gray');
     }
-    if ($.trim($('#mision').val()) === "") {
+    if ($.trim($('#segundoApellido').val()) === "") {
         flag = false;
-        $('#mision').css('border', '1px solid red');
+        $('#segundoApellido').css('border', '1px solid red');
     } else {
-        $('#mision').css('border', '1px solid gray');
+        $('#segundoApellido').css('border', '1px solid gray');
     }
-    if ($.trim($('#objetivos').val()) === "") {
+    if ($.trim($('#fechaNacimiento').val()) === "") {
         flag = false;
-        $('#objetivos').css('border', '1px solid red');
+        $('#fechaNacimiento').css('border', '1px solid red');
     } else {
-        $('#objetivos').css('border', '1px solid gray');
+        $('#fechaNacimiento').css('border', '1px solid gray');
     }
-    if ($.trim($('#descripcion').val()) === "") {
+    if ($.trim($('#cedula').val()) === "") {
         flag = false;
-        $('#descripcion').css('border', '1px solid red');
+        $('#cedula').css('border', '1px solid red');
     } else {
-        $('#descripcion').css('border', '1px solid gray');
-    }
-    if ($.trim($('#textoBanner').val()) === "") {
-        flag = false;
-        $('#textoBanner').css('border', '1px solid red');
-    } else {
-        $('#textoBanner').css('border', '1px solid gray');
-    }
-    if ($.trim($('#textRedSocial').val()) === "") {
-        flag = false;
-        $('#textRedSocial').css('border', '1px solid red');
-    } else {
-        $('#textRedSocial').css('border', '1px solid gray');
-    }
-    if ($.trim($('#email').val()) === "") {
-        flag = false;
-        $('#email').css('border', '1px solid red');
-    } else {
-        $('#email').css('border', '1px solid gray');
-    }
-    if ($.trim($('#facebook').val()) === "") {
-        flag = false;
-        $('#facebook').css('border', '1px solid red');
-    } else {
-        $('#facebook').css('border', '1px solid gray');
-    }
-    if ($.trim($('#instagram').val()) === "") {
-        flag = false;
-        $('#instagram').css('border', '1px solid red');
-    } else {
-        $('#instagram').css('border', '1px solid gray');
-    }
-    if ($.trim($('#twitter').val()) === "") {
-        flag = false;
-        $('#twitter').css('border', '1px solid red');
-    } else {
-        $('#twitter').css('border', '1px solid gray');
-    }
-    if ($.trim($('#skype').val()) === "") {
-        flag = false;
-        $('#skype').css('border', '1px solid red');
-    } else {
-        $('#skype').css('border', '1px solid gray');
-    }
-    if ($.trim($('#linkedin').val()) === "") {
-        flag = false;
-        $('#linkedin').css('border', '1px solid red');
-    } else {
-        $('#linkedin').css('border', '1px solid gray');
-    }
-    if ($.trim($('#direccion').val()) === "") {
-        flag = false;
-        $('#direccion').css('border', '1px solid red');
-    } else {
-        $('#direccion').css('border', '1px solid gray');
+        $('#cedula').css('border', '1px solid gray');
     }
     if ($.trim($('#telefono').val()) === "") {
         flag = false;
@@ -168,24 +120,88 @@ function ValidateFormUpdateEmpresa() {
     } else {
         $('#telefono').css('border', '1px solid gray');
     }
-    if ($.trim($('#logo').val()) === "") {
+    if ($.trim($('#celular').val()) === "") {
         flag = false;
-        $('#logo').css('border', '1px solid red');
+        $('#celular').css('border', '1px solid red');
     } else {
-        $('#logo').css('border', '1px solid gray');
+        $('#celular').css('border', '1px solid gray');
     }
-    if ($.trim($('#imgdescuento').val()) === "") {
+    if ($.trim($('#correo').val()) === "") {
         flag = false;
-        $('#imgdescuento').css('border', '1px solid red');
+        $('#correo').css('border', '1px solid red');
     } else {
-        $('#imgdescuento').css('border', '1px solid gray');
+        $('#correo').css('border', '1px solid gray');
     }
-    
-    if (flag) {
-
+    if ($.trim($('#direccion').val()) === "") {
+        flag = false;
+        alertify.error("Por favor marque su direccion en el mapa");
+    }
+    if ($.trim($('#contraseña').val()) !== $.trim($('#confirmpass').val())) {
+        flag = false;
+        $('#contraseña').css('border', '1px solid red');
+        $('#confirmpass').css('border', '1px solid red');
+        alertify.error("Las contraseñas deben ser identicas");
     } else {
+        $('#contraseña').css('border', '1px solid gray');
+        $('#confirmpass').css('border', '1px solid gray');
+    }
+    if (flag) {} else {
         alertify.error("Por favor ingrese los valores de los campos en rojo");
     }
+    return flag;
+}
 
-    return flag;    
-} 
+function ConfirmDeletePerson(idPerson) {
+    //mostrar un confirm box
+    alertify.confirm('Desea eliminar el usuario?', 'Una vez realizada la accion no se podran recuperar los datos', function() {
+        $('#idDelete').val(idPerson);
+        $('#formDeletePerson').submit();
+    }, function() {
+        $('#idDelete').val(0);
+    }).set('closable', false).set('defaultFocus', 'cancel');
+}
+
+initMap = function() {
+    //usamos la API para geolocalizar el usuario
+    navigator.geolocation.getCurrentPosition(function(position) {
+        coords = {
+            lng: position.coords.longitude,
+            lat: position.coords.latitude
+        };
+        setMapa(coords); //pasamos las coordenadas al metodo para crear el mapa
+    }, function(error) {
+        console.log(error);
+    });
+}
+
+function setMapa(coords) {
+    //Se crea una nueva instancia del objeto mapa
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 13,
+        center: new google.maps.LatLng(coords.lat, coords.lng),
+    });
+    //Creamos el marcador en el mapa con sus propiedades
+    //para nuestro obetivo tenemos que poner el atributo draggable en true
+    //position pondremos las mismas coordenas que obtuvimos en la geolocalización
+    marker = new google.maps.Marker({
+        map: map,
+        draggable: true,
+        animation: google.maps.Animation.DROP,
+        position: new google.maps.LatLng(coords.lat, coords.lng),
+    });
+    //agregamos un evento al marcador junto con la funcion callback al igual que el evento dragend que indica 
+    //cuando el usuario a soltado el marcador
+    marker.addListener('click', toggleBounce);
+    marker.addListener('dragend', function(event) {
+        //escribimos las coordenadas de la posicion actual del marcador dentro del input #coords
+        document.getElementById("direccion").value = this.getPosition().lat() + "," + this.getPosition().lng();
+    });
+}
+//callback al hacer clic en el marcador lo que hace es quitar y poner la animacion BOUNCE
+function toggleBounce() {
+    if (marker.getAnimation() !== null) {
+        marker.setAnimation(null);
+    } else {
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+    }
+}

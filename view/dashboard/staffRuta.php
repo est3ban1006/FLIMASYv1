@@ -1,9 +1,9 @@
     <?php include 'templates/header.php'; 
-    $titlePage = "Administradores";
-    $subPage = "Administradores";
+    $titlePage = "Rutas";
+    $subPage = "Rutas";
     $activeStaff = $activePersonas = "active";
     $openPersonas = " menu-open";
-    $listaStaff = $personaBO->getAllByRol("Administrador");
+    $listaStaff = $rutaBO->getAllByEmpresa("Ruta");
     ?>
     <div class="wrapper">
 
@@ -20,53 +20,40 @@
                 <!-- Horizontal Form -->
                 <div class="card card-info col-lg-12">
                   <div class="card-header">
-                      <h3 class="card-title">Lista de administradores</h3>
+                      <h3 class="card-title">Lista de rutas</h3>
                       <div class="text-right">
-                        <a href="addPerson.php?type=Administrador" class="btn btn-default text-info"><i class="fa fa-plus"></i> Agregar Usuario</a>
+                        <a href="addRuta.php?type=Ruta" class="btn btn-default text-info"><i class="fa fa-plus"></i> Agregar Ruta</a>
                     </div>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
-                  <form class="form-horizontal" id='formDeletePerson' method='POST'>
-                    <input type="hidden" name='deletePerson' value="1" />
+                  <form class="form-horizontal" id='formDeleteRuta' method='POST'>
+                    <input type="hidden" name='deleteRuta' value="1" />
                     <input type="hidden" name='idDelete' id="idDelete" value="" />
-
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">
                           <thead>
                               <tr>
-                                <th>Correo</th>
-                                <th>Cedula</th>
-                                <th>Nombre Completo</th>
-                                <th>Telefono</th>
-                                <th>Celular</th>
-                                <th>Fecha Nacimiento</th>
+                                <th>Ruta</th>
+                                <th>Duracion</th>
                                 <th></th>
                               </tr>
                           </thead>
                           <tbody>
-                            <?php foreach ($listaStaff as $staff) { 
-                                if($staff["idPersona"] != $currentPerson->getIdPersona()) { ?>
+                            <?php foreach ($listaStaff as $staffRuta) { 
+                                if($staffRuta["idRuta"] != $currentCompany->getIdRuta()) { ?>
                                     <tr>
-                                        <td><?php echo $staff["Correo"]; ?></td>
-                                        <td><?php echo $staff["Cedula"]; ?></td>
-                                        <td><?php echo $staff["Nombre"]." ".$staff["Apellido1"]." ".$staff["Apellido2"]; ?></td>
-                                        <td><?php echo $staff["Telefono"]; ?></td>
-                                        <td><?php echo $staff["Celular"]; ?></td>
-                                        <td><?php echo $staff["FechaNacimiento"]; ?></td>
-                                        <td><button type="button" class="btn btn-danger" onclick="ConfirmDeletePerson(<?php echo $staff["idPersona"]; ?>);">Eliminar</button></td>
+                                        <td><?php echo $staffRuta["Ruta"]; ?></td>
+                                        <td><?php echo $staffRuta["Direccion"]; ?></td>                                        
+                                        <td><button type="button" class="btn btn-danger" onclick="ConfirmDeleteRuta(<?php echo $staffRuta["idRuta"]; ?>);">Eliminar</button></td>
                                     </tr>
                                 <?php }
                             } ?>
                           </tbody>
                           <tfoot>
                               <tr>
-                                <th>Correo</th>
-                                <th>Cedula</th>
-                                <th>Nombre Completo</th>
-                                <th>Telefono</th>
-                                <th>Celular</th>
-                                <th>Fecha Nacimiento</th>
+                                <th>Ruta</th>
+                                <th>Duracion</th>
                                 <th></th>
                               </tr>
                           </tfoot>

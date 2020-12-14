@@ -1,9 +1,9 @@
 <?php include 'templates/header.php'; 
-$titlePage = "Administradores";
-$subPage = "Administradores";
-$activeStaff = $activePersonas = "active";
+$titlePage = "Clientes";
+$subPage = "Clientes";
+$activeCustomers = $activePersonas = "active";
 $openPersonas = " menu-open";
-$listaStaff = $personaBO->getAllByRol("Administrador");
+$listaCustomers = $personaBO->getAllByRol("Cliente");
 ?>
 <div class="wrapper">
 
@@ -20,15 +20,15 @@ $listaStaff = $personaBO->getAllByRol("Administrador");
             <!-- Horizontal Form -->
             <div class="card card-info col-lg-12">
               <div class="card-header">
-                  <h3 class="card-title">Lista de Rutas</h3>
+                  <h3 class="card-title">Lista de clientes</h3>
                   <div class="text-right">
-                    <a href="addPerson.php?type=Administrador" class="btn btn-default text-info"><i class="fa fa-plus"></i> Agregar Rutas</a>
+                    <a href="addPerson.php?type=Cliente" class="btn btn-default text-info"><i class="fa fa-plus"></i> Agregar Usuario</a>
                 </div>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" id='formDeleteRuta' method='POST'>
-                <input type="hidden" name='deleteRuta' value="1" />
+              <form class="form-horizontal" id='formDeletePerson' method='POST'>
+                <input type="hidden" name='deletePerson' value="1" />
                 <input type="hidden" name='idDelete' id="idDelete" value="" />
                 
                 <div class="card-body">
@@ -45,16 +45,16 @@ $listaStaff = $personaBO->getAllByRol("Administrador");
                           </tr>
                       </thead>
                       <tbody>
-                        <?php foreach ($listaStaff as $staff) { 
-                            if($staff["idPersona"] != $currentPerson->getIdPersona()) { ?>
+                        <?php foreach ($listaCustomers as $customer) { 
+                            if($customer["idPersona"] != $currentPerson->getIdPersona()) { ?>
                                 <tr>
-                                    <td><?php echo $staff["Correo"]; ?></td>
-                                    <td><?php echo $staff["Cedula"]; ?></td>
-                                    <td><?php echo $staff["Nombre"]." ".$staff["Apellido1"]." ".$staff["Apellido2"]; ?></td>
-                                    <td><?php echo $staff["Telefono"]; ?></td>
-                                    <td><?php echo $staff["Celular"]; ?></td>
-                                    <td><?php echo $staff["FechaNacimiento"]; ?></td>
-                                    <td><button type="button" class="btn btn-danger" onclick="ConfirmDeletePerson(<?php echo $staff["idPersona"]; ?>);">Eliminar</button></td>
+                                    <td><?php echo $customer["Correo"]; ?></td>
+                                    <td><?php echo $customer["Cedula"]; ?></td>
+                                    <td><?php echo $customer["Nombre"]." ".$customer["Apellido1"]." ".$customer["Apellido2"]; ?></td>
+                                    <td><?php echo $customer["Telefono"]; ?></td>
+                                    <td><?php echo $customer["Celular"]; ?></td>
+                                    <td><?php echo $customer["FechaNacimiento"]; ?></td>
+                                    <td><button type="button" class="btn btn-danger" onclick="ConfirmDeletePerson(<?php echo $customer["idPersona"]; ?>);">Eliminar</button></td>
                                 </tr>
                             <?php }
                         } ?>
@@ -90,4 +90,3 @@ $listaStaff = $personaBO->getAllByRol("Administrador");
     initTable("#example1");
   });
 </script>
-

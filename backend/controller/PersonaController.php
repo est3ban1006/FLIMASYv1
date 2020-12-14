@@ -11,7 +11,7 @@
  *
  * @author josue
  */
-
+//POST ACTUALIZAR PERFIL
 if(!empty($_POST['updateProfile'])){
     #PRIMERO OBTENER EL USUARIO CON EL CORREO QUE INGRESO EL USUARIO ACTUAL
     $usuarioCorreo = $personaBO->getByCorreo($_POST['correo']);
@@ -39,7 +39,7 @@ if(!empty($_POST['updateProfile'])){
         $newPersona->setApellido2($_POST['segundoApellido']);
         $newPersona->setCorreo($_POST['correo']);
         $newPersona->setTelefono($_POST['telefono']);
-        $newPersona->setDireccion($currentPerson->getDireccion());
+        $newPersona->setDireccion($_POST['direccion']);
         $newPersona->setCelular($_POST['celular']);
         $newPersona->setFechaNacimiento($_POST['fechaNacimiento']);
         $personaBO->update($newPersona);
@@ -49,5 +49,76 @@ if(!empty($_POST['updateProfile'])){
     }else{
         $typeAlert = 2;
         $msgAlert = "El correo ya se encuentra registrado. Por favor utilice otro correo.";
+    }
+}
+
+//POST ELIMINAR USUARIO
+if(!empty($_POST['deletePerson']) && !empty($_POST['idDelete'])){
+    //PRIMERO ELIMINAR EL USUARIO
+    $usuarioEliminar = $usuarioBO->getByIdPersona($_POST['idDelete']);
+    $usuarioBO->delete($usuarioEliminar->getIdUsuario());
+    $personaBO->delete($_POST['idDelete']);
+    $typeAlert = 1;
+    $msgAlert = "El usuario ha sido eliminado correctamente";
+}
+
+$newUser = $newPass = $confirmPass = $newDir = $newName = $newCedula = $newLastName = $newLastName2 = $newBirth = $newPhone = $newCellPhone = $rol = "";
+//POST AGREGAR NUEVA PERSONA
+if(!empty($_POST['addPerson'])){
+    $newUser = $_POST['correo'];
+    $newPass = $confirmPass = $_POST['contraseña'];
+    $newDir = $_POST['direccion'];
+    $newName = $_POST['nombre'];
+    $newLastName = $_POST['primerApellido'];
+    $newLastName2 = $_POST['segundoApellido'];
+    $newBirth = $_POST['fechaNacimiento'];
+    $newPhone = $_POST['telefono'];
+    $newCellPhone = $_POST['celular'];
+    $newCedula = $_POST['cedula'];
+    $rol = $_POST['rol'];
+    
+    #PRIMERO VALIDAR QUE EL CORREO NO EXISTA
+    $usuarioObj = new Usuario();
+    $usuarioObj->setUsuario($newUser);
+    if(!$usuarioBO->exist($usuarioObj)){
+        #SE DEBE DE CREAR A LA PERSONA PARA DESPUES ASOCIARLA CON EL USUARIO
+        $personaObj = new Persona();
+        $personaObj->setApellido1($newLastName);
+        $personaObj->setApellido2($newLastName2);
+        $personaObj->setCedula($newCedula);
+        $personaObj->setCelular($newCellPhone);
+        $personaObj->setCorreo($newUser);
+        $personaObj->setDireccion($newDir);
+        $personaObj->setFechaNacimiento($newBirth);
+        $personaObj->setNombre($newName);
+        $personaObj->setRol($rol);
+        $personaObj->setTelefono($newPhone);
+        
+        $personaBO->add($personaObj);
+        
+        $personaObj = $personaBO->getByCorreo($newUser);
+        
+        if(!empty($personaObj->getIdPersona())){
+            #AHORA DEBO DE AGREGAR EL USUARIO
+            $usuarioObj->setActivo(1);
+            $usuarioObj->setContraseña($newPass);
+            $usuarioObj->setFecha_registro(date('Y-m-d H:i:s'));
+            $usuarioObj->setIdPersona($personaObj->getIdPersona());
+            $usuarioObj->setIdEmpresa($empresaObj->getIdEmpresa());
+            $usuarioBO->add($usuarioObj);
+
+            #REDIRECCIONAR AL DASBOARD Y ENVIAR UN CORREO
+            if($rol == "Administrador"){
+                header("Location: staff.php");
+            }else{
+                header("Location: customers.php");
+            }
+        }else{
+            $typeAlert = 2;
+            $msgAlert = "Ocurrio un error al guardar la persona";
+        }
+    }else{
+        $typeAlert = 2;
+        $msgAlert = "El usuario ya existe. Por favor ingrese un correo diferente.";
     }
 }

@@ -1,9 +1,9 @@
     <?php include 'templates/header.php'; 
-    $titlePage = "Administradores";
-    $subPage = "Administradores";
-    $activeStaff = $activePersonas = "active";
-    $openPersonas = " menu-open";
-    $listaStaff = $personaBO->getAllByRol("Administrador");
+    $titlePage = "Aviones";
+    $subPage = "Avioves";
+    $activeStaff = $activeAvion = "active";
+    $openAvion = " menu-open";
+    $listaStaff = $avionBO->getAllByTipo("Administrador");
     ?>
     <div class="wrapper">
 
@@ -20,53 +20,41 @@
                 <!-- Horizontal Form -->
                 <div class="card card-info col-lg-12">
                   <div class="card-header">
-                      <h3 class="card-title">Lista de administradores</h3>
+                      <h3 class="card-title">Lista de Aviones</h3>
                       <div class="text-right">
-                        <a href="addPerson.php?type=Administrador" class="btn btn-default text-info"><i class="fa fa-plus"></i> Agregar Usuario</a>
+                        <a href="addAvion.php?type=Avion" class="btn btn-default text-info"><i class="fa fa-plus"></i> Agregar Avion</a>
                     </div>
                   </div>
                   <!-- /.card-header -->
                   <!-- form start -->
                   <form class="form-horizontal" id='formDeletePerson' method='POST'>
-                    <input type="hidden" name='deletePerson' value="1" />
+                    <input type="hidden" name='deleteAvion' value="1" />
                     <input type="hidden" name='idDelete' id="idDelete" value="" />
 
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">
                           <thead>
                               <tr>
-                                <th>Correo</th>
-                                <th>Cedula</th>
-                                <th>Nombre Completo</th>
-                                <th>Telefono</th>
-                                <th>Celular</th>
-                                <th>Fecha Nacimiento</th>
+                                <th>Nombre</th>
+                                <th>Tipo de Avion</th>
                                 <th></th>
                               </tr>
                           </thead>
                           <tbody>
-                            <?php foreach ($listaStaff as $staff) { 
-                                if($staff["idPersona"] != $currentPerson->getIdPersona()) { ?>
+                            <?php foreach ($listaStaff as $staffAvion) { 
+                                if($staffAvion["idAvion"] != $currentCompany->getIdTipoAvion()) { ?>
                                     <tr>
-                                        <td><?php echo $staff["Correo"]; ?></td>
-                                        <td><?php echo $staff["Cedula"]; ?></td>
-                                        <td><?php echo $staff["Nombre"]." ".$staff["Apellido1"]." ".$staff["Apellido2"]; ?></td>
-                                        <td><?php echo $staff["Telefono"]; ?></td>
-                                        <td><?php echo $staff["Celular"]; ?></td>
-                                        <td><?php echo $staff["FechaNacimiento"]; ?></td>
-                                        <td><button type="button" class="btn btn-danger" onclick="ConfirmDeletePerson(<?php echo $staff["idPersona"]; ?>);">Eliminar</button></td>
+                                        <td><?php echo $staffAvion["Nombre"]; ?></td>
+                                        <td><?php echo $currentCompany->getIdTipoAvion(); ?></td>
+                                        <td><button type="button" class="btn btn-danger" onclick="ConfirmDeleteAvion(<?php echo $staffAvion["idAvion"]; ?>);">Eliminar</button></td>
                                     </tr>
                                 <?php }
                             } ?>
                           </tbody>
                           <tfoot>
                               <tr>
-                                <th>Correo</th>
-                                <th>Cedula</th>
-                                <th>Nombre Completo</th>
-                                <th>Telefono</th>
-                                <th>Celular</th>
-                                <th>Fecha Nacimiento</th>
+                                <th>Nombre</th>
+                                <th>Tipo de Avion</th>
                                 <th></th>
                               </tr>
                           </tfoot>

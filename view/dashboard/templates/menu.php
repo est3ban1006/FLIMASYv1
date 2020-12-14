@@ -21,7 +21,7 @@
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <li class="nav-header">Menu</li>
             <li class="nav-item">
-              <a href="index.php" class="nav-link">
+              <a href="index.php" class="nav-link <?php echo $activeInicio;?>">
                 <i class="nav-icon fas fa-home"></i>
                 <p>
                   Inicio
@@ -29,7 +29,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="company.php" class="nav-link">
+              <a href="company.php" class="nav-link <?php echo $activeEmpresa;?>">
                 <i class="nav-icon fas fa-industry"></i>
                 <p>
                   Empresa
@@ -37,8 +37,8 @@
                 
               </a>
             </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
+            <li class="nav-item <?php echo $openPersonas;?>">
+              <a href="#" class="nav-link <?php echo $activePersonas;?>">
                 <i class="nav-icon far fa-user"></i>
                 <p>
                   Personas
@@ -47,13 +47,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="empleado.php" class="nav-link">
+                  <a href="staff.php" class="nav-link <?php echo $activeStaff;?>">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Empleados</p>
+                    <p>Administradores</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="cliente.php" class="nav-link">
+                  <a href="customers.php" class="nav-link <?php echo $activeCustomers;?>">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Clientes</p>
                   </a>
@@ -70,19 +70,19 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="tipoAvion.php" class="nav-link">
+                  <a href="staffTipoAvion.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Tipo de Aviones</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/examples/profile.html" class="nav-link">
+                  <a href="staffAvion.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Aviones</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="addRuta.php" class="nav-link">
+                  <a href="staffRuta.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Rutas</p>
                   </a>
@@ -91,6 +91,12 @@
                   <a href="horario.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Horarios</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="descuento.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Descuentos</p>
                   </a>
                 </li>
               </ul>

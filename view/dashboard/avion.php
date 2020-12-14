@@ -1,6 +1,6 @@
 <?php include 'templates/header.php'; 
-$titlePage = "Nuevo Ruta";
-$subPage = "Nuevo Ruta";
+$titlePage = "Inicio";
+$subPage = "Descuentos";
 ?>
 <div class="wrapper">
 
@@ -17,26 +17,21 @@ $subPage = "Nuevo Ruta";
             <!-- Horizontal Form -->
             <div class="card card-info col-lg-12">
               <div class="card-header">
-                  <h3 class="card-title">Completar la informaci&oacute;n</h3>
+                  <h3 class="card-title">Actualizar mi informaci&oacute;n</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" id='formAddPerson' method='POST' onsubmit="return ValidateFormAddPerson();">
-                <input type="hidden" name='addPerson' value="1" />
+              <form class="form-horizontal" id='formUpdateProfile' method='POST' onsubmit="return ValidateFormUpdatePerson();">
+                <input type="hidden" name='updateProfile' value="1" />
                 <div class="card-body">
                     <table class='table'>
                         <tr>
                             <td style="width: 33%;">
                                 <div class="form-group ">
-                                    <label for="ruta" class="col-form-label">Ruta</label><br>
-                                    <input type="text" class="form-control" name="ruta" id="ruta" placeholder="Ruta" value="<?php echo $newName;?>">
-                                </div>
-                            <td style="width: 33%;">
-                                <div class="form-group ">
-                                    <label for="duracion" class="col-form-label">Duracion</label><br>
-                                    <input type="text" class="form-control" name="duracion" id="duracion" placeholder="Duracion"  value="<?php echo $newCedula;?>">
-                                </div>   
-                            </td>
+                                    <label for="nombreAvion" class="col-form-label">Nombre del Avion</label><br>
+                                    <input type="text" class="form-control" name="nombreAvion" id="nombreAvion" placeholder="Nombre del Avion" value="<?php echo $currentPerson->getNombre();?>">
+                                </div> 
+                            </td> 
                         </tr>
                     </table>
                 </div>

@@ -29,6 +29,10 @@ class UsuarioBO {
     public function getById($idUsuario) {
        return $this->usuarioDao->getById($idUsuario);
     }
+
+    public function getByIdPersona($idPersona) {
+      return $this->usuarioDao->getByIdPersona($idPersona);
+    }
     
     public function getByUserAndPass($user, $pass){
        return $this->usuarioDao->getByUserAndPass($user, $pass);
