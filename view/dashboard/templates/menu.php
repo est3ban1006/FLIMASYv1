@@ -129,7 +129,18 @@
         </nav>
         <!-- /.sidebar-menu -->
       <?php } else { ?>
-        
+        <nav class="mt-1">
+          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item">
+              <a href="javascript:;" onclick="ConfirmCloseSession();" class="nav-link">
+                <i class="nav-icon fas fa-unlock-alt"></i>
+                <p>
+                  Cerrar Sesion
+                </p>
+              </a>
+            </li>
+          </ul>
+        </nav>
       <?php } ?>
     </div>
     <!-- /.sidebar -->

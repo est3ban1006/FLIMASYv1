@@ -28,10 +28,10 @@ if($view == "login"){
             }
         }
 
-        if(!empty($_POST['register'])){
+        if(!empty($_POST['register'])){ echo "ENTRA"; 
             $newUser = $_POST['emailNew'];
             $newPass = $confirmPass = $_POST['passNew'];
-            $newDir = $_POST['passNew'];
+            $newDir = $_POST['direccion'];
             $newName = $_POST['name'];
             $newLastName = $_POST['lastNameNew'];
             $newLastName2 = $_POST['lastName2New'];
@@ -42,8 +42,8 @@ if($view == "login"){
             
             #PRIMERO VALIDAR QUE EL CORREO NO EXISTA
             $usuarioObj = new Usuario();
-            $usuarioObj->setUsuario($newUser);
-            if(!$usuarioBO->exist($usuarioObj)){
+            $usuarioObj->setUsuario($newUser); echo var_dump($usuarioObj);
+            if(!$usuarioBO->exist($usuarioObj)){ echo "ENTRA2"; 
                 #SE DEBE DE CREAR A LA PERSONA PARA DESPUES ASOCIARLA CON EL USUARIO
                 $personaObj = new Persona();
                 $personaObj->setApellido1($newLastName);
@@ -51,15 +51,14 @@ if($view == "login"){
                 $personaObj->setCedula($newCedula);
                 $personaObj->setCelular($newCellPhone);
                 $personaObj->setCorreo($newUser);
-                $personaObj->setDireccion("EMPTY");
+                $personaObj->setDireccion($newDir);
                 $personaObj->setFechaNacimiento($newBirth);
                 $personaObj->setNombre($newName);
                 $personaObj->setRol("Cliente");
                 $personaObj->setTelefono($newPhone);
-                
                 $personaBO->add($personaObj);
                 
-                $personaObj = $personaBO->getByCorreo($newUser);
+                $personaObj = $personaBO->getByCorreo($newUser); 
                 
                 if(!empty($personaObj->getIdPersona())){
                     #AHORA DEBO DE AGREGAR EL USUARIO
@@ -69,13 +68,15 @@ if($view == "login"){
                     $usuarioObj->setIdPersona($personaObj->getIdPersona());
                     $usuarioObj->setIdEmpresa($empresaObj->getIdEmpresa());
                     $usuarioBO->add($usuarioObj);
+
+                    $usuarioObj = $usuarioBO->getByUserAndPass($newUser, $newPass);
                     
-                    $_SESSION['idUsuario'] = $userObj->getIdUsuario();
-                    $_SESSION['idPersona'] = $userObj->getIdPersona();
-                    $_SESSION['idEmpresa'] = $userObj->getIdEmpresa();
+                    $_SESSION['idUsuario'] = $usuarioObj->getIdUsuario();
+                    $_SESSION['idPersona'] = $usuarioObj->getIdPersona();
+                    $_SESSION['idEmpresa'] = $usuarioObj->getIdEmpresa();
 
                     #REDIRECCIONAR AL DASBOARD Y ENVIAR UN CORREO
-                    header("Location:../dashboard/index.php");
+                    header("Location: ../dashboard/index.php");
                 }else{
                     $typeAlert = 2;
                     $msgAlert = "Ocurrio un error al guardar la persona";

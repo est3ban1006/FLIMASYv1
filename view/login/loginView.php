@@ -1,4 +1,5 @@
 <?php 
+//error_reporting(e_all);
 $view = "login";
 $ruta = "../../backend/";
 require_once $ruta.'controller/Init.php';
@@ -105,108 +106,117 @@ require_once $ruta.'controller/UsuarioController.php';
                     </form>
                 </div>
                 <div class="wrap-login100" id="formRegister" <?php if(empty($_POST['register'])){ echo "style='display:none;'"; }?>>
-                    <div class="login100-pic js-tilt" data-tilt>
-                        <img src="images/travel.png" alt="IMG">
-                    </div>
-                    <form class="login100-form validate-form2" method="POST">
+                    <form class="login100-form validate-form2" method="POST" style="width: 100%">
                         <input type="hidden" name="register" id="register" value="0">
-                        <a href="../website/siteView.php">
-                            <span class="login100-form-title">
-                                FLIMASY<br>Registrarse
-                            </span>
-                        </a>
-
-                        <div class="wrap-input100 validate-input2" data-validate = "Correo valido es requerido: ex@abc.xyz">
-                            <input class="input100" type="text" name="emailNew" id="emailNew"  value="<?php echo $newUser;?>" placeholder="Correo">
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                            </span>
-                        </div>
-
-                        <div class="wrap-input100 validate-input2" data-validate = "Contraseña es requerida">
-                            <input class="input100" type="password" name="passNew" id="passNew" value="<?php echo $newPass;?>" placeholder="Clave">
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-lock" aria-hidden="true"></i>
-                            </span>
-                        </div>
-                        
-                        <div class="wrap-input100 validate-input2" data-validate = "Contraseña es requerida">
-                            <input class="input100" type="password" name="confirmPassNew" id="confirmPassNew" value="<?php echo $confirmPass;?>" placeholder="Confirmar Clave">
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-lock" aria-hidden="true"></i>
-                            </span>
-                        </div>
-                        
-                        <div class="wrap-input100 validate-input2" data-validate = "Nombre es requerido">
-                            <input class="input100" type="text" name="name" id="name"  value="<?php echo $newName;?>" placeholder="Nombre">
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                            </span>
-                        </div>
-                        
-                        <div class="wrap-input100 validate-input2" data-validate = "Primer Apellido es requerido">
-                            <input class="input100" type="text" name="lastNameNew" id="lastNameNew"  value="<?php echo $newLastName;?>" placeholder="Primer Apellido">
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                            </span>
-                        </div>
-                        
-                        <div class="wrap-input100 validate-input2" data-validate = "Segundo Apellido es requerido">
-                            <input class="input100" type="text" name="lastName2New" id="lastName2New"  value="<?php echo $newLastName2;?>" placeholder="Segundo Apellido">
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                            </span>
-                        </div>
-                        
-                        <div class="wrap-input100 validate-input2" data-validate = "Cedula es requerido">
-                            <input class="input100" type="text" name="cedulaNew" id="cedulaNew"  value="<?php echo $newCedula;?>" placeholder="Cedula">
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-card" aria-hidden="true"></i>
-                            </span>
-                        </div>
-                        
-                        <div class="wrap-input100 validate-input2" data-validate = "Fecha de Nacimiento es requerido">
-                            <input class="input100" type="date" name="birthNew"  value="<?php echo $newBirth;?>" placeholder="Fecha Nacimiento">
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-calendar" aria-hidden="true"></i>
-                            </span>
-                        </div>
-                        
-                        <div class="wrap-input100 validate-input2" data-validate = "Telefono es requerido">
-                            <input class="input100" type="number" name="phoneNew"  value="<?php echo $newPhone;?>" placeholder="Telefono">
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-phone" aria-hidden="true"></i>
-                            </span>
-                        </div>
-                        
-                        <div class="wrap-input100 validate-input2" data-validate = "Celular es requerido">
-                            <input class="input100" type="number" name="cellPhoneNew"  value="<?php echo $newCellPhone;?>" placeholder="Celular">
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-phone" aria-hidden="true"></i>
-                            </span>
-                        </div>
-
-                        <div class="container-login100-form-btn">
-                            <button class="login100-form-btn">
-                                Registrarme
-                            </button>
-                        </div>
-                        <div class="text-center p-t-20">
-                            <a class="txt2" href="#" onclick="ShowForm(1);">
-                                Iniciar Sesion
-                                <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                            </a>
-                        </div>
+                        <table style="width: 100%;">
+                            <tr>
+                                <td colspan="2">
+                                    <a href="../website/siteView.php">
+                                        <span class="login100-form-title">
+                                            FLIMASY<br>Registrarse
+                                        </span>
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 50%;">
+                                    <div class="wrap-input100 validate-input2" data-validate = "Cedula es requerido">
+                                        <input class="input100" type="text" name="cedulaNew" id="cedulaNew"  value="<?php echo $newCedula;?>" placeholder="Cedula">
+                                        <span class="focus-input100"></span>
+                                        <span class="symbol-input100">
+                                            <i class="fa fa-card" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                    <div class="wrap-input100 validate-input2" data-validate = "Nombre es requerido">
+                                        <input class="input100" type="text" name="name" id="name"  value="<?php echo $newName;?>" placeholder="Nombre">
+                                        <span class="focus-input100"></span>
+                                        <span class="symbol-input100">
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                    <div class="wrap-input100 validate-input2" data-validate = "Primer Apellido es requerido">
+                                        <input class="input100" type="text" name="lastNameNew" id="lastNameNew"  value="<?php echo $newLastName;?>" placeholder="Primer Apellido">
+                                        <span class="focus-input100"></span>
+                                        <span class="symbol-input100">
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                    <div class="wrap-input100 validate-input2" data-validate = "Segundo Apellido es requerido">
+                                        <input class="input100" type="text" name="lastName2New" id="lastName2New"  value="<?php echo $newLastName2;?>" placeholder="Segundo Apellido">
+                                        <span class="focus-input100"></span>
+                                        <span class="symbol-input100">
+                                            <i class="fa fa-user" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                    <div class="wrap-input100 validate-input2" data-validate = "Fecha de Nacimiento es requerido">
+                                        <input class="input100" type="date" name="birthNew"  value="<?php echo $newBirth;?>" placeholder="Fecha Nacimiento">
+                                        <span class="focus-input100"></span>
+                                        <span class="symbol-input100">
+                                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                </td>
+                                <td style="width: 50%;">
+                                    <div class="wrap-input100 validate-input2" data-validate = "Telefono es requerido">
+                                        <input class="input100" type="number" name="phoneNew"  value="<?php echo $newPhone;?>" placeholder="Telefono">
+                                        <span class="focus-input100"></span>
+                                        <span class="symbol-input100">
+                                            <i class="fa fa-phone" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                    <div class="wrap-input100 validate-input2" data-validate = "Celular es requerido">
+                                        <input class="input100" type="number" name="cellPhoneNew"  value="<?php echo $newCellPhone;?>" placeholder="Celular">
+                                        <span class="focus-input100"></span>
+                                        <span class="symbol-input100">
+                                            <i class="fa fa-phone" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                    <div class="wrap-input100 validate-input2" data-validate = "Correo valido es requerido: ex@abc.xyz">
+                                        <input class="input100" type="text" name="emailNew" id="emailNew"  value="<?php echo $newUser;?>" placeholder="Correo">
+                                        <span class="focus-input100"></span>
+                                        <span class="symbol-input100">
+                                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                    <div class="wrap-input100 validate-input2" data-validate = "Contraseña es requerida">
+                                        <input class="input100" type="password" name="passNew" id="passNew" value="<?php echo $newPass;?>" placeholder="Clave">
+                                        <span class="focus-input100"></span>
+                                        <span class="symbol-input100">
+                                            <i class="fa fa-lock" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                    <div class="wrap-input100 validate-input2" data-validate = "Contraseña es requerida">
+                                        <input class="input100" type="password" name="confirmPassNew" id="confirmPassNew" value="<?php echo $confirmPass;?>" placeholder="Confirmar Clave">
+                                        <span class="focus-input100"></span>
+                                        <span class="symbol-input100">
+                                            <i class="fa fa-lock" aria-hidden="true"></i>
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <input type="hidden" class="form-control" name="direccion" id="direccion" value="<?php echo $newDir;?>">
+                                    <label class="col-form-label">Direcci&oacute;n</label><br>
+                                    <div id="map" style="width: 100%; height: 250px;"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="container-login100-form-btn">
+                                        <button class="login100-form-btn" type="submit">
+                                            Registrarme
+                                        </button>
+                                    </div>
+                                    <div class="text-center p-t-20">
+                                        <a class="txt2" href="#" onclick="ShowForm(1);">
+                                            Iniciar Sesion
+                                            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>      
                     </form>
                 </div>
             </div>
@@ -221,6 +231,7 @@ require_once $ruta.'controller/UsuarioController.php';
         <script src="vendor/select2/select2.min.js"></script>
         <!--===============================================================================================-->
         <script src="vendor/tilt/tilt.jquery.min.js"></script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
         <script >
             $('.js-tilt').tilt({
                 scale: 1.1

@@ -7,29 +7,16 @@
     $('.validate-form').on('submit', function () {
         var check = true;
         
-        if($('#register').val() === 1){
-            input = $('.validate-input2 .input100');
-        }
         for (var i = 0; i < input.length; i++) {
             if (validate(input[i]) == false) {
                 showValidate(input[i]);
                 check = false;
             }
         }
-        
-        if($('#register').val() === 1){
-            //HACER LA VALIDACION DEL CONFIRM PASS Y EL PASS
-            if($('#passNew').val() !== $('#confirmPassNew').val()){
-                check = false;
-                alertify.error("Las contraseñas deben ser iguales");
-            }
-        }
-
+  
         return check;
     });
     
-    var input = $('.validate-input .input100');
-
     $('.validate-form2').on('submit', function () {
         var check = true;
         input = $('.validate-input2 .input100');
@@ -47,6 +34,11 @@
             alertify.error("Las contraseñas deben ser iguales");
             showValidate($('#passNew'));
             showValidate($('#confirmPassNew'));
+        }
+
+        if($.trim($('#direccion').val()) === ""){
+            check = false;
+            alertify.error("Seleccione su direccion en el mapa");
         }
         
         return check;
@@ -126,5 +118,50 @@ function ShowForm(type){
                 hideValidate(this);
             });
         });
+    }
+}
+
+initMap = function() {
+    //usamos la API para geolocalizar el usuario
+    navigator.geolocation.getCurrentPosition(function(position) {
+        coords = {
+            lng: position.coords.longitude,
+            lat: position.coords.latitude
+        }; 
+        setMapa(coords); //pasamos las coordenadas al metodo para crear el mapa
+    }, function(error) {
+        console.log(error);
+    });
+}
+
+function setMapa(coords) {
+    //Se crea una nueva instancia del objeto mapa
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 13,
+        center: new google.maps.LatLng(coords.lat, coords.lng),
+    });
+    //Creamos el marcador en el mapa con sus propiedades
+    //para nuestro obetivo tenemos que poner el atributo draggable en true
+    //position pondremos las mismas coordenas que obtuvimos en la geolocalización
+    marker = new google.maps.Marker({
+        map: map,
+        draggable: true,
+        animation: google.maps.Animation.DROP,
+        position: new google.maps.LatLng(coords.lat, coords.lng),
+    });
+    //agregamos un evento al marcador junto con la funcion callback al igual que el evento dragend que indica 
+    //cuando el usuario a soltado el marcador
+    marker.addListener('click', toggleBounce);
+    marker.addListener('dragend', function(event) {
+        //escribimos las coordenadas de la posicion actual del marcador dentro del input #coords
+        document.getElementById("direccion").value = this.getPosition().lat() + "," + this.getPosition().lng();
+    });
+}
+//callback al hacer clic en el marcador lo que hace es quitar y poner la animacion BOUNCE
+function toggleBounce() {
+    if (marker.getAnimation() !== null) {
+        marker.setAnimation(null);
+    } else {
+        marker.setAnimation(google.maps.Animation.BOUNCE);
     }
 }

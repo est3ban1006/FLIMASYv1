@@ -129,6 +129,7 @@ if(!empty($_POST['closeSession'])){
     $_SESSION['idUsuario'] = "";
     $_SESSION['idPersona'] = "";
     $_SESSION['idEmpresa'] = "";
+    session_unset();
 
     header("Location: ../website/siteView.php");
 }
