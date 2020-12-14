@@ -38,8 +38,8 @@ class RutaBO {
        return $this->rutaDao->getAllByEmpresa($idEmpresa);
     }
     
-    public function update(Asiento_Reserva $asiento_reserva) {
-       return $this->rutaDao->update($asiento_reserva);
+    public function update(Ruta $ruta) {
+       return $this->rutaDao->update($ruta);
     }
     
     public function exist(Ruta $ruta) {

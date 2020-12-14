@@ -11,7 +11,7 @@ if(!empty($_POST['deleteRuta'])){
 	$typeAlert = 1;
 	$msgAlert = "Ruta eliminada correctamente";
 }
-
+ //POST AGREGAR RUTA
 $newNameRuta = $newDuracionRuta = "";
 if(!empty($_POST['addRuta'])){
 	$ruta = new Ruta();
@@ -20,4 +20,17 @@ if(!empty($_POST['addRuta'])){
 	$ruta->setDuracion($_POST['duracion']);
 	$rutaBO->add($ruta);
 	header("Location: staffRuta.php");
+}
+
+//POST ACTUALIZAR 
+if(!empty($_POST['updateRuta'])){
+	$ruta = new Ruta();
+	$ruta->setIdRuta($_GET['id']);
+	$ruta->setIdEmpresa($currentCompany->getIdEmpresa());
+	$ruta->setRuta($_POST['ruta']);
+	$ruta->setDuracion($_POST['duracion']);
+	$rutaBO->update($ruta);
+
+	$typeAlert = 1;
+	$msgAlert = "Ruta actualizada correctamente";
 }

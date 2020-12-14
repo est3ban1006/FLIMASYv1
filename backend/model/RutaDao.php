@@ -104,9 +104,9 @@ class RutaDao {
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
-            $valores["Ruta"] = $ruta->getNombre();
-            $valores["Duracion"] = $ruta->getApellido1();
-            $valores["idRuta"] = $ruta->getApellido2();
+            $valores["Ruta"] = $ruta->getRuta();
+            $valores["Duracion"] = $ruta->getDuracion();
+            $valores["idRuta"] = $ruta->getIdRuta();
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
             throw new Exception('No se pudo actualizar el registro (Error generado en el metodo update de la clase RutaDao), error:' . $e->getMessage());

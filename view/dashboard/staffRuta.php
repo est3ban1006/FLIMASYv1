@@ -54,7 +54,7 @@ $listaRutas = $rutaBO->getAllByEmpresa($currentCompany->getIdEmpresa());
                             <tr>
                                 <td><?php echo $staffRuta["Ruta"]; ?></td>
                                 <td><?php echo $staffRuta["Duracion"]; ?></td>                                        
-                                <td><?php if($count == 0){ ?><button type="button" class="btn btn-danger" onclick="ConfirmDeleteRuta(<?php echo $staffRuta["idRuta"]; ?>);">Eliminar</button> <?php } ?></td>
+                                <td><a href="editRuta.php?id=<?php echo $staffRuta["idRuta"]; ?>" type="button" class="btn btn-info">Editar</a> <?php if($count == 0){ ?><button type="button" class="btn btn-danger" onclick="ConfirmDeleteRuta(<?php echo $staffRuta["idRuta"]; ?>);">Eliminar</button> <?php } ?></td>
                             </tr>
                         <?php } ?>
                       </tbody>

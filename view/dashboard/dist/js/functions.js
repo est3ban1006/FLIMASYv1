@@ -13,6 +13,26 @@ function initTable(name) {
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 }
 
+function ValidateFormUpdateRuta() {
+    var flag = true;
+    if ($.trim($('#ruta').val()) === "") {
+        flag = false;
+        $('#ruta').css('border', '1px solid red');
+    } else {
+        $('#ruta').css('border', '1px solid gray');
+    }
+    if ($.trim($('#duracion').val()) === "") {
+        flag = false;
+        $('#duracion').css('border', '1px solid red');
+    } else {
+        $('#duracion').css('border', '1px solid gray');
+    }
+    if (flag) {} else {
+        alertify.error("Por favor ingrese los valores de los campos en rojo");
+    }
+    return flag;
+}
+
 function ValidateFormAddRuta() {
     var flag = true;
     if ($.trim($('#ruta').val()) === "") {
