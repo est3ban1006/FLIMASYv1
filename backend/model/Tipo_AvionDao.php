@@ -13,14 +13,15 @@ class Tipo_AvionDao {
     
     public function add(Tipo_Avion $tipo_avion) {
         try {
-            $sql = sprintf("insert into mydb.Tipo_Avion (Año,Modelo, Marca, Cant_pasajeros, Cant_filas, Cant_asientos) 
-                                          values (%s,%s,%s,%s,%s,%s)",
+            $sql = sprintf(utf8_decode("insert into mydb.Tipo_Avion (Año,Modelo, Marca, Cant_pasajeros, Cant_filas, Cant_asientos, idEmpresa) 
+                                          values (%s,%s,%s,%s,%s,%s,%s)"),
                     $this->labAdodb->Param("Año"),
                     $this->labAdodb->Param("Modelo"),
                     $this->labAdodb->Param("Marca"),
                     $this->labAdodb->Param("Cant_pasajeros"),
                     $this->labAdodb->Param("Cant_filas"),
-                    $this->labAdodb->Param("Cant_asientos"));
+                    $this->labAdodb->Param("Cant_asientos"),
+                    $this->labAdodb->Param("idEmpresa"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
@@ -31,6 +32,7 @@ class Tipo_AvionDao {
             $valores["Cant_pasajeros"]     = $tipo_avion->getCant_pasajeros();
             $valores["Cant_filas"]         = $tipo_avion->getCant_filas();
             $valores["Cant_asientos"]      = $tipo_avion->getCant_asientos();
+            $valores["idEmpresa"]      = $tipo_avion->getIdEmpresa();
 
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
@@ -72,6 +74,7 @@ class Tipo_AvionDao {
                 $tipo_avion->setCant_pasajeros($resultSql->Fields("Cant_pasajeros"));
                 $tipo_avion->setCant_filas($resultSql->Fields("Cant_filas"));
                 $tipo_avion->setCant_asientos($resultSql->Fields("Cant_asientos"));
+                $tipo_avion->setIdEmpresa($resultSql->Fields("idEmpresa"));
             }
         } catch (Exception $e) {
             throw new Exception('No se pudo consultar el registro (Error generado en el metodo getById de la clase Tipo_AvionDao), error:' . $e->getMessage());
@@ -105,13 +108,13 @@ class Tipo_AvionDao {
 
     public function update(Tipo_Avion $tipo_avion) {
         try {
-            $sql = sprintf("update Tipo_Avion set Año = %s, 
+            $sql = sprintf(utf8_decode("update Tipo_Avion set Año = %s, 
                                                 Modelo = %s, 
                                                 Marca = %s, 
                                                 Cant_pasajeros = %s, 
                                                 Cant_filas = %s, 
                                                 Cant_asientos = %s
-                            where idTipo_Avion = %s", 
+                            where idTipo_Avion = %s"), 
                         $this->labAdodb->Param("Año"), 
                         $this->labAdodb->Param("Modelo"), 
                         $this->labAdodb->Param("Marca"), 

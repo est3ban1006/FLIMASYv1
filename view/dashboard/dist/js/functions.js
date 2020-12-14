@@ -13,6 +13,104 @@ function initTable(name) {
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 }
 
+function ValidateFormUpdateTipoAvion() {
+    var flag = true;
+    if ($.trim($('#año').val()) === "") {
+        flag = false;
+        $('#año').css('border', '1px solid red');
+    } else {
+        $('#año').css('border', '1px solid gray');
+    }
+    if ($.trim($('#modelo').val()) === "") {
+        flag = false;
+        $('#modelo').css('border', '1px solid red');
+    } else {
+        $('#modelo').css('border', '1px solid gray');
+    }
+    if ($.trim($('#marca').val()) === "") {
+        flag = false;
+        $('#marca').css('border', '1px solid red');
+    } else {
+        $('#marca').css('border', '1px solid gray');
+    }
+    if ($.trim($('#cantFilas').val()) === "") {
+        flag = false;
+        $('#cantFilas').css('border', '1px solid red');
+    } else {
+        $('#cantFilas').css('border', '1px solid gray');
+    }
+    if ($.trim($('#cantAsientos').val()) === "") {
+        flag = false;
+        $('#cantAsientos').css('border', '1px solid red');
+    } else {
+        $('#cantAsientos').css('border', '1px solid gray');
+    }
+    if ($.trim($('#cantpasajeros').val()) === "") {
+        flag = false;
+        $('#cantpasajeros').css('border', '1px solid red');
+    } else {
+        $('#cantpasajeros').css('border', '1px solid gray');
+    }
+    if (flag) {} else {
+        alertify.error("Por favor ingrese los valores de los campos en rojo");
+    }
+    return flag;
+}
+
+function ConfirmDeleteTipoAvion(idTipo) {
+    //mostrar un confirm box
+    alertify.confirm('Desea eliminar el tipo de avion?', 'Una vez realizada la accion no se podran recuperar los datos', function() {
+        $('#idDelete').val(idTipo);
+        $('#formDeleteTipoAvion').submit();
+    }, function() {
+        $('#idDelete').val(0);
+    }).set('closable', false).set('defaultFocus', 'cancel');
+}
+
+function ValidateFormAddTipoAvion() {
+    var flag = true;
+    if ($.trim($('#año').val()) === "") {
+        flag = false;
+        $('#año').css('border', '1px solid red');
+    } else {
+        $('#año').css('border', '1px solid gray');
+    }
+    if ($.trim($('#modelo').val()) === "") {
+        flag = false;
+        $('#modelo').css('border', '1px solid red');
+    } else {
+        $('#modelo').css('border', '1px solid gray');
+    }
+    if ($.trim($('#marca').val()) === "") {
+        flag = false;
+        $('#marca').css('border', '1px solid red');
+    } else {
+        $('#marca').css('border', '1px solid gray');
+    }
+    if ($.trim($('#cantFilas').val()) === "") {
+        flag = false;
+        $('#cantFilas').css('border', '1px solid red');
+    } else {
+        $('#cantFilas').css('border', '1px solid gray');
+    }
+    if ($.trim($('#cantAsientos').val()) === "") {
+        flag = false;
+        $('#cantAsientos').css('border', '1px solid red');
+    } else {
+        $('#cantAsientos').css('border', '1px solid gray');
+    }
+    if ($.trim($('#cantpasajeros').val()) === "") {
+        flag = false;
+        $('#cantpasajeros').css('border', '1px solid red');
+    } else {
+        $('#cantpasajeros').css('border', '1px solid gray');
+    }
+    if (flag) {} else {
+        alertify.error("Por favor ingrese los valores de los campos en rojo");
+    }
+    return flag;
+}
+
 function ValidateFormUpdateEmpresa() {
     var flag = true;
     if ($.trim($('#nombreEmpresa').val()) === "") {

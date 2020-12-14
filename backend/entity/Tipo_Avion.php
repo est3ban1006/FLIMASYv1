@@ -14,6 +14,7 @@ class Tipo_Avion implements \JsonSerializable{
     private $Cant_pasajeros;
     private $Cant_filas;
     private $Cant_asientos;
+    private $idEmpresa;
 
     public function __construct() {
     }
@@ -46,6 +47,10 @@ class Tipo_Avion implements \JsonSerializable{
         return $this->Cant_asientos;
     }
 
+    function getIdEmpresa() {
+        return $this->idEmpresa;
+    }
+
     function setIdTipo_Avion($idTipo_Avion) {
         $this->idTipo_Avion = $idTipo_Avion;
     }
@@ -72,6 +77,10 @@ class Tipo_Avion implements \JsonSerializable{
 
     function setCant_asientos($Cant_asientos) {
         $this->Cant_asientos = $Cant_asientos;
+    }
+
+    function setIdEmpresa($idEmpresa) {
+        $this->idEmpresa = $idEmpresa;
     }
 
     public function jsonSerialize() {
