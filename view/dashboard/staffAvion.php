@@ -3,7 +3,7 @@
     $subPage = "Avioves";
     $activeStaff = $activeAvion = "active";
     $openAvion = " menu-open";
-    $listaStaff = $avionBO->getAllByTipo("Administrador");
+    $listaStaff = $avionBO->getAllByTipo("idTipo_Avion");
     ?>
     <div class="wrapper">
 
@@ -44,7 +44,7 @@
                             <?php foreach ($listaStaff as $staffAvion) { 
                                 if($staffAvion["idAvion"] != $currentCompany->getIdTipoAvion()) { ?>
                                     <tr>
-                                        <td><?php echo $staffAvion["Nombre"]; ?></td>
+                                        <td><?php echo $staffAvion["NombreAvion"]; ?></td>
                                         <td><?php echo $currentCompany->getIdTipoAvion(); ?></td>
                                         <td><button type="button" class="btn btn-danger" onclick="ConfirmDeleteAvion(<?php echo $staffAvion["idAvion"]; ?>);">Eliminar</button></td>
                                     </tr>

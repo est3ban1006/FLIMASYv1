@@ -3,7 +3,7 @@
     $subPage = "Descuentos";
     $activeStaff = $activeAvion = "active";
     $openHorario = " menu-open";
-    $listaStaff = $descuentoBO->getAllByEmpresa("Descuentos");
+    $listaStaff = $descuentoBO->getAllByEmpresa("idEmpresa");
     ?>
     <div class="wrapper">
 
@@ -45,9 +45,9 @@
                             <?php foreach ($listaStaff as $staffDescuento) { 
                                 if($staffDescuento["idDescuento"] != $currentCompany->getAllByEmpresa()) { ?>
                                     <tr>
-                                        <td><?php echo $$staffDescuentostaffHorario["Nombre"]; ?></td>
+                                        <td><?php echo $$staffDescuento["Nombre"]; ?></td>
                                         <td><?php echo $staffDescuento["Porcentaje"]; ?></td>
-                                        <td><?php echo $$staffDescuentostaffHorario["Valor"]; ?></td>
+                                        <td><?php echo $$staffDescuento["Valor"]; ?></td>
                                         <td><button type="button" class="btn btn-danger" onclick="ConfirmDeleteDescuento(<?php echo $staffDescuento["idDescuento"]; ?>);">Eliminar</button></td>
                                     </tr>
                                 <?php }
