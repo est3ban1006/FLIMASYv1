@@ -70,19 +70,19 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="pages/examples/invoice.html" class="nav-link">
+                  <a href="staffTipoAvion.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Tipo de Aviones</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/examples/profile.html" class="nav-link">
+                  <a href="staffAvion.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Aviones</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/examples/e-commerce.html" class="nav-link">
+                  <a href="staffRuta.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Rutas</p>
                   </a>
@@ -94,7 +94,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/examples/projects.html" class="nav-link">
+                  <a href="descuento.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Descuentos</p>
                   </a>

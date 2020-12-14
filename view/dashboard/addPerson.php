@@ -129,3 +129,4 @@ $subPage = "Nuevo Usuario";
         <?php } ?>
     });
 </script>
+</script>
