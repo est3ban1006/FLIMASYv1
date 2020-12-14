@@ -33,6 +33,10 @@ class PersonaBO {
     public function getByCorreo($correo) {
         return $this->personaDao->getByCorreo($correo);
     }
+
+    public function getAllByRol($rol) {
+        return $this->personaDao->getAllByRol($rol);
+    }
     
     public function getAll() {
         return $this->personaDao->getAll();

@@ -5,7 +5,12 @@ require_once $ruta.'controller/Init.php';
 if(empty($_SESSION['idUsuario'])){
     header("Location:../login/loginView.php");
 }else{
-    $typeAlert = $msgAlert = "";
+    $typeAlert = $msgAlert= "";
+
+    #OPCIONES DEL MENU
+    $activeStaff = $activeCustomer = $activeIncio = $activeEmpresa = $activePersonas = "";
+    $openPersonas = $openAirplane = "";
+
     $currentUser = $usuarioBO->getById($_SESSION['idUsuario']);
     $currentPerson = $personaBO->getById($_SESSION['idPersona']);
     $currentCompany = $empresaBO->getById($_SESSION['idEmpresa']);
@@ -51,5 +56,9 @@ require_once $ruta.'controller/PersonaController.php';
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.rtl.min.css"/>
         <!-- Bootstrap theme -->
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.rtl.min.css"/>
+
+        <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+        <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     </head>
     <body class="hold-transition sidebar-mini">

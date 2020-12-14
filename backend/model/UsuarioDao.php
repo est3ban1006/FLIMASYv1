@@ -16,8 +16,8 @@ class UsuarioDao {
 
     public function add(Usuario $usuario) {
         try {
-            $sql = sprintf("insert into mydb.Usuario (idPersona,Usuario, Contraseña, Activo, Fecha_registro, idEmpresa) 
-                                          values (%s,%s,%s,%s,%s,%s)", 
+            $sql = sprintf(utf8_decode("insert into mydb.Usuario (idPersona,Usuario, Contraseña, Activo, Fecha_registro, idEmpresa) 
+                                          values (%s,%s,%s,%s,%s,%s)"), 
                     $this->labAdodb->Param("idUsuario"), 
                     $this->labAdodb->Param("idPersona"), 
                     $this->labAdodb->Param("Usuario"), 
@@ -81,11 +81,36 @@ class UsuarioDao {
         }
         return $usuario;
     }
+
+    public function getByIdPersona($idPersona) {
+        $usuario = array();
+        try {
+            $sql = sprintf("select * from mydb.Usuario where  idPersona = %s", $this->labAdodb->Param("idPersona"));
+            $sqlParam = $this->labAdodb->Prepare($sql);
+
+            $valores = array();
+            $valores["idPersona"] = $idPersona;
+            $resultSql = $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
+
+            if ($resultSql->RecordCount() > 0) {
+                $usuario = new Usuario();
+                $usuario->setIdUsuario($resultSql->Fields("idUsuario"));
+                $usuario->setIdPersona($resultSql->Fields("idPersona"));
+                $usuario->setUsuario($resultSql->Fields("Usuario"));
+                $usuario->setContraseña($resultSql->Fields("Contraseña"));
+                $usuario->setActivo($resultSql->Fields("Activo"));
+                $usuario->setFecha_registro($resultSql->Fields("Fecha_registro"));
+            }
+        } catch (Exception $e) {
+            throw new Exception('No se pudo consultar el registro (Error generado en el metodo getById de la clase UsuarioDao), error:' . $e->getMessage());
+        }
+        return $usuario;
+    }
     
     public function getByUserAndPass($user, $pass) {
         $usuario = array();
         try {
-            $sql = sprintf("select * from mydb.Usuario where Usuario = %s AND Contraseña = %s ", 
+            $sql = sprintf(utf8_decode("select * from mydb.Usuario where Usuario = %s AND Contraseña = %s "), 
                     $this->labAdodb->Param("Usuario"),
                     $this->labAdodb->Param("Contraseña"));
             $sqlParam = $this->labAdodb->Prepare($sql);
@@ -137,10 +162,10 @@ class UsuarioDao {
 
     public function update(Usuario $usuario) {
         try {
-            $sql = sprintf("update Usuario set Usuario = %s, 
+            $sql = sprintf(utf8_decode("update Usuario set Usuario = %s, 
                                                 Contraseña = %s, 
                                                 Activo = %s
-                            where idUsuario = %s", 
+                            where idUsuario = %s"), 
                     $this->labAdodb->Param("Usuario"), 
                     $this->labAdodb->Param("Contraseña"), 
                     $this->labAdodb->Param("Activo"), 

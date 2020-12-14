@@ -111,6 +111,19 @@ class PersonaDao {
         return $persona;
     }
 
+    public function getAllByRol($rol) {
+        try {
+            $sql = sprintf("select * from mydb.Persona WHERE Rol = %s", $this->labAdodb->Param("Rol"));
+            $sqlParam = $this->labAdodb->Prepare($sql);
+            $valores = array();
+            $valores["Rol"] = $rol;
+            $resultSql = $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());;
+            return $resultSql;
+        } catch (Exception $e) {
+            throw new Exception('No se pudo obtener los registros (Error generado en el metodo getAll de la clase PersonaDao), error:' . $e->getMessage());
+        }
+    }
+
     public function getAll() {
         try {
             $sql = sprintf("select * from mydb.Persona");

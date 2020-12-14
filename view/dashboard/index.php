@@ -1,6 +1,7 @@
 <?php 
 include 'templates/header.php'; 
 $titlePage = "Inicio";
+$activeInicio = "active";
 ?>
 <div class="wrapper">
 

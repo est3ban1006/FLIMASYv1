@@ -15,7 +15,7 @@ if($view == "login"){
             $pass = $_POST['pass'];
             #VALIDATE DATA
             $userObj = $usuarioBO->getByUserAndPass($_POST['email'], $_POST['pass']);
-            if(empty($userObj->getIdUsuario())){
+            if(empty($userObj)){
                 $typeAlert = 2;
                 $msgAlert = "Usuario y/o contraseña incorrecto(s)";
             }else{
