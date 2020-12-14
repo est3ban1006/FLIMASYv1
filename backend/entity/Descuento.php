@@ -9,6 +9,7 @@
 class Descuento implements \JsonSerializable{
 
     private $idDescuento;
+    private $idEmpresa;
     private $Nombre;
     private $Porcentaje;
     private $Valor;
@@ -18,6 +19,10 @@ class Descuento implements \JsonSerializable{
 
     function getIdDescuento() {
         return $this->idDescuento;
+    }
+    
+    public function getIdEmpresa() {
+        return $this->idEmpresa;
     }
 
     function getNombre() {
@@ -35,7 +40,12 @@ class Descuento implements \JsonSerializable{
     function setIdDescuento($idDescuento) {
         $this->idDescuento = $idDescuento;
     }
+    
+    public function setIdEmpresa($idEmpresa) {
+        $this->idEmpresa = $idEmpresa;
+    }
 
+    
     function setNombre($Nombre) {
         $this->Nombre = $Nombre;
     }

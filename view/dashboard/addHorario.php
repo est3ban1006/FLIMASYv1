@@ -21,7 +21,7 @@ $subPage = "Nuevo Horario";
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" id='formAddPerson' method='POST' onsubmit="return ValidateFormUpdateHorario();">
+              <form class="form-horizontal" id='formAddPerson' method='POST' onsubmit="return ValidateFormAddHorario();">
                 <input type="hidden" name='addHorario' value="1" />
                 <div class="card-body">
                     <table class='table'>

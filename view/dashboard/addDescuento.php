@@ -21,7 +21,7 @@ $subPage = "Nuevo Descuento";
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" id='formAddPerson' method='POST' onsubmit="return ValidateFormUpdateDescuento();">
+              <form class="form-horizontal" id='formAddPerson' method='POST' onsubmit="return ValidateFormAddDescuento();">
                 <input type="hidden" name='addDescuento' value="1" />
                 <div class="card-body">
                     <table class='table'>

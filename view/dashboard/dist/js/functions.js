@@ -303,7 +303,7 @@ function toggleBounce() {
         marker.setAnimation(google.maps.Animation.BOUNCE);
     }
 }
-function ValidateFormUpdateDescuento() {
+function ValidateFormAddDescuento() {
     var flag = true;
     if ($.trim($('#nombre').val()) === "") {
         flag = false;
@@ -328,7 +328,18 @@ function ValidateFormUpdateDescuento() {
     }
     return flag;
 }
-function ValidateFormUpdateRuta() {
+
+function ConfirmDeleteDescuento(idDescuento) {
+    //mostrar un confirm box
+    alertify.confirm('Desea eliminar el descuento?', 'Una vez realizada la accion no se podran recuperar los datos', function() {
+        $('#idDelete').val(idDescuento);
+        $('#formDeleteDescuento').submit();
+    }, function() {
+        $('#idDelete').val(0);
+    }).set('closable', false).set('defaultFocus', 'cancel');
+}
+
+function ValidateFormAddRuta() {
     var flag = true;
     if ($.trim($('#ruta').val()) === "") {
         flag = false;
@@ -347,7 +358,7 @@ function ValidateFormUpdateRuta() {
     }
     return flag;
 }
-function ValidateFormUpdateHorario() {
+function ValidateFormAddHorario() {
     var flag = true;
     if ($.trim($('#fecha').val()) === "") {
         flag = false;

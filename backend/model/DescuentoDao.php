@@ -14,19 +14,19 @@ class DescuentoDao {
     
     public function add(Descuento $descuento) {
         try {
-            $sql = sprintf("insert into mydb.Descuento (Nombre,Porcentaje, Valor) 
-                                          values (%s,%s, %s)",
+            $sql = sprintf("insert into mydb.Descuento (idEmpresa,Nombre,Porcentaje, Valor) 
+                                          values (%s,%s,%s, %s)",
+                    $this->labAdodb->Param("idEmpresa"),
                     $this->labAdodb->Param("Nombre"),
                     $this->labAdodb->Param("Porcentaje"),
                     $this->labAdodb->Param("Valor"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
-
-            $valores["Valor"]        = $descuento->getValor();
+            $valores["idEmpresa"]             = $descuento->getIdEmpresa();
             $valores["Nombre"]             = $descuento->getNombre();
             $valores["Porcentaje"]         = $descuento->getPorcentaje();
-
+            $valores["Valor"]        = $descuento->getValor();
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
             throw new Exception('No se pudo insertar el descuento(Error generado en el metodo add de la clase DescuentoDao), error:'.$e->getMessage());
