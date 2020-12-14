@@ -17,6 +17,7 @@ if(empty($_SESSION['idUsuario'])){
 }
 
 require_once $ruta.'controller/PersonaController.php';
+require_once $ruta.'controller/EmpresaController.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

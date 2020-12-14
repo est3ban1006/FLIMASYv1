@@ -16,13 +16,12 @@ class EmpresaDao {
 
     public function add(Empresa $empresa) {
         try {
-            $sql = sprintf("insert into mydb.Empresa (Fecha_creacion, Activo, Nombre_empresa, Visision, Mision, Objetivos, Telefono,
-                            Direccion,URL_facebook,URL_instagram,URL_twitter,URL_skype,URL_linkedin,Logo,Mostrar_imgDescuento,Texto_Banner,Descripcion,Email, TextoRedesSociales) 
+            $sql = sprintf("insert into mydb.Empresa (Fecha_creacion, Activo, Nombre_empresa, Vision, Mision, Objetivos, Telefono, Direccion,URL_facebook,URL_instagram,URL_twitter,URL_skype,URL_linkedin,Logo,Mostrar_imgDescuento,Texto_Banner,Descripcion,Email, TextoRedesSociales) 
                                           values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)", 
                     $this->labAdodb->Param("Fecha_creacion"), 
                     $this->labAdodb->Param("Activo"), 
                     $this->labAdodb->Param("Nombre_empresa"), 
-                    $this->labAdodb->Param("Visision"), 
+                    $this->labAdodb->Param("Vision"), 
                     $this->labAdodb->Param("Mision"), 
                     $this->labAdodb->Param("Objetivos"), 
                     $this->labAdodb->Param("Telefono"), 
@@ -45,7 +44,7 @@ class EmpresaDao {
             $valores["Fecha_creacion"] = $empresa->getFecha_creacion();
             $valores["Activo"] = $empresa->getActivo();
             $valores["Nombre_empresa"] = $empresa->getNombre_empresa();
-            $valores["Visision"] = $empresa->getVision();
+            $valores["Vision"] = $empresa->getVision();
             $valores["Mision"] = $empresa->getMision();
             $valores["Objetivos"] = $empresa->getObjetivos();
             $valores["Telefono"] = $empresa->getTelefono();
@@ -99,7 +98,7 @@ class EmpresaDao {
                 $empresa->setFecha_creacion($resultSql->Fields("Fecha_creacion"));
                 $empresa->setActivo($resultSql->Fields("Activo"));
                 $empresa->setNombre_empresa($resultSql->Fields("Nombre_empresa"));
-                $empresa->setVision($resultSql->Fields("Visision"));
+                $empresa->setVision($resultSql->Fields("Vision"));
                 $empresa->setMision($resultSql->Fields("Mision"));
                 $empresa->setObjetivos($resultSql->Fields("Objetivos"));
                 $empresa->setTelefono($resultSql->Fields("Telefono"));
@@ -138,7 +137,7 @@ class EmpresaDao {
             $sql = sprintf("update Empresa set 
                         Activo = %s, 
                         Nombre_empresa = %s, 
-                        Visision = %s, 
+                        Vision = %s, 
                         Mision = %s, 
                         Objetivos = %s, 
                         Telefono = %s, 
@@ -157,7 +156,7 @@ class EmpresaDao {
                     where idEmpresa = %s", 
                     $this->labAdodb->Param("Activo"), 
                     $this->labAdodb->Param("Nombre_empresa"), 
-                    $this->labAdodb->Param("Visision"), 
+                    $this->labAdodb->Param("Vision"), 
                     $this->labAdodb->Param("Mision"), 
                     $this->labAdodb->Param("Objetivos"), 
                     $this->labAdodb->Param("Telefono"), 
@@ -180,7 +179,8 @@ class EmpresaDao {
 
             $valores["Activo"] = $empresa->getActivo();
             $valores["Nombre_empresa"] = $empresa->getNombre_empresa();
-            $valores["Visision"] = $empresa->getVision();
+            $valores["Vision"] = $empresa->getVision();
+            $valores["Mision"] = $empresa->getMision();
             $valores["Objetivos"] = $empresa->getObjetivos();
             $valores["Telefono"] = $empresa->getTelefono();
             $valores["Direccion"] = $empresa->getDireccion();

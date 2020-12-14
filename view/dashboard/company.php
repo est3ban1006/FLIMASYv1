@@ -1,6 +1,7 @@
 <?php include 'templates/header.php'; 
 $titlePage = "Inicio";
 $subPage = "Empresa";
+$activeEmpresa = "active";
 ?>
 <div class="wrapper">
 
@@ -17,11 +18,11 @@ $subPage = "Empresa";
             <!-- Horizontal Form -->
             <div class="card card-info col-lg-12">
               <div class="card-header">
-                  <h3 class="card-title">Actualizar mi informaci&oacute;n</h3>
+                  <h3 class="card-title">Actualizar informacion de mi empresa</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" id='formUpdateProfile' method='POST' onsubmit="return ValidateFormUpdateEmpresa();">
+              <form class="form-horizontal" id='formUpdateCompany' method='POST' enctype="multipart/form-data" role="form" onsubmit="return ValidateFormUpdateEmpresa();">
                 <input type="hidden" name='updateEmpresa' value="1" />
                 <div class="card-body">
                     <table class='table'>
@@ -42,25 +43,24 @@ $subPage = "Empresa";
                                 <div class="form-group ">
                                     <label for="objetivos" class="col-form-label">Objetivos</label><br>
                                     <textarea type="text" class="form-control" name="objetivos" id="objetivos" placeholder="Objetivos" value=""><?php echo $currentCompany->getObjetivos();?></textarea>
-                                </div>                                                                                     
                                 </div>
                                 <div class="form-group ">
                                     <label for="descripcion" class="col-form-label">Descripcion</label><br>
-                                    <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion"  value="<?php echo $currentCompany->getDescripcion();?>">
-                                </div>
+                                    <textarea type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion" value=""><?php echo $currentCompany->getDireccion();?></textarea>
+                                </div>                                          
+                            </td>
+                            <td style="width: 33%;">
                                 <div class="form-group ">
                                     <label for="textoBanner" class="col-form-label">Texto Banner</label><br>
                                     <textarea type="text" class="form-control" name="textoBanner" id="textoBanner" placeholder="Texto Banner" value=""><?php echo $currentCompany->getTexto_Banner();?></textarea>
-                                </div>                                            
-                            </td>
-                            <td style="width: 33%;">
+                                </div>  
                                 <div class="form-group ">
                                     <label for="textRedSocial" class="col-form-label">Texto de las Redes Sociales</label><br>
                                     <input type="text" class="form-control" name="textRedSocial" id="textRedSocial" placeholder="Texto de las Redes Sociales"  value="<?php echo $currentCompany->getTextoRedesSociales();?>">
                                 </div>
                                 <div class="form-group ">
                                     <label for="email" class="col-form-label">Email</label><br>
-                                    <input type="text" class="form-control" name="email" id="email" placeholder="Email"  value="<?php echo $currentCompany->getEmail();?>">
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Email"  value="<?php echo $currentCompany->getEmail();?>">
                                 </div>
                                 <div class="form-group ">
                                     <label for="facebook" class="col-form-label">URL de Facebook</label><br>
@@ -74,6 +74,9 @@ $subPage = "Empresa";
                                     <label for="twitter" class="col-form-label">URL de Twitter</label><br>
                                     <input type="text" class="form-control" name="twitter" id="twitter" placeholder="URL de Twitter"  value="<?php echo $currentCompany->getURL_twitter();?>">
                                 </div>
+                            </td>
+                            
+                            <td style="width: 33%;">
                                 <div class="form-group ">
                                     <label for="skype" class="col-form-label">URL de Skype</label><br>
                                     <input type="text" class="form-control" name="skype" id="skype" placeholder="URL de Skype"  value="<?php echo $currentCompany->getURL_Skipe();?>">
@@ -82,9 +85,6 @@ $subPage = "Empresa";
                                     <label for="linkedin" class="col-form-label">URL de Linkedin</label><br>
                                     <input type="text" class="form-control" name="linkedin" id="linkedin" placeholder="URL de Linkedin"  value="<?php echo $currentCompany->getURL_linkedin();?>">
                                 </div>
-                            </td>
-                            
-                            <td style="width: 33%;">
                                 <div class="form-group ">
                                     <label for="direccion" class="col-form-label">Direccion</label><br>
                                     <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Direccion"  value="<?php echo $currentCompany->getDireccion();?>">
@@ -95,11 +95,13 @@ $subPage = "Empresa";
                                 </div>
                                 <div class="form-group ">
                                     <label for="logo" class="col-form-label">Logo</label><br>
-                                    <input type="file" class="form-control" name="logo" id="logo" placeholder="Logo"  value="<?php echo $currentCompany->getLogo();?>">
+                                    <input type="file" class="form-control" name="logo" accept="image/*" id="logo" placeholder="Logo"  value="<?php echo $currentCompany->getLogo();?>">
                                 </div>
                                 <div class="form-group ">
-                                    <label for="imgdescuento" class="col-form-label">Imagen de Descuento</label><br>
-                                    <input type="checkbox" class="form-control" name="imgdescuento" id="imgdescuento" placeholder="Imagen de Descuento"  value="<?php echo $currentCompany->getMostrar_imgDescuento();?>">
+                                    <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                                      <input type="checkbox" <?php if($currentCompany->getMostrar_imgDescuento() == 1){ echo "checked"; }?> class="custom-control-input" name="imgdescuento" id="imgdescuento">
+                                      <label class="custom-control-label" for="imgdescuento">Habilitar imagenes descuento</label>
+                                    </div>
                                 </div>  
                             </td>
                         </tr>
