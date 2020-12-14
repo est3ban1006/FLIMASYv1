@@ -1,10 +1,8 @@
 <?php include 'templates/header.php'; 
-$titlePage = "Empresa";
+$titlePage = "Inicio";
 $subPage = "Empresa";
-$activeEmpresa = "active";
 ?>
 <div class="wrapper">
-    
 
   <?php include 'templates/menu.php'; ?>
 
@@ -23,7 +21,7 @@ $activeEmpresa = "active";
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" id='formUpdateProfile' method='POST' onsubmit="return ValidateFormUpdatePerson();">
+              <form class="form-horizontal" id='formUpdateProfile' method='POST' onsubmit="return ValidateFormUpdateEmpresa();">
                 <input type="hidden" name='updateEmpresa' value="1" />
                 <div class="card-body">
                     <table class='table'>
@@ -35,65 +33,74 @@ $activeEmpresa = "active";
                                 </div>
                                 <div class="form-group">
                                     <label for="vision" class="col-form-label">Vision</label><br>
-                                    <textarea type="text" class="form-control" name="vision" id="vision" placeholder="Vision" value="<?php echo $currentCompany->getVision();?>"></textarea>
+                                    <textarea type="text" class="form-control" name="vision" id="vision" placeholder="Vision" value=""><?php echo $currentCompany->getVision();?></textarea>
                                 </div>
                                 <div class="form-group ">
                                     <label for="mision" class="col-form-label">Mision</label><br>
-                                    <textarea type="text" class="form-control" name="mision" id="mision" placeholder="Mision" value="<?php echo $currentCompany->getMision();?>"></textarea>
+                                    <textarea type="text" class="form-control" name="mision" id="mision" placeholder="Mision" value=""><?php echo $currentCompany->getMision();?></textarea>
                                 </div>
                                 <div class="form-group ">
                                     <label for="objetivos" class="col-form-label">Objetivos</label><br>
-                                    <input type="text" class="form-control" name="objetivos" id="objetivos" placeholder="Objetivos"  value="<?php echo $currentCompany->getObjetivos();?>">
-                                </div>                       
-                                <div class="form-group ">
-                                    <label for="telefono" class="col-form-label">Telefono</label><br>
-                                    <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Telefono"  value="<?php echo $currentCompany->getTelefono();?>">
-                                </div>
-                                <div class="form-group ">
-                                    <label for="direccion" class="col-form-label">Direccion</label><br>
-                                    <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Direccion"  value="<?php echo $currentCompany->getDireccion();?>">
-                                </div>
-                                <div class="form-group ">
-                                    <label for="logo" class="col-form-label">Logo</label><br>
-                                    <input type="file" class="form-control" name="logo" id="logo" placeholder="Logo"  value="<?php echo $currentCompany->getLogo();?>">
-                                </div>
+                                    <textarea type="text" class="form-control" name="objetivos" id="objetivos" placeholder="Objetivos" value=""><?php echo $currentCompany->getObjetivos();?></textarea>
+                                </div>                                                                                     
                                 </div>
                                 <div class="form-group ">
                                     <label for="descripcion" class="col-form-label">Descripcion</label><br>
                                     <input type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion"  value="<?php echo $currentCompany->getDescripcion();?>">
                                 </div>
-                                <div class="form-group custom-checkbox">
-                                    <label for="imgdescuento" class="col-form-label">Imagen de Descuento</label><br>
-                                    <input type="checkbox" class="form-control" name="imgdescuento" id="imgdescuento" placeholder="Imagen de Descuento"  value="<?php echo $currentCompany->getMostrar_imgDescuento();?>">
-                                </div>               
+                                <div class="form-group ">
+                                    <label for="textoBanner" class="col-form-label">Texto Banner</label><br>
+                                    <textarea type="text" class="form-control" name="textoBanner" id="textoBanner" placeholder="Texto Banner" value=""><?php echo $currentCompany->getTexto_Banner();?></textarea>
+                                </div>                                            
                             </td>
                             <td style="width: 33%;">
                                 <div class="form-group ">
-                                    <label for="cedula" class="col-form-label">Cedula</label><br>
-                                    <input type="text" class="form-control" name="cedula" id="cedula" placeholder="Cedula"  value="<?php echo $currentCompany->getCedula();?>">
+                                    <label for="textRedSocial" class="col-form-label">Texto de las Redes Sociales</label><br>
+                                    <input type="text" class="form-control" name="textRedSocial" id="textRedSocial" placeholder="Texto de las Redes Sociales"  value="<?php echo $currentCompany->getTextoRedesSociales();?>">
+                                </div>
+                                <div class="form-group ">
+                                    <label for="email" class="col-form-label">Email</label><br>
+                                    <input type="text" class="form-control" name="email" id="email" placeholder="Email"  value="<?php echo $currentCompany->getEmail();?>">
+                                </div>
+                                <div class="form-group ">
+                                    <label for="facebook" class="col-form-label">URL de Facebook</label><br>
+                                    <input type="text" class="form-control" name="facebook" id="facebook" placeholder="URL de Facebook"  value="<?php echo $currentCompany->getURL_facebook();?>">
                                 </div>   
+                                <div class="form-group ">
+                                    <label for="instagram" class="col-form-label">URL de Instagram</label><br>
+                                    <input type="text" class="form-control" name="instagram" id="instagram" placeholder="URL de Instagram"  value="<?php echo $currentCompany->getURL_instagram();?>">
+                                </div>
+                                <div class="form-group ">
+                                    <label for="twitter" class="col-form-label">URL de Twitter</label><br>
+                                    <input type="text" class="form-control" name="twitter" id="twitter" placeholder="URL de Twitter"  value="<?php echo $currentCompany->getURL_twitter();?>">
+                                </div>
+                                <div class="form-group ">
+                                    <label for="skype" class="col-form-label">URL de Skype</label><br>
+                                    <input type="text" class="form-control" name="skype" id="skype" placeholder="URL de Skype"  value="<?php echo $currentCompany->getURL_Skipe();?>">
+                                </div>
+                                <div class="form-group ">
+                                    <label for="linkedin" class="col-form-label">URL de Linkedin</label><br>
+                                    <input type="text" class="form-control" name="linkedin" id="linkedin" placeholder="URL de Linkedin"  value="<?php echo $currentCompany->getURL_linkedin();?>">
+                                </div>
+                            </td>
+                            
+                            <td style="width: 33%;">
+                                <div class="form-group ">
+                                    <label for="direccion" class="col-form-label">Direccion</label><br>
+                                    <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Direccion"  value="<?php echo $currentCompany->getDireccion();?>">
+                                </div>
                                 <div class="form-group ">
                                     <label for="telefono" class="col-form-label">Telefono</label><br>
-                                    <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Telefono"  value="<?php echo $currentPerson->getTelefono();?>">
-                                </div>   
-                                <div class="form-group ">
-                                    <label for="celular" class="col-form-label">Celular</label><br>
-                                    <input type="text" class="form-control" name="celular" id="celular" placeholder="Celular"  value="<?php echo $currentPerson->getCelular();?>">
-                                </div>
-                            </td>
-                            <td style="width: 33%;">
-                                <div class="form-group ">
-                                    <label for="correo" class="col-form-label">Correo</label><br>
-                                    <input type="email" class="form-control" name="correo" id="correo" placeholder="Correo"  value="<?php echo $currentPerson->getCorreo();?>">
+                                    <input type="text" class="form-control" name="telefono" id="telefono" placeholder="Telefono"  value="<?php echo $currentCompany->getTelefono();?>">
                                 </div>
                                 <div class="form-group ">
-                                    <label for="contraseña" class="col-form-label">Nueva Contraseña</label><br>
-                                    <input type="password" class="form-control" name="contraseña" id="contraseña" placeholder="Contraseña"  value="">
+                                    <label for="logo" class="col-form-label">Logo</label><br>
+                                    <input type="file" class="form-control" name="logo" id="logo" placeholder="Logo"  value="<?php echo $currentCompany->getLogo();?>">
                                 </div>
                                 <div class="form-group ">
-                                    <label for="confirmpass" class="col-form-label">Confirmar Contraseña</label><br>
-                                    <input type="password" class="form-control" name="confirmpass" id="confirmpass" placeholder="Confirmar Contraseña"  value="">
-                                </div>
+                                    <label for="imgdescuento" class="col-form-label">Imagen de Descuento</label><br>
+                                    <input type="checkbox" class="form-control" name="imgdescuento" id="imgdescuento" placeholder="Imagen de Descuento"  value="<?php echo $currentCompany->getMostrar_imgDescuento();?>">
+                                </div>  
                             </td>
                         </tr>
                     </table>
