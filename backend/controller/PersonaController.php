@@ -55,9 +55,11 @@ if(!empty($_POST['updateProfile'])){
 //POST ELIMINAR USUARIO
 if(!empty($_POST['deletePerson']) && !empty($_POST['idDelete'])){
     //PRIMERO ELIMINAR EL USUARIO
-    $usuarioEliminar = $usuarioBO->getByIdPersona($_POST['idDelete']);
-    $usuarioBO->delete($usuarioEliminar->getIdUsuario());
-    $personaBO->delete($_POST['idDelete']);
+    $usuarioEliminar = $usuarioBO->getByIdPersona($_POST['idDelete'])
+    if(!empty($usuarioEliminar)){
+        $usuarioBO->delete($usuarioEliminar->getIdUsuario());
+        $personaBO->delete($_POST['idDelete']);
+    }
     $typeAlert = 1;
     $msgAlert = "El usuario ha sido eliminado correctamente";
 }

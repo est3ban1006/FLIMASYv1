@@ -1,8 +1,8 @@
     <?php include 'templates/header.php'; 
     $titlePage = "TipoAvion";
     $subPage = "TipoAvion";
-    $activeStaff = $activeAeropuerto = "active";
-    $openAeropuerto = " menu-open";
+    $activeTipoAvion = $activeAirplane = "active";
+    $openAirplane = " menu-open";
     $listaStaff = $tipoAvionBO->getAllByEmpresa("TipoAvion");
     ?>
     <div class="wrapper">

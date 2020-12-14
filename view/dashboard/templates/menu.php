@@ -60,8 +60,8 @@
                 </li>
               </ul>
             </li>
-            <li class="nav-item">
-              <a href="#" class="nav-link">
+            <li class="nav-item <?php echo $openAirplane;?>">
+              <a href="#" class="nav-link <?php echo $activePersonas;?>">
                 <i class="nav-icon fas fa-plane"></i>
                 <p>
                   Aeropuerto
@@ -70,31 +70,31 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="staffTipoAvion.php" class="nav-link">
+                  <a href="staffTipoAvion.php" class="nav-link <?php echo $activeTipoAvion;?>">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Tipo de Aviones</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="staffAvion.php" class="nav-link">
+                  <a href="staffAvion.php" class="nav-link <?php echo $activeAvion;?>">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Aviones</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="staffRuta.php" class="nav-link">
+                  <a href="staffRuta.php" class="nav-link <?php echo $activeRutas;?>">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Rutas</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="staffHorario.php" class="nav-link">
+                  <a href="staffHorario.php" class="nav-link <?php echo $activeHorarios;?>">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Horarios</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="staffDescuento.php" class="nav-link">
+                  <a href="staffDescuento.php" class="nav-link <?php echo $activeDescuentos;?>">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Descuentos</p>
                   </a>

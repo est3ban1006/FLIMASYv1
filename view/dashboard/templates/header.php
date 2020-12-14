@@ -8,7 +8,8 @@ if(empty($_SESSION['idUsuario'])){
     $typeAlert = $msgAlert= "";
 
     #OPCIONES DEL MENU
-    $activeStaff = $activeCustomer = $activeIncio = $activeEmpresa = $activePersonas = "";
+    $activeStaff = $activeCustomer = $activeIncio = $activeEmpresa = $activePersonas = $activeAirplane = "";
+    $activeTipoAvion = $activeAvion = $activeRutas = $activeHorarios = $activeDescuentos = "";
     $openPersonas = $openAirplane = "";
 
     $currentUser = $usuarioBO->getById($_SESSION['idUsuario']);
