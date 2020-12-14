@@ -88,13 +88,13 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="pages/examples/projects.html" class="nav-link">
+                  <a href="staffHorario.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Horarios</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="descuento.php" class="nav-link">
+                  <a href="staffDescuento.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Descuentos</p>
                   </a>

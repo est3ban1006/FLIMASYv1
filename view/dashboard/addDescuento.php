@@ -1,6 +1,6 @@
 <?php include 'templates/header.php'; 
-$titlePage = "Nuevo Avion";
-$subPage = "Nuevo Avion";
+$titlePage = "Nuevo Descuento";
+$subPage = "Nuevo Descuento";
 ?>
 <div class="wrapper">
 
@@ -22,7 +22,7 @@ $subPage = "Nuevo Avion";
               <!-- /.card-header -->
               <!-- form start -->
               <form class="form-horizontal" id='formAddPerson' method='POST' onsubmit="return ValidateFormAddPerson();">
-                <input type="hidden" name='addAvion' value="1" />
+                <input type="hidden" name='addDescuento' value="1" />
                 <div class="card-body">
                     <table class='table'>
                         <tr>
@@ -30,6 +30,18 @@ $subPage = "Nuevo Avion";
                                 <div class="form-group ">
                                     <label for="nombre" class="col-form-label">Nombre</label><br>
                                     <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $newName;?>">
+                                </div>
+                            </td>
+                            <td style="width: 33%;">
+                                <div class="form-group ">
+                                    <label for="porcentaje" class="col-form-label">Porcentaje</label><br>
+                                    <input type="text" class="form-control" name="porcentaje" id="porcentaje" placeholder="Porcentaje" value="<?php echo $newName;?>">
+                                </div>
+                            </td>
+                            <td style="width: 33%;">
+                                <div class="form-group ">
+                                    <label for="valor" class="col-form-label">Valor</label><br>
+                                    <input type="text" class="form-control" name="valor" id="valor" placeholder="Valor" value="<?php echo $newName;?>">
                                 </div>
                             </td>
                         </tr>

@@ -22,7 +22,7 @@
                   <div class="card-header">
                       <h3 class="card-title">Lista de Tipos de Aviones</h3>
                       <div class="text-right">
-                          <a href="addTipoAvion.php.php?type=TipoAvion" class="btn btn-default text-info"><i class="fa fa-plus"></i> Agregar Tipo de Avion</a>
+                          <a href="addTipoAvion.php?type=TipoAvion" class="btn btn-default text-info"><i class="fa fa-plus"></i> Agregar Tipo de Avion</a>
                     </div>
                   </div>
                   <!-- /.card-header -->
