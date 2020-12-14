@@ -1,7 +1,7 @@
 <?php include 'templates/header.php'; 
 $titlePage = "Aviones";
 $subPage = "Avioves";
-$activeTipoAvion = $activeAirplane = "active";
+$activeAvion = $activeAirplane = "active";
 $openAirplane = " menu-open";
 $listaAviones = $avionBO->getAllByEmpresa($currentCompany->getIdEmpresa());
 ?>
