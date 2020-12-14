@@ -4,6 +4,7 @@ $subPage = "Empresa";
 $activeEmpresa = "active";
 ?>
 <div class="wrapper">
+    
 
   <?php include 'templates/menu.php'; ?>
 
