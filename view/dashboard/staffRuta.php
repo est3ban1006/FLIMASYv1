@@ -3,7 +3,7 @@
     $subPage = "Rutas";
     $activeStaff = $activePersonas = "active";
     $openPersonas = " menu-open";
-    $listaStaff = $rutaBO->getAllByEmpresa("Ruta");
+    $listaStaff = $rutaBO->getAllByEmpresa("idEmpresa");
     ?>
     <div class="wrapper">
 
@@ -44,7 +44,7 @@
                                 if($staffRuta["idRuta"] != $currentCompany->getIdRuta()) { ?>
                                     <tr>
                                         <td><?php echo $staffRuta["Ruta"]; ?></td>
-                                        <td><?php echo $staffRuta["Direccion"]; ?></td>                                        
+                                        <td><?php echo $staffRuta["Duracion"]; ?></td>                                        
                                         <td><button type="button" class="btn btn-danger" onclick="ConfirmDeleteRuta(<?php echo $staffRuta["idRuta"]; ?>);">Eliminar</button></td>
                                     </tr>
                                 <?php }
