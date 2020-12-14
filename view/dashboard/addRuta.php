@@ -1,6 +1,8 @@
 <?php include 'templates/header.php'; 
-$titlePage = "Nuevo Ruta";
-$subPage = "Nuevo Ruta";
+$titlePage = "Nueva Ruta";
+$subPage = "Nueva Ruta";
+$activeRutas = $activeAirplane = "active";
+$openAirplane = " menu-open";
 ?>
 <div class="wrapper">
 
@@ -29,12 +31,12 @@ $subPage = "Nuevo Ruta";
                             <td style="width: 33%;">
                                 <div class="form-group ">
                                     <label for="ruta" class="col-form-label">Ruta</label><br>
-                                    <input type="text" class="form-control" name="ruta" id="ruta" placeholder="Ruta" value="<?php echo $newName;?>">
+                                    <input type="text" class="form-control" name="ruta" id="ruta" placeholder="Ruta" value="<?php echo $newNameRuta;?>">
                                 </div>
                             <td style="width: 33%;">
                                 <div class="form-group ">
                                     <label for="duracion" class="col-form-label">Duracion</label><br>
-                                    <input type="text" class="form-control" name="duracion" id="duracion" placeholder="Duracion"  value="<?php echo $newCedula;?>">
+                                    <input type="text" class="form-control" name="duracion" id="duracion" placeholder="Duracion"  value="<?php echo $newDuracionRuta;?>">
                                 </div>   
                             </td>
                         </tr>

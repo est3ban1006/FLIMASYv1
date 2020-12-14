@@ -22,6 +22,7 @@ require_once $ruta.'controller/EmpresaController.php';
 require_once $ruta.'controller/Tipo_avionController.php';
 require_once $ruta.'controller/Catalogo_avionController.php';
 require_once $ruta.'controller/DescuentoController.php';
+require_once $ruta.'controller/RutaController.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

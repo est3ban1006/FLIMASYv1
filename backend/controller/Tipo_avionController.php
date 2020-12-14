@@ -26,7 +26,7 @@ if(!empty($_POST['addTipoAvion'])){
 if(!empty($_POST['deleteTipoAvion'])){
 	$tipoAvionBO->delete($_POST['idDelete']);
 	$typeAlert = 1;
-	$msgAlert = "Tipo de avion borrado correctamente";
+	$msgAlert = "Tipo de avion eliminado correctamente";
 }
 
 //POST PARA ACTUALZIAR UN TIPO DE AVION 

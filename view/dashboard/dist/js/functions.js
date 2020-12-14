@@ -13,6 +13,36 @@ function initTable(name) {
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 }
 
+function ValidateFormAddRuta() {
+    var flag = true;
+    if ($.trim($('#ruta').val()) === "") {
+        flag = false;
+        $('#ruta').css('border', '1px solid red');
+    } else {
+        $('#ruta').css('border', '1px solid gray');
+    }
+    if ($.trim($('#duracion').val()) === "") {
+        flag = false;
+        $('#duracion').css('border', '1px solid red');
+    } else {
+        $('#duracion').css('border', '1px solid gray');
+    }
+    if (flag) {} else {
+        alertify.error("Por favor ingrese los valores de los campos en rojo");
+    }
+    return flag;
+}
+
+function ConfirmDeleteRuta(idRuta) {
+    //mostrar un confirm box
+    alertify.confirm('Desea eliminar la ruta?', 'Una vez realizada la accion no se podran recuperar los datos', function() {
+        $('#idDelete').val(idRuta);
+        $('#formDeleteRuta').submit();
+    }, function() {
+        $('#idDelete').val(0);
+    }).set('closable', false).set('defaultFocus', 'cancel');
+}
+
 function ValidateFormAddAvion() {
     var flag = true;
     if ($.trim($('#tipoAvion').val()) === "") {

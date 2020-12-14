@@ -9,7 +9,7 @@
 if(!empty($_POST['deleteAvion'])){
 	$avionBO->delete($_POST['idDelete']);
 	$typeAlert = 1;
-	$msgAlert = "Avion borrado correctamente";
+	$msgAlert = "Avion eliminado correctamente";
 }
 
 $newTipoAvion = $newNameAvion = "";

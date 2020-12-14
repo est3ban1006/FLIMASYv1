@@ -44,13 +44,13 @@
                           <tbody>
                             <?php foreach ($listaDescuento as $staffDescuento) { 
                               ?>
-                                    <tr>
-                                        <td><?php echo $staffDescuento["Nombre"]; ?></td>
-                                        <td><?php echo $staffDescuento["Porcentaje"]; ?></td>
-                                        <td><?php echo $staffDescuento["Valor"]; ?></td>
-                                        <td><button type="button" class="btn btn-danger" onclick="ConfirmDeleteDescuento(<?php echo $staffDescuento["idDescuento"]; ?>);">Eliminar</button></td>
-                                    </tr>
-                                <?php }
+                                  <tr>
+                                      <td><?php echo $staffDescuento["Nombre"]; ?></td>
+                                      <td><?php echo $staffDescuento["Porcentaje"]; ?></td>
+                                      <td><?php echo $staffDescuento["Valor"]; ?></td>
+                                      <td><button type="button" class="btn btn-danger" onclick="ConfirmDeleteDescuento(<?php echo $staffDescuento["idDescuento"]; ?>);">Eliminar</button></td>
+                                  </tr>
+                              <?php }
                              ?>
                           </tbody>
                           <tfoot>

@@ -1,6 +1,8 @@
 <?php include 'templates/header.php'; 
 $titlePage = "Nuevo Usuario";
 $subPage = "Nuevo Usuario";
+$activePersonas = "active";
+$openPersonas = " menu-open";
 ?>
 <div class="wrapper">
 

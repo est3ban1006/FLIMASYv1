@@ -1,6 +1,8 @@
 <?php include 'templates/header.php'; 
 $titlePage = "Nuevo Descuento";
 $subPage = "Nuevo Descuento";
+$activeStaff = $activeAvion = "active";
+$openHorario = " menu-open";
 ?>
 <div class="wrapper">
 
