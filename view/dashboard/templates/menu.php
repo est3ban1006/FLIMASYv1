@@ -88,7 +88,7 @@
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="horario.php" class="nav-link">
+                  <a href="pages/examples/projects.html" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Horarios</p>
                   </a>
@@ -118,7 +118,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="pages/gallery.html" class="nav-link">
+              <a href="javascript:;" onclick="ConfirmCloseSession();" class="nav-link">
                 <i class="nav-icon fas fa-unlock-alt"></i>
                 <p>
                   Cerrar Sesion

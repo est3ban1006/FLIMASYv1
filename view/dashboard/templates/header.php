@@ -62,3 +62,6 @@ require_once $ruta.'controller/PersonaController.php';
         <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     </head>
     <body class="hold-transition sidebar-mini">
+        <form id="formCloseSession" method="POST">
+          <input type="hidden" name="closeSession" value="1">
+        </form>

@@ -11,7 +11,7 @@ $activeInicio = "active";
   <div class="content-wrapper">
     <?php include 'templates/breadcumb.php'; ?>
 
-    <!-- Main content -->
+    <!-- Main  -->
     <div class="content">
       <div class="container-fluid">
         <div class="row">

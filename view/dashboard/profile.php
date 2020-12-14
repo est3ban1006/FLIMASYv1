@@ -77,7 +77,7 @@ $subPage = "Perfil";
                         <tr>
                             <td colspan="3">
                                 <div class="form-group ">
-                                    <input type="hidden" class="form-control" name="direccion" id="direccion" value="">
+                                    <input type="hidden" class="form-control" name="direccion" id="direccion" value="<?php echo $currentPerson->getDireccion();?>">
                                     <label class="col-form-label">Direcci&oacute;n</label><br>
                                     <div id="map" style="width: 100%; height: 250px;"></div>
                                 </div>
@@ -102,3 +102,16 @@ $subPage = "Perfil";
   <!-- /.content-wrapper -->
 
 <?php include 'templates/footer.php'; ?>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        <?php if(!empty($currentPerson->getDireccion())) {
+            $arrPos = explode(",", $currentPerson->getDireccion()); ?>
+            coords = {
+                lng: <?php echo $arrPos[1];?>,
+                lat: <?php echo $arrPos[0];?>
+            }; 
+            setMapa(coords);
+        <?php } ?>   
+    });
+</script>
