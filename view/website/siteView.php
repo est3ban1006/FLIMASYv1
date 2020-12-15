@@ -108,29 +108,22 @@ require_once $ruta.'controller/EmpresaController.php';
                         <h2>Acerca de</h2>                       
                         <p><?php echo $empresaObj->getDescripcion(); ?></p>
                     </div>
-
-                    <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
-                        <li data-filter=".filter-historia">Historia</li>
-                        <li data-filter=".filter-vision">Vision</li>
-                        <li data-filter=".filter-mision">Mision</li>
-                        <li data-filter=".filter-obj">Objetivos</li>
-                    </ul> 
-
                     <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200"> 
                         <div class="col-lg-4 col-md-6 portfolio-item filter-historia">
-                            <p>Historia</p>           
+                            <p><b>Historia:<br>Lorem Ipsum es simplemente texto de relleno de la industria de la impresión y la composición tipográfica. 
+                                    Lorem Ipsum ha sido el texto de relleno estándar de la industria desde el siglo XVI,
+                                    cuando un impresor desconocido tomó una galera de tipos y la mezcló para hacer un libro de muestras tipográficas.</b></p>           
                         </div>
 
                         <div class="col-lg-4 col-md-6 portfolio-item filter-vision">
-                            <p><?php echo $empresaObj->getVision(); ?></p>         
+                            <p><b>Vision:<br><?php echo $empresaObj->getVision(); ?></b></p>         
                         </div>
-
                         <div class="col-lg-4 col-md-6 portfolio-item filter-mision">
-                            <p><?php echo $empresaObj->getMision(); ?></p>
+                            <p><b>Mision:<br><?php echo $empresaObj->getMision(); ?></b></p>
                         </div>
 
                         <div class="col-lg-4 col-md-6 portfolio-item filter-obj">
-                            <p><?php echo $empresaObj->getObjetivos(); ?></p>
+                            <p><b>Objetivos:<br><?php echo $empresaObj->getObjetivos(); ?></b></p>
                         </div>
                     </div>
                 </div>
@@ -141,7 +134,6 @@ require_once $ruta.'controller/EmpresaController.php';
 
                     <div class="section-title">
                         <h2>Servicios</h2>
-                        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
                     </div>
 
                     <div class="row">
@@ -187,54 +179,54 @@ require_once $ruta.'controller/EmpresaController.php';
                 <div class="container" data-aos="fade-up">
 
                     <div class="section-title">
-                        <h2>Pricing</h2>
-                        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                        <h2>Precios</h2>
+                        <p>Prcios de vuelos</p>
                     </div>
 
                     <div class="row">
 
                         <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
                             <div class="box">
-                                <h3>Free Plan</h3>
-                                <h4><sup>$</sup>0<span>per month</span></h4>
+                                <h3>Viaja a Barcelona</h3>
+                                <h4><sup>$</sup>60<span>por este mes</span></h4>
                                 <ul>
-                                    <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
+                                    <li><i class="bx bx-check"></i>Descuento del 5%</li>
                                     <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
                                     <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
-                                    <li class="na"><i class="bx bx-x"></i> <span>Pharetra massa massa ultricies</span></li>
-                                    <li class="na"><i class="bx bx-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
+                                    <li><i class="bx bx-x"></i> <span>Pharetra massa massa ultricies</span></li>
+                                    <li><i class="bx bx-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
                                 </ul>
-                                <a href="#" class="buy-btn">Get Started</a>
+                                <a href="../login/loginView.php" class="buy-btn">Reservar</a>
                             </div>
                         </div>
 
                         <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="200">
                             <div class="box featured">
-                                <h3>Business Plan</h3>
-                                <h4><sup>$</sup>29<span>per month</span></h4>
+                                <h3>Viaja a Japon</h3>
+                                <h4><sup>$</sup>80<span>por este mes</span></h4>
                                 <ul>
-                                    <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
+                                    <li><i class="bx bx-check"></i> Descuento del 5%</li>
                                     <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
                                     <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
                                     <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>
                                     <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>
                                 </ul>
-                                <a href="#" class="buy-btn">Get Started</a>
+                                <a href="../login/loginView.php" class="buy-btn">Reservar</a>
                             </div>
                         </div>
 
                         <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
                             <div class="box">
-                                <h3>Developer Plan</h3>
-                                <h4><sup>$</sup>49<span>per month</span></h4>
+                                <h3>Viaja a USA</h3>
+                                <h4><sup>$</sup>40<span>por este mes</span></h4>
                                 <ul>
-                                    <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
+                                    <li><i class="bx bx-check"></i> Descuento del 5%</li>
                                     <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
                                     <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
                                     <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>
                                     <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>
                                 </ul>
-                                <a href="#" class="buy-btn">Get Started</a>
+                                <a href="../login/loginView.php" class="buy-btn">Reservar</a>
                             </div>
                         </div>
 
@@ -248,9 +240,7 @@ require_once $ruta.'controller/EmpresaController.php';
 
                     <div class="section-title">
                         <h2>Contact</h2>
-                        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
                     </div>
-
                     <div class="row">
 
                         <div class="col-lg-5 d-flex align-items-stretch">
@@ -258,7 +248,7 @@ require_once $ruta.'controller/EmpresaController.php';
                                 <div class="address">
                                     <i class="icofont-google-map"></i>
                                     <h4>Location:</h4>
-                                    <p><?php echo $empresaObj->getDireccion(); ?></p>
+                                    <p>795 Folsom Ave, Suite 600<br>San Francisco, CA 94107<br></p>
                                 </div>
 
                                 <div class="email">
@@ -296,7 +286,7 @@ require_once $ruta.'controller/EmpresaController.php';
                         <div class="col-lg-3 col-md-6 footer-contact">
                             <h3>FLIMASY</h3>
                             <p>
-                            <strong>Direccion:</strong><p><?php echo $empresaObj->getDireccion(); ?></p><br>
+                            <strong>Direccion:</strong><p>Cartago<?php echo $empresaObj->getDireccion(); ?></p><br>
                             <strong>Phone:</strong> <p><?php echo $empresaObj->getTelefono(); ?></p><br>
                             <strong>Email:</strong> <p><?php echo $empresaObj->getEmail(); ?></p><br>
                             </p>
@@ -311,27 +301,15 @@ require_once $ruta.'controller/EmpresaController.php';
                                 <li><i class="bx bx-chevron-right"></i> <a href="#pricing">Precios</a></li>
                             </ul>
                         </div>
-
-                        <div class="col-lg-3 col-md-6 footer-links">
-                            <h4>Our Services</h4>
-                            <ul>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                                <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-                            </ul>
-                        </div>
-
                         <div class="col-lg-3 col-md-6 footer-links">
                             <h4>Redes Sociales</h4>
                             <p><?php echo $empresaObj->getTextoRedesSociales(); ?></p>
                             <div class="social-links mt-3">
-                                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                                <a href=" " class="twitter"><i class="bx bxl-twitter"></i></a>
+                                <a href=" " class="facebook"><i class="bx bxl-facebook"></i></a>
+                                <a href=" " class="instagram"><i class="bx bxl-instagram"></i></a>
+                                <a href=" " class="google-plus"><i class="bx bxl-skype"></i></a>
+                                <a href=" s" class="linkedin"><i class="bx bxl-linkedin"></i></a>
                             </div>
                         </div>
 

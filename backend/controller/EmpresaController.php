@@ -49,7 +49,8 @@ if(!empty($_POST['updateEmpresa'])){
 	$empresaObj->setLogo($logo);
 	$empresaObj->setMostrar_imgDescuento($check);
 	$empresaObj->setTexto_Banner($_POST['textoBanner']);
-	$empresaObj->setDescripcion($_POST['direccion']);
+	$empresaObj->setDescripcion($_POST['descripcion']);
+        $empresaObj->setDireccion($_POST['direccion']);
 	$empresaObj->setEmail($_POST['email']);
 	$empresaObj->setTextoRedesSociales($_POST['textRedSocial']);
 	$empresaObj->setURL_twitter($_POST['twitter']);

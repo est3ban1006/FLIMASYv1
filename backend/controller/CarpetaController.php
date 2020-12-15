@@ -50,7 +50,7 @@ if(!empty($_POST['addFile'])){
     if(!empty($logo)){
     	$recurso = new Recurso();
     	$recurso->setIdCarpeta($_GET['id']);
-    	$recurso->setNombre($archivo);
+    	$recurso->setNombre($path);
     	$recurso->setTipo($tipo);
     	$recurso->setTamaño($tamano);
     	$recurso->setRuta($logo);
