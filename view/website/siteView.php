@@ -2,6 +2,13 @@
 $ruta = "../../backend/";
 require_once $ruta.'controller/Init.php';
 require_once $ruta.'controller/EmpresaController.php';
+$recursos = $recursoBO->getByCarpet(1);
+$countImg = 0;
+foreach ($recursos as $key => $value) {
+    $countImg++;
+}
+$active = "active";
+$index = 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,24 +74,45 @@ require_once $ruta.'controller/EmpresaController.php';
                       <!--<img src="assets/img/hero-img.png" class="img-fluid animated" alt="">-->
                         <div id="demo" class="carousel slide" data-ride="carousel">
                             <!-- Indicators -->
-                            <ul class="carousel-indicators">
-                                <li data-target="#demo" data-slide-to="0" class="active"></li>
-                                <li data-target="#demo" data-slide-to="1"></li>
-                                <li data-target="#demo" data-slide-to="2"></li>
-                            </ul>
+                            <?php if($countImg > 0) {?>
+                                <ul class="carousel-indicators">
+                                    <?php foreach ($recursos as $recurso) { ?>
+                                        <li data-target="#demo" data-slide-to="<?php echo $index;?>" class="<?php echo $active;?>"></li>
+                                        <?php 
+                                        $index++;
+                                        $active= "";
+                                    } $active= "active"; ?>
+                                </ul>
+                                <div class="carousel-inner text-center">
+                                    <?php foreach ($recursos as $recurso) { ?>
+                                        <div class="carousel-item <?php echo $active;?>">
+                                            <img src="<?php echo $recurso['Ruta'];?>" class="img-fluid animated" alt="Los Angeles" width="1100" height="500">
+                                        </div>
+                                    <?php 
+                                        $index++;
+                                        $active= "";
+                                    } $active= "active"; ?>
+                                </div>
+                            <?php } else { ?>
+                                <ul class="carousel-indicators">
+                                    <li data-target="#demo" data-slide-to="0" class="active"></li>
+                                    <li data-target="#demo" data-slide-to="1"></li>
+                                    <li data-target="#demo" data-slide-to="2"></li>
+                                </ul>
 
-                            <!-- The slideshow -->
-                            <div class="carousel-inner text-center">
-                                <div class="carousel-item active">
-                                    <img src="assets/img/hero-img.png" class="img-fluid animated" alt="Los Angeles" width="1100" height="500">
+                                <!-- The slideshow -->
+                                <div class="carousel-inner text-center">
+                                    <div class="carousel-item active">
+                                        <img src="assets/img/hero-img.png" class="img-fluid animated" alt="Los Angeles" width="1100" height="500">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="assets/img/hero-img.png" class="img-fluid animated" alt="Chicago" width="1100" height="500">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="assets/img/hero-img.png" class="img-fluid animated" alt="New York" width="1100" height="500">
+                                    </div>
                                 </div>
-                                <div class="carousel-item">
-                                    <img src="assets/img/hero-img.png" class="img-fluid animated" alt="Chicago" width="1100" height="500">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="assets/img/hero-img.png" class="img-fluid animated" alt="New York" width="1100" height="500">
-                                </div>
-                            </div>
+                            <?php } ?>
 
                             <!-- Left and right controls -->
                             <a class="carousel-control-prev" href="#demo" data-slide="prev">
