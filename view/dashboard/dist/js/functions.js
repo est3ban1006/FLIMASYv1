@@ -13,6 +13,16 @@ function initTable(name) {
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 }
 
+function ConfirmDeleteArchivo(idRuta) {
+    //mostrar un confirm box
+    alertify.confirm('Desea eliminar el archivo?', 'Una vez realizada la accion no se podran recuperar los datos', function() {
+        $('#idDelete').val(idRuta);
+        $('#formDeleteRecurso').submit();
+    }, function() {
+        $('#idDelete').val(0);
+    }).set('closable', false).set('defaultFocus', 'cancel');
+}
+
 function ValidateFormAddFile() {
     var flag = true;
     if ($('#recurso').val() === "") {

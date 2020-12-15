@@ -22,6 +22,12 @@ if(!empty($_POST['deleteCarpeta'])){
 	$msgAlert = "Carpeta eliminada correctamente";
 }
 
+if(!empty($_POST['deleteRecurso'])){
+	$recursoBO->delete($_POST['idDelete']);
+	$typeAlert = 1;
+	$msgAlert = "Recurso eliminado correctamente";
+}
+
 if(!empty($_POST['addFile'])){
 	$logo = "";
 	$storeFolder = 'C:/xampp/htdocs/FLIMASYv1/view/assets/recurses/files';

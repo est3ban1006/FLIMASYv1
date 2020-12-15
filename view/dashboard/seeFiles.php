@@ -46,7 +46,7 @@ $listaArchivos = $recursoBO->getAllByCarpeta($_GET['id']);
                                 <td><?php echo $file["Nombre"]; ?></td>
                                 <td><?php echo $file["Tipo"]; ?></td>      
                                 <td><?php echo $file[3]; ?></td>    
-                                <td><button type="button" class="btn btn-danger" onclick="ConfirmDeleteArchivo(<?php echo $file[0]; ?>);">Eliminar</button></td>
+                                <td><a type="button" href="<?php echo $file['Ruta'];?>" class="btn btn-sm btn-info" >Ver</a> <button type="button" class="btn btn-sm btn-danger" onclick="ConfirmDeleteArchivo(<?php echo $file[0]; ?>);">Eliminar</button></td>
                             </tr>
                         <?php } ?>
                       </tbody>

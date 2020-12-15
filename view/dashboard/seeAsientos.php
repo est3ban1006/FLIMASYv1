@@ -59,7 +59,7 @@ $ruta = $rutaBO->getById($horario->getIdRuta());
                                 <td><?php echo $asient["Precio"]; ?></td>      
                                 <td><?php echo $asient["Estado"]; ?></td>    
                                 <td><?php echo $nombreDescuento; ?></td>                                       
-                                <td><button type="button" class="btn btn-danger" onclick="ConfirmDeleteAsientoRuta(<?php echo $asient["idAsiento_Ruta"]; ?>);">Eliminar</button></td>
+                                <td><button type="button" class="btn btn-sm btn-danger" onclick="ConfirmDeleteAsientoRuta(<?php echo $asient["idAsiento_Ruta"]; ?>);">Eliminar</button></td>
                             </tr>
                         <?php } ?>
                       </tbody>
