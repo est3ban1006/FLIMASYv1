@@ -22,7 +22,7 @@ $listaArchivos = $recursoBO->getAllByCarpeta($_GET['id']);
               <div class="card-header">
                   <h3 class="card-title">Lista de recursos de <?php echo $carpeta->getNombre();?></h3>
                   <div class="text-right">
-                    <a href="addFile.php" class="btn btn-default text-info"><i class="fa fa-plus"></i> Agregar Recurso</a> <a href="gallery.php" class="btn btn-default text-info">Regresar a Galeria</a>
+                    <a href="addFile.php<?php echo $_GET['id'];?>" class="btn btn-default text-info"><i class="fa fa-plus"></i> Agregar Recurso</a> <a href="gallery.php" class="btn btn-default text-info">Regresar a Galeria</a>
                 </div>
               </div>
               <!-- /.card-header -->
