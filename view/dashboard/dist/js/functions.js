@@ -13,6 +13,17 @@ function initTable(name) {
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 }
 
+function ValidateFormAddFile() {
+    var flag = true;
+    if ($('#recurso').val() === "") {
+        flag = false;
+    }
+    if (flag) {} else {
+        alertify.error("Por favor seleccione el archivo a subir");
+    }
+    return flag;
+}
+
 function SetReserva(idAsiento) {
     if($('#asientoReserva'+idAsiento).hasClass('btn-default')){
         //lo selecciono se debe agregar
