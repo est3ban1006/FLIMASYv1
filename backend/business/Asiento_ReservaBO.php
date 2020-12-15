@@ -37,6 +37,10 @@ class Asiento_ReservaBO {
     public function getAllByReserva($idReserva) {
        return $this->asientoReservaDao->getAllByReserva($idReserva);
     }
+
+    public function getAllByAsientoRuta($idAsientoRuta) {
+        return $this->asientoReservaDao->getAllByAsientoRuta($idAsientoRuta);
+    }
     
     public function update(Asiento_Reserva $asiento_reserva) {
         return $this->asientoReservaDao->update($asiento_reserva);

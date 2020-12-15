@@ -100,11 +100,25 @@ class Asiento_ReservaDao {
     
     public function getAllByReserva($idReserva) {
         try {
-            $sql = sprintf("select * from mydb.Asiento_Reserva WHERE $idReserva = %s", 
-                    $this->labAdodb->Param("$idReserva"));
+            $sql = sprintf("select * from mydb.Asiento_Reserva WHERE idReserva = %s", 
+                    $this->labAdodb->Param("idReserva"));
             $sqlParam = $this->labAdodb->Prepare($sql);
             $valores = array();
-            $valores["$idReserva"] = $idReserva;
+            $valores["idReserva"] = $idReserva;
+            $resultSql = $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
+            return $resultSql;
+        } catch (Exception $e) {
+            throw new Exception('No se pudo obtener los registros (Error generado en el metodo getAll de la clase Asiento_ReservaDao), error:' . $e->getMessage());
+        }
+    }
+
+    public function getAllByAsientoRuta($idAsientoRuta) {
+        try {
+            $sql = sprintf("select * from mydb.Asiento_Reserva WHERE idAsiento_Avion = %s", 
+                    $this->labAdodb->Param("idAsiento_Avion"));
+            $sqlParam = $this->labAdodb->Prepare($sql);
+            $valores = array();
+            $valores["idAsiento_Avion"] = $idAsientoRuta;
             $resultSql = $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
             return $resultSql;
         } catch (Exception $e) {

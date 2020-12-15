@@ -1,6 +1,6 @@
 <?php include 'templates/header.php'; 
-$titlePage = "Nuevo Tipo de Avion";
-$subPage = "Nuevo Tipo de Avion";
+$titlePage = "Editar Tipo de Avion";
+$subPage = "Editar Tipo de Avion";
 $activeTipoAvion = $activeAirplane = "active";
 $openAirplane = " menu-open";
 $tipo = $tipoAvionBO->getById($_GET['id']); 

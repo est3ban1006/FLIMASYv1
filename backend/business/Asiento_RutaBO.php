@@ -12,7 +12,7 @@ class Asiento_RutaBO {
         $this->asientoRutaDao = new Asiento_RutaDao($conn);
     }
     
-    public function add(Asiento_RutaDao $asiento_ruta) {
+    public function add(Asiento_Ruta $asiento_ruta) {
         $this->asientoRutaDao->add($asiento_ruta);
     }
     

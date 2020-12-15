@@ -21,7 +21,7 @@ class Asiento_RutaDao {
                     $this->labAdodb->Param("Fecha_creacion"),
                     $this->labAdodb->Param("Precio"),
                     $this->labAdodb->Param("Estado"));
-
+            $sqlParam = $this->labAdodb->Prepare($sql);
             $valores = array();
 
             $valores["idRuta"]                  = $asiento_ruta->getIdRuta();

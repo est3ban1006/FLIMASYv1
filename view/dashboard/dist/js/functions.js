@@ -13,6 +13,119 @@ function initTable(name) {
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 }
 
+function ValidateFormUpdateHorario() {
+    var flag = true;
+    if ($.trim($('#ruta').val()) === "") {
+        flag = false;
+        $('#ruta').css('border', '1px solid red');
+    } else {
+        $('#ruta').css('border', '1px solid gray');
+    }
+    if ($.trim($('#fecha').val()) === "") {
+        flag = false;
+        $('#fecha').css('border', '1px solid red');
+    } else {
+        $('#fecha').css('border', '1px solid gray');
+    }
+    if ($.trim($('#precio').val()) === "") {
+        flag = false;
+        $('#precio').css('border', '1px solid red');
+    } else {
+        $('#precio').css('border', '1px solid gray');
+    }
+    if ($.trim($('#avion').val()) === "") {
+        flag = false;
+        $('#avion').css('border', '1px solid red');
+    } else {
+        $('#avion').css('border', '1px solid gray');
+    }
+    if ($.trim($('#horaDespliegue').val()) === "") {
+        flag = false;
+        $('#horaDespliegue').css('border', '1px solid red');
+    } else {
+        $('#horaDespliegue').css('border', '1px solid gray');
+    }
+    if (flag) {} else {
+        alertify.error("Por favor ingrese los valores de los campos en rojo");
+    }
+    return flag;
+}
+
+function ConfirmDeleteAsientoRuta(idAsiento) {
+    //mostrar un confirm box
+    alertify.confirm('Desea eliminar el asiento?', 'Una vez realizada la accion no se podran recuperar los datos.', function() {
+        $('#idDelete').val(idAsiento);
+        $('#formDeleteAsientoRuta').submit();
+    }, function() {
+        $('#idDelete').val(0);
+    }).set('closable', false).set('defaultFocus', 'cancel');
+}
+
+function ConfirmDeleteHorario(idRuta) {
+    //mostrar un confirm box
+    alertify.confirm('Desea eliminar el horario?', 'Una vez realizada la accion no se podran recuperar los datos y se eliminaran todos los asientos asociados al horario', function() {
+        $('#idDelete').val(idRuta);
+        $('#formDeleteHorario').submit();
+    }, function() {
+        $('#idDelete').val(0);
+    }).set('closable', false).set('defaultFocus', 'cancel');
+}
+
+function ValidateFormAddHorario() {
+    var flag = true;
+    if ($.trim($('#ruta').val()) === "") {
+        flag = false;
+        $('#ruta').css('border', '1px solid red');
+    } else {
+        $('#ruta').css('border', '1px solid gray');
+    }
+    if ($.trim($('#fecha').val()) === "") {
+        flag = false;
+        $('#fecha').css('border', '1px solid red');
+    } else {
+        $('#fecha').css('border', '1px solid gray');
+    }
+    if ($.trim($('#precio').val()) === "") {
+        flag = false;
+        $('#precio').css('border', '1px solid red');
+    } else {
+        $('#precio').css('border', '1px solid gray');
+    }
+    if ($.trim($('#avion').val()) === "") {
+        flag = false;
+        $('#avion').css('border', '1px solid red');
+    } else {
+        $('#avion').css('border', '1px solid gray');
+    }
+    if ($.trim($('#horaDespliegue').val()) === "") {
+        flag = false;
+        $('#horaDespliegue').css('border', '1px solid red');
+    } else {
+        $('#horaDespliegue').css('border', '1px solid gray');
+    }
+    if ($.trim($('#cantAsientosDispo').val()) === "") {
+        flag = false;
+        $('#cantAsientosDispo').css('border', '1px solid red');
+    } else {
+        $('#cantAsientosDispo').css('border', '1px solid gray');
+    }
+    if ($.trim($('#descuento').val()) !== "") {
+        //VALIDAR QUE TENGAN CNTIDAD CON DECUENTO
+        if ($.trim($('#cantAsientosDescuento').val()) === "") {
+            flag = false;
+            $('#cantAsientosDescuento').css('border', '1px solid red');
+        } else {
+            $('#cantAsientosDescuento').css('border', '1px solid gray');
+        }
+    } else{
+        $('#cantAsientosDescuento').css('border', '1px solid gray');
+    }
+    if (flag) {} else {
+        alertify.error("Por favor ingrese los valores de los campos en rojo");
+    }
+    return flag;
+}
+
 function ValidateFormUpdateRuta() {
     var flag = true;
     if ($.trim($('#ruta').val()) === "") {
@@ -530,49 +643,6 @@ function ValidateFormAddRuta() {
         $('#duracion').css('border', '1px solid red');
     } else {
         $('#duracion').css('border', '1px solid gray');
-    }
-    if (flag) {} else {
-        alertify.error("Por favor ingrese los valores de los campos en rojo");
-    }
-    return flag;
-}
-function ValidateFormAddHorario() {
-    var flag = true;
-    if ($.trim($('#fecha').val()) === "") {
-        flag = false;
-        $('#fecha').css('border', '1px solid red');
-    } else {
-        $('#fecha').css('border', '1px solid gray');
-    }
-    if ($.trim($('#status').val()) === "") {
-        flag = false;
-        $('#status').css('border', '1px solid red');
-    } else {
-        $('#status').css('border', '1px solid gray');
-    }
-    if ($.trim($('#precio').val()) === "") {
-        flag = false;
-        $('#precio').css('border', '1px solid red');
-    } else {
-        $('#precio').css('border', '1px solid gray');
-    }
-    if ($.trim($('#horaDespliegue').val()) === "") {
-        flag = false;
-        $('#horaDespliegue').css('border', '1px solid red');
-    } else {
-        $('#horaDespliegue').css('border', '1px solid gray');
-    }
-    if ($.trim($('#horaLlegada').val()) === "") {
-        flag = false;
-        $('#horaLlegada').css('border', '1px solid red');
-    } else {
-        $('#horaLlegada').css('border', '1px solid gray');
-    }
-    if ($.trim($('#cantAsientosDispo').val()) === "") {
-        flag = false;
-        $('#cantAsientosDispo').css('border', '1px solid red');
-    } else {
-        $('#cantAsientosDispo').css('border', '1px solid gray');
     }
     if (flag) {} else {
         alertify.error("Por favor ingrese los valores de los campos en rojo");

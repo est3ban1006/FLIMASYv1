@@ -37,6 +37,10 @@ class Horario_RutaBO {
     public function getAllByRuta($idRuta) {
         return $this->horarioDao->getAllByRuta($idRuta);
     }
+
+    public function getLastByRuta($idRuta) {
+        return $this->horarioDao->getLastByRuta($idRuta);
+    }
     
     public function getAllByAvion($idAvion){
         return $this->horarioDao->getAllByAvion($idAvion);

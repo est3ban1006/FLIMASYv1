@@ -1,8 +1,9 @@
 <?php include 'templates/header.php'; 
-$titlePage = "Nuevo Horario";
-$subPage = "Nuevo Horario";
+$titlePage = "Editar Horario";
+$subPage = "Editar Horario";
 $activeHorarios = $activeAirplane = "active";
 $openAirplane = " menu-open";
+$horario = $horariBO->getById($_GET['id']); 
 $rutas = $rutaBO->getAllByEmpresa($currentCompany->getIdEmpresa());
 $aviones = $avionBO->getAllByEmpresa($currentCompany->getIdEmpresa());
 $descuentos = $descuentoBO->getAllByEmpresa($currentCompany->getIdEmpresa());
@@ -26,8 +27,8 @@ $descuentos = $descuentoBO->getAllByEmpresa($currentCompany->getIdEmpresa());
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" id='formAddHorario' method='POST' onsubmit="return ValidateFormAddHorario();">
-                <input type="hidden" name='addHorario' value="1" />
+              <form class="form-horizontal" id='formUpdateHorario' method='POST' onsubmit="return ValidateFormUpdateHorario();">
+                <input type="hidden" name='updateHorario' value="1" />
                 <div class="card-body">
                     <table class='table'>
                         <tr>
@@ -37,27 +38,18 @@ $descuentos = $descuentoBO->getAllByEmpresa($currentCompany->getIdEmpresa());
                                   <select class="form-control" id="ruta" name="ruta">
                                     <option value="">Seleccion una opcion</option>
                                     <?php foreach ($rutas as $ruta) { ?>
-                                        <option value="<?php echo $ruta['idRuta'];?>" <?php if($newRutaHorario == $ruta['idRuta']){echo "selected";}?>><?php echo $ruta['Ruta']." (".$ruta['Duracion']."
+                                        <option value="<?php echo $ruta['idRuta'];?>" <?php if($horario->getIdRuta() == $ruta['idRuta']){echo "selected";}?>><?php echo $ruta['Ruta']." (".$ruta['Duracion']."
                                         )";?> </option>
                                     <?php } ?>
                                   </select>
                                 </div>
                                 <div class="form-group ">
                                     <label for="fecha" class="col-form-label">Fecha</label><br>
-                                    <input type="date" class="form-control" name="fecha" id="fecha" placeholder="Fecha" value="<?php echo $newDateHorario;?>">
+                                    <input type="date" class="form-control" name="fecha" id="fecha" placeholder="Fecha" value="<?php echo $horario->getFecha();?>">
                                 </div> 
                                 <div class="form-group ">
                                     <label for="precio" class="col-form-label">Precio ($)</label><br>
-                                    <input type="number" class="form-control" name="precio" id="precio" placeholder="Precio" value="<?php echo $newPrecioHorario;?>">
-                                </div> 
-                                <div class="form-group">
-                                  <label>Descuento</label>
-                                  <select class="form-control" id="descuento" name="descuento">
-                                    <option value="">Seleccion una opcion</option>
-                                    <?php foreach ($descuentos as $descuento) { ?>
-                                        <option value="<?php echo $descuento['idDescuento'];?>" <?php if($newDescuentoHorario == $descuento['idDescuento']){echo "selected";}?>><?php echo $descuento['Nombre'];?> </option>
-                                    <?php } ?>
-                                  </select>
+                                    <input type="number" class="form-control" name="precio" id="precio" placeholder="Precio" value="<?php echo $horario->getPrecio();?>">
                                 </div>
                             </td>
                             <td style="width: 50%;">
@@ -66,21 +58,13 @@ $descuentos = $descuentoBO->getAllByEmpresa($currentCompany->getIdEmpresa());
                                     <select class="form-control" id="avion" name="avion">
                                       <option value="">Seleccion una opcion</option>
                                       <?php foreach ($aviones as $avion) { ?>
-                                          <option value="<?php echo $avion['idCatalogo_avion'];?>" <?php if($newAvionHorario == $avion['idCatalogo_avion']){echo "selected";}?>><?php echo $avion['NombreAvion'];?> </option>
+                                          <option value="<?php echo $avion['idCatalogo_avion'];?>" <?php if($horario->getIdCatalogo_avion() == $avion['idCatalogo_avion']){echo "selected";}?>><?php echo $avion['NombreAvion'];?> </option>
                                       <?php } ?>
                                     </select>
                                   </div>
                                 <div class="form-group ">
                                     <label for="horaDespliegue" class="col-form-label">Hora de Despliegue</label><br>
-                                    <input type="time" class="form-control" name="horaDespliegue" id="horaDespliegue" placeholder="Hora de Despliegue"  value="<?php echo $newHoraDespliegueHorario;?>">
-                                </div>
-                                <div class="form-group ">
-                                    <label for="cantAsientosDispo" class="col-form-label">Cantidad de Asientos Disponibles</label><br>
-                                    <input type="number" class="form-control" name="cantAsientosDispo" id="cantAsientosDispo" min="1" placeholder="Cantidad de Asientos Disponibles"  value="<?php echo $cantAsientosHorario;?>">
-                                </div>
-                                <div class="form-group ">
-                                    <label for="cantAsientosDescuento" class="col-form-label">Cantidad de Asientos con descuento</label><br>
-                                    <input type="number" class="form-control" name="cantAsientosDescuento" id="cantAsientosDescuento" placeholder="Cantidad de Asientos con Descuento"  value="<?php echo $cantAsientosDescuento;?>">
+                                    <input type="time" class="form-control" name="horaDespliegue" id="horaDespliegue" placeholder="Hora de Despliegue"  value="<?php echo $horario->getHoraDespliegue();?>">
                                 </div>
                             </td>
                         </tr>

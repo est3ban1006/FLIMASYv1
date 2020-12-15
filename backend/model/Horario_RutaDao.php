@@ -13,7 +13,7 @@ class Horario_RutaDao {
     
     public function add(Horario_Ruta $horario_ruta) {
         try {
-            $sql = sprintf("insert into mydb.Horario_Ruta (idRuta,idCatalogo_avion, Fecha, HoraDespliegue, HoraLlegada, Fecha_creacion, Status, Precio, Cant_AsientosDispinibles) 
+            $sql = sprintf("insert into mydb.Horario_Ruta (idRuta,idCatalogo_avion, Fecha, HoraDespliegue, HoraLlegada, Fecha_creacion, Status, Precio, Cant_AsientosDisponibles) 
                                           values (%s,%s,%s,%s,%s,%s,%s,%s,%s)",
                     $this->labAdodb->Param("idRuta"),
                     $this->labAdodb->Param("idCatalogo_avion"),
@@ -23,7 +23,7 @@ class Horario_RutaDao {
                     $this->labAdodb->Param("Fecha_creacion"),
                     $this->labAdodb->Param("Status"),
                     $this->labAdodb->Param("Precio"),
-                    $this->labAdodb->Param("Cant_AsientosDispinibles"));
+                    $this->labAdodb->Param("Cant_AsientosDisponibles"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
@@ -36,7 +36,7 @@ class Horario_RutaDao {
             $valores["Fecha_creacion"]              = $horario_ruta->getFecha_creacion();
             $valores["Status"]                      = $horario_ruta->getStatus();
             $valores["Precio"]                      = $horario_ruta->getPrecio();
-            $valores["Cant_AsientosDispinibles"]    = $horario_ruta->getCant_AsientosDisponibles();
+            $valores["Cant_AsientosDisponibles"]    = $horario_ruta->getCant_AsientosDisponibles();
 
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
@@ -80,7 +80,7 @@ class Horario_RutaDao {
                 $horario_ruta->setFecha_creacion($resultSql->Fields("Fecha_creacion"));
                 $horario_ruta->setStatus($resultSql->Fields("Status"));
                 $horario_ruta->setPrecio($resultSql->Fields("Precio"));
-                $horario_ruta->setCant_AsientosDisponibles($resultSql->Fields("Cant_AsientosDispinibles"));
+                $horario_ruta->setCant_AsientosDisponibles($resultSql->Fields("Cant_AsientosDisponibles"));
             }
         } catch (Exception $e) {
             throw new Exception('No se pudo consultar el registro (Error generado en el metodo getById de la clase Horario_RutaDao), error:' . $e->getMessage());
@@ -95,6 +95,34 @@ class Horario_RutaDao {
             return $resultSql;
         } catch (Exception $e) {
             throw new Exception('No se pudo obtener los registros (Error generado en el metodo getAll de la clase Horario_RutaDao), error:' . $e->getMessage());
+        }
+    }
+
+    public function getLastByRuta($idRuta) {
+        try {
+            $sql = sprintf("select * from mydb.Horario_Ruta WHERE idRuta = %s ORDER BY idHorario_Ruta DESC LIMIT 1", 
+                    $this->labAdodb->Param("idRuta"));
+            $sqlParam = $this->labAdodb->Prepare($sql);
+            $valores = array();
+            $valores["idRuta"] = $idRuta;
+            $resultSql = $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
+
+            if ($resultSql->RecordCount() > 0) {
+                $horario_ruta = new Horario_Ruta();
+                $horario_ruta->setIdHorario_Ruta($resultSql->Fields("idHorario_Ruta"));
+                $horario_ruta->setIdRuta($resultSql->Fields("idRuta"));
+                $horario_ruta->setIdCatalogo_avion($resultSql->Fields("idCatalogo_avion"));
+                $horario_ruta->setFecha($resultSql->Fields("Fecha"));
+                $horario_ruta->setHoraDespliegue($resultSql->Fields("HoraDespliegue"));
+                $horario_ruta->setHoraLlegada($resultSql->Fields("HoraLlegada"));
+                $horario_ruta->setFecha_creacion($resultSql->Fields("Fecha_creacion"));
+                $horario_ruta->setStatus($resultSql->Fields("Status"));
+                $horario_ruta->setPrecio($resultSql->Fields("Precio"));
+                $horario_ruta->setCant_AsientosDisponibles($resultSql->Fields("Cant_AsientosDisponibles"));
+                return $horario_ruta;
+            }
+        } catch (Exception $e) {
+            throw new Exception('No se pudo obtener los registros (Error generado en el metodo getAllByRuta de la clase Horario_RutaDao), error:' . $e->getMessage());
         }
     }
     

@@ -63,12 +63,12 @@ class Catalogo_avionDao {
 
             if ($resultSql->RecordCount() > 0) {
                 $catalogo_avion = new Catalogo_avion();
-                $catalogo_avion->setIdPersona($resultSql->Fields("idCatalogo_avion"));
-                $catalogo_avion->setNombre($resultSql->Fields("idEmpresa"));
-                $catalogo_avion->setApellido1($resultSql->Fields("idTipo_Avion"));
-                $catalogo_avion->setApellido2($resultSql->Fields("NombreAvion"));
-                $catalogo_avion->setCedula($resultSql->Fields("Fecha_creacion"));
-                $catalogo_avion->setCelular($resultSql->Fields("Activo"));
+                $catalogo_avion->setIdCatalogo_avion($resultSql->Fields("idCatalogo_avion"));
+                $catalogo_avion->setIdEmpresa($resultSql->Fields("idEmpresa"));
+                $catalogo_avion->setIdTipo_Avion($resultSql->Fields("idTipo_Avion"));
+                $catalogo_avion->setNombre_Avion($resultSql->Fields("NombreAvion"));
+                $catalogo_avion->setFecha_creacion($resultSql->Fields("Fecha_creacion"));
+                $catalogo_avion->setActivo($resultSql->Fields("Activo"));
             }
         } catch (Exception $e) {
             throw new Exception('No se pudo consultar el registro (Error generado en el metodo getById de la clase Catalogo_AvionDao), error:' . $e->getMessage());
