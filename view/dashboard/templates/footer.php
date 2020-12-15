@@ -27,6 +27,7 @@
         <script src="dist/js/demo.js"></script>
         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
         <script src="dist/js/pages/dashboard3.js"></script>
+        <script src="dist/js/tipocambio.js"></script>
 
         <!-- DataTables  & Plugins -->
         <script src="plugins/datatables/jquery.dataTables.min.js"></script>

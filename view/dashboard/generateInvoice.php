@@ -138,6 +138,11 @@ $count = 0;
                     plugg
                     dopplr jibjab, movity jajah plickers sifteo edmodo ifttt zimbra.
                   </p>
+                  <!--<button type="button" class="btn btn-warning float-right">Consultar Precio en Colones
+                  </button>-->
+                  <p class="text-muted well well-sm shadow-none" id="tipoCambioP" style="margin-top: 10px;">
+
+                  </p>
                 </div>
                 <!-- /.col -->
                 <div class="col-6">
@@ -191,6 +196,8 @@ $count = 0;
 <script type="text/javascript">
   jQuery(document).ready(function () {
     initTable("#example1");
+
+    consultarTipoCambio();  
   });
 </script>
 

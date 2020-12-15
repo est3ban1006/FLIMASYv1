@@ -4,7 +4,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+$idRutaBuscar = 0;
+$dateBuscar = "";
 //POST ELIMINAR RUTA
 if(!empty($_POST['deleteRuta'])){
 	$rutaBO->delete($_POST['idDelete']);
@@ -33,4 +34,25 @@ if(!empty($_POST['updateRuta'])){
 
 	$typeAlert = 1;
 	$msgAlert = "Ruta actualizada correctamente";
+}
+
+//POST PARA BUSCAR
+if(!empty($_POST['search'])){
+	$idRutaBuscar = $_POST['ruta'];
+	$dateBuscar = $_POST['fecha'];
+	$listaHorarios = array();
+	if(empty($_POST['ruta'])){
+		$listRutas = $rutaBO->getAllByEmpresa($currentCompany->getIdEmpresa());
+	}else{
+		$listRutas = array();
+		array_push($listRutas, array("idRuta" => $_POST['ruta']));
+	}
+	foreach ($listRutas as $ruta2) {
+	  $horariosPorRuta = $horariBO->getAllByRuta($ruta2['idRuta']); 
+	  foreach ($horariosPorRuta as $hor) {
+	    if($hor['Cant_AsientosDisponibles'] > 0 && $hor['Fecha'] == $_POST['fecha']){
+	      array_push($listaHorarios, $hor);
+	    }
+	  }
+	}
 }

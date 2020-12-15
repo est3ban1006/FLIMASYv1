@@ -13,6 +13,27 @@ function initTable(name) {
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 }
 
+function ValidateSearch() {
+    var flag = true;
+    if ($.trim($('#ruta').val()) === "") {
+        flag = false;
+        $('#ruta').css('border', '1px solid red');
+    } else {
+        $('#ruta').css('border', '1px solid gray');
+    }
+
+    if ($.trim($('#fecha').val()) === "") {
+        flag = false;
+        $('#fecha').css('border', '1px solid red');
+    } else {
+        $('#fecha').css('border', '1px solid gray');
+    }
+    if (flag) {} else {
+        alertify.error("Por favor ingrese los valores de los campos en rojo");
+    }
+    return flag;
+}
+
 function ConfirmDeleteArchivo(idRuta) {
     //mostrar un confirm box
     alertify.confirm('Desea eliminar el archivo?', 'Una vez realizada la accion no se podran recuperar los datos', function() {
