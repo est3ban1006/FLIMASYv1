@@ -1,9 +1,7 @@
 <?php include 'templates/header.php'; 
-$titlePage = "Editar Tipo de Avion";
-$subPage = "Editar Tipo de Avion";
-$activeRutas = $activeAirplane = "active";
-$openAirplane = " menu-open";
-$ruta = $rutaBO->getById($_GET['id']); 
+$titlePage = "Nueva Carpeta";
+$subPage = "Nueva Carpeta";
+$activeGaleria = "active";
 ?>
 <div class="wrapper">
 
@@ -24,22 +22,16 @@ $ruta = $rutaBO->getById($_GET['id']);
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" id='formUpdateRuta' method='POST' onsubmit="return ValidateFormUpdateRuta();">
-                <input type="hidden" name='updateRuta' value="1" />
+              <form class="form-horizontal" id='formAddCarpeta' method='POST' onsubmit="return ValidateFormAddCarpeta();">
+                <input type="hidden" name='addCarpeta' value="1" />
                 <div class="card-body">
                     <table class='table'>
                         <tr>
                             <td style="width: 50%;">
                                 <div class="form-group ">
-                                    <label for="ruta" class="col-form-label">Ruta</label><br>
-                                    <input type="text" class="form-control" name="ruta" id="ruta" placeholder="Ruta" value="<?php echo $ruta->getRuta();?>">
+                                    <label for="ruta" class="col-form-label">Nombre</label><br>
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="Carpeta" value="<?php echo $nombreCarpeta;?>">
                                 </div>
-                            </td>
-                            <td style="width: 50%;">
-                                <div class="form-group ">
-                                    <label for="duracion" class="col-form-label">Duracion</label><br>
-                                    <input type="time" class="form-control" name="duracion" id="duracion" placeholder="Modelo"  value="<?php echo $ruta->getDuracion();?>">
-                                </div>  
                             </td>
                         </tr>
                     </table>

@@ -6,9 +6,9 @@
  * and open the template in the editor.
  */
 class CarpetaDao {
-    private $conn;
+    private $labAdodb;
     function __construct($conn) {
-        $this->conn = $conn;
+        $this->labAdodb = $conn;
     }
     
     public function add(Carpeta $carpeta) {
