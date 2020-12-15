@@ -46,16 +46,16 @@ $tipo = $tipoAvionBO->getById($_GET['id']);
                                 </div>
                                 <div class="form-group ">
                                     <label for="cantFilas" class="col-form-label">Cantidad de Filas</label><br>
-                                    <input type="number" min="2" max="3" class="form-control" name="cantFilas" id="cantFilas" placeholder="Cantidad de Filas"  value="<?php echo $tipo->getCant_filas();?>">
+                                    <input type="number" class="form-control" name="cantFilas" id="cantFilas" placeholder="Cantidad de Filas"  value="<?php echo $tipo->getCant_filas();?>">
                                 </div>   
                             </td>
                             <td style="width: 33%;">
                                 <div class="form-group ">
-                                    <label for="cantAsientos" class="col-form-label">Cantidad de asientos por fila</label><br>
-                                    <input type="number" class="form-control" name="cantAsientos" id="cantAsientos" placeholder="Cantidad de Asientos" min="6" max="9" value="<?php echo $tipo->getCant_asientos();?>">
+                                    <label for="cantAsientos" class="col-form-label">Cantidad de Pasajeros</label><br>
+                                    <input type="number" class="form-control" name="cantAsientos" id="cantAsientos" placeholder="Cantidad de Asientos" value="<?php echo $tipo->getCant_asientos();?>">
                                 </div> 
                                 <div class="form-group ">
-                                    <label for="cantpasajeros" class="col-form-label">Cantidad de Pasajeros</label><br>
+                                    <label for="cantpasajeros" class="col-form-label">Cantidad de asientos por fila</label><br>
                                     <input type="number" class="form-control" name="cantpasajeros" id="cantpasajeros" placeholder="Cantidad de Pasajeros"  value="<?php echo $tipo->getCant_pasajeros();?>">
                                 </div> 
                             </td>

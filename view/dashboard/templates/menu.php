@@ -147,7 +147,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="index.php" class="nav-link <?php echo $activeVuelos;?>">
+              <a href="vuelos.php" class="nav-link <?php echo $activeVuelos;?>">
                 <i class="nav-icon fas fa-plane"></i>
                 <p>
                   Vuelos

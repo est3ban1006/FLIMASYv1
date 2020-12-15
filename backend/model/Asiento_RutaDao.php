@@ -98,7 +98,11 @@ class Asiento_RutaDao {
             $valores = array();
             $valores["idRuta"] = $idSchedule;
             $resultSql = $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
-            return $resultSql;
+            $arr = array();
+            foreach ($resultSql as $key) {
+                array_push($arr, $key);
+            }
+            return $arr;
         } catch (Exception $e) {
             throw new Exception('No se pudo obtener los registros (Error generado en el metodo getAll de la clase Asiento_RutaDao), error:' . $e->getMessage());
         }

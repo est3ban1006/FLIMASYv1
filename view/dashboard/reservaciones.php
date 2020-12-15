@@ -2,7 +2,11 @@
 $titlePage = "Reservaciones";
 $subPage = "Reservaciones";
 $activeRes = "active";
-$reservas = $reservaBO->getAll();
+if($currentPerson->getRol() == "Administrador"){
+  $reservas = $reservaBO->getAll();
+}else{
+  $reservas = $reservaBO->getAllByPersona($currentPerson->getIdPersona());
+}
 ?>
 <div class="wrapper">
 

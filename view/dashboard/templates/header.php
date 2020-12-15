@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 $ruta = "../../backend/";
 require_once $ruta.'controller/Init.php';

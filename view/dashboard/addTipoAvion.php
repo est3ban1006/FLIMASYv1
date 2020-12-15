@@ -45,7 +45,7 @@ $openAirplane = " menu-open";
                                 </div>
                                 <div class="form-group ">
                                     <label for="cantFilas" class="col-form-label">Cantidad de Filas</label><br>
-                                    <input type="number" min="2" max="3" class="form-control" name="cantFilas" id="cantFilas" placeholder="Cantidad de Filas"  value="<?php echo $cantFilas;?>">
+                                    <input type="number" min='5' class="form-control" name="cantFilas" id="cantFilas" placeholder="Cantidad de Filas"  value="<?php echo $cantFilas;?>">
                                 </div>   
                             </td>
                             <td style="width: 33%;">

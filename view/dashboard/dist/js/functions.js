@@ -13,6 +13,17 @@ function initTable(name) {
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 }
 
+function ValidateFormAddReserva() {
+    var flag = true;
+    if ($.trim($('#idAsientos').val()) === "") {
+        flag = false;
+    }
+    if (flag) {} else {
+        alertify.error("Por favor seleccione los asientos a reservar");
+    }
+    return flag;
+}
+
 function ConfirmDeleteCarpeta(idRuta) {
     //mostrar un confirm box
     alertify.confirm('Desea eliminar la carpeta?', 'Una vez realizada la accion no se podran recuperar los datos', function() {
