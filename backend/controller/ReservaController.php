@@ -28,10 +28,11 @@ if(!empty($_POST['addReserva'])){
 	if(!empty($reserva)){
 		//DESPUES AGREGAR LOS ASIENTOS DE LA RESERVA
 		$arr = explode(";", $_POST['idAsientos']);
+		$count = 0;
 		foreach ($arr as $key) {
 			if(!empty($key)){ 
 				$asiento = $asientoRutaBO->getById($key);
-
+				$count++;
 				$montoDescuento = 0;
                 if($asiento->getIdDescuento() != 0){
                   //TRAER EL DESCUENTO
@@ -56,6 +57,8 @@ if(!empty($_POST['addReserva'])){
 				$asientoRutaBO->update($asiento);
 			}
 		}
+		$horario->setCant_AsientosDisponibles($horario->getCant_AsientosDisponibles()-$count);
+		$horariBO->update($horario);
 		header("Location: reservaciones.php");
 	}else{
 		$typeAlert = 2;

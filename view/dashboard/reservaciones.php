@@ -43,6 +43,7 @@ if($currentPerson->getRol() == "Administrador"){
                           <th>Duracion</th>
                           <th>Monto Total</th>
                           <th>Descuento</th>
+                          <th>Estado</th>
                           <th></th>
                         </tr>
                     </thead>
@@ -81,6 +82,7 @@ if($currentPerson->getRol() == "Administrador"){
                               <td><?php echo $duracionText; ?></td>
                               <td><?php echo $reserva['Monto_total']; ?></td>
                               <td><?php echo $reserva['Descuento']; ?></td>
+                              <td><?php echo $reserva['Estado']; ?></td>
                               <td><a type="button" class="btn btn-sm btn-info" href="generateInvoice.php?id=<?php echo $reserva[0]; ?>" >Factura</a></td>
                           </tr>
                       <?php }  ?>
@@ -97,6 +99,7 @@ if($currentPerson->getRol() == "Administrador"){
                           <th>Duracion</th>
                           <th>Monto Total</th>
                           <th>Descuento</th>
+                          <th>Estado</th>
                           <th></th>
                         </tr>
                     </tfoot>
