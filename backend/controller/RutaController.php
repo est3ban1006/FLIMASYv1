@@ -14,22 +14,22 @@ if(!empty($_POST['deleteRuta'])){
  //POST AGREGAR RUTA
 $newNameRuta = $newDuracionRuta = "";
 if(!empty($_POST['addRuta'])){
-	$ruta = new Ruta();
-	$ruta->setIdEmpresa($currentCompany->getIdEmpresa());
-	$ruta->setRuta($_POST['ruta']);
-	$ruta->setDuracion($_POST['duracion']);
-	$rutaBO->add($ruta);
+	$rutaObj = new Ruta();
+	$rutaObj->setIdEmpresa($currentCompany->getIdEmpresa());
+	$rutaObj->setRuta($_POST['ruta']);
+	$rutaObj->setDuracion($_POST['duracion']);
+	$rutaBO->add($rutaObj);
 	header("Location: staffRuta.php");
 }
 
 //POST ACTUALIZAR 
 if(!empty($_POST['updateRuta'])){
-	$ruta = new Ruta();
-	$ruta->setIdRuta($_GET['id']);
-	$ruta->setIdEmpresa($currentCompany->getIdEmpresa());
-	$ruta->setRuta($_POST['ruta']);
-	$ruta->setDuracion($_POST['duracion']);
-	$rutaBO->update($ruta);
+	$rutaObj = new Ruta();
+	$rutaObj->setIdRuta($_GET['id']);
+	$rutaObj->setIdEmpresa($currentCompany->getIdEmpresa());
+	$rutaObj->setRuta($_POST['ruta']);
+	$rutaObj->setDuracion($_POST['duracion']);
+	$rutaBO->update($rutaObj);
 
 	$typeAlert = 1;
 	$msgAlert = "Ruta actualizada correctamente";
