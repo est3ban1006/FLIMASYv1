@@ -22,9 +22,9 @@ if(!empty($_POST['addHorario'])){
 	$date2 =new DateTime($newDateHorario);
 
 	if($date1 < $date2){
-		$ruta = $rutaBO->getById($_POST['ruta']);
+		$rutaObj = $rutaBO->getById($_POST['ruta']);
 		$date1 = new DateTime(date('H:i:s', strtotime($_POST['horaDespliegue'])));
-		$arrDuracion = explode(":", $ruta->getDuracion()); 
+		$arrDuracion = explode(":", $rutaObj->getDuracion()); 
 		$date1->modify($arrDuracion[0]." hours");
 		$date1->modify($arrDuracion[1]." minutes");
 		$date1->modify($arrDuracion[2]." seconds"); 
@@ -130,9 +130,9 @@ if(!empty($_POST['updateHorario'])){
 	$horario->setHoraDespliegue($_POST['horaDespliegue']);
 	$horario->setPrecio($_POST['precio']);
 
-	$ruta = $rutaBO->getById($_POST['ruta']);
+	$rutaObj = $rutaBO->getById($_POST['ruta']);
 	$date1 = new DateTime(date('H:i:s', strtotime($_POST['horaDespliegue'])));
-	$arrDuracion = explode(":", $ruta->getDuracion()); 
+	$arrDuracion = explode(":", $rutaObj->getDuracion()); 
 	$date1->modify($arrDuracion[0]." hours");
 	$date1->modify($arrDuracion[1]." minutes");
 	$date1->modify($arrDuracion[2]." seconds"); 
