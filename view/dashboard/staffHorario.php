@@ -85,7 +85,7 @@ foreach ($listRutas as $ruta) {
                             <th></th>
                           </tr>
                       </tfoot>
-                </table>
+                  </table>
                 </div>
               </form>
             </div>

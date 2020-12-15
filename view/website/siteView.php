@@ -9,6 +9,15 @@ foreach ($recursos as $key => $value) {
 }
 $active = "active";
 $index = 0;
+
+$listaHorarios = array();
+$listRutas = $rutaBO->getAllByEmpresa(1);
+foreach ($listRutas as $ruta) {
+  $horariosPorRuta = $horariBO->getAllByRuta($ruta['idRuta']);
+  foreach ($horariosPorRuta as $hor) {
+    array_push($listaHorarios, $hor);
+  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,6 +44,10 @@ $index = 0;
         <link href="assets/vendor/aos/aos.css" rel="stylesheet">
         <!-- Template Main CSS File -->
         <link href="assets/css/style.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="../dashboard/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="../dashboard/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+        <link rel="stylesheet" href="../dashboard/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 
         <!-- =======================================================
         * Template Name: Arsha - v2.3.0
@@ -206,58 +219,58 @@ $index = 0;
             <section id="pricing" class="pricing">
                 <div class="container" data-aos="fade-up">
 
-                    <div class="section-title">
+                    <div class="section-title" style="margin-bottom: 0px;">
                         <h2>Precios</h2>
-                        <p>Prcios de vuelos</p>
+                        <p>Lista de horarios con su respectivo ruta y precio. Si desea realizar alguna reservacion por favor ingrese a nuestro sistema.</p>
                     </div>
 
-                    <div class="row">
-
-                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                            <div class="box">
-                                <h3>Viaja a Barcelona</h3>
-                                <h4><sup>$</sup>60<span>por este mes</span></h4>
-                                <ul>
-                                    <li><i class="bx bx-check"></i>Descuento del 5%</li>
-                                    <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
-                                    <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
-                                    <li><i class="bx bx-x"></i> <span>Pharetra massa massa ultricies</span></li>
-                                    <li><i class="bx bx-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
-                                </ul>
-                                <a href="../login/loginView.php" class="buy-btn">Reservar</a>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="200">
-                            <div class="box featured">
-                                <h3>Viaja a Japon</h3>
-                                <h4><sup>$</sup>80<span>por este mes</span></h4>
-                                <ul>
-                                    <li><i class="bx bx-check"></i> Descuento del 5%</li>
-                                    <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
-                                    <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
-                                    <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>
-                                    <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>
-                                </ul>
-                                <a href="../login/loginView.php" class="buy-btn">Reservar</a>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
-                            <div class="box">
-                                <h3>Viaja a USA</h3>
-                                <h4><sup>$</sup>40<span>por este mes</span></h4>
-                                <ul>
-                                    <li><i class="bx bx-check"></i> Descuento del 5%</li>
-                                    <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
-                                    <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
-                                    <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>
-                                    <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>
-                                </ul>
-                                <a href="../login/loginView.php" class="buy-btn">Reservar</a>
-                            </div>
-                        </div>
-
+                    <div class="info">
+                        <table id="example1" class="table table-bordered table-striped">
+                              <thead>
+                                  <tr>
+                                    <th style="width: 15%;">Ruta</th>
+                                    <th style="width: 15%;">Avion</th>
+                                    <th>Fecha</th>
+                                    <th>Estado</th>
+                                    <th>Precio</th>
+                                    <th style="width: 5%;">Hora de Despliegue</th>
+                                    <th style="width: 5%;">Hora de Llegada</th>
+                                    <th style="width: 5%;"># Asientos Disponibles</th>
+                                    <th style="width: 13%;"></th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                <?php foreach ($listaHorarios as $staffHorario) { 
+                                    $ruta = $rutaBO->getById($staffHorario['idRuta']);
+                                    $avion = $avionBO->getById($staffHorario['idCatalogo_avion']);
+                                  ?>
+                                      <tr>
+                                          <td><?php echo $ruta->getRuta(); ?></td>
+                                          <td><?php echo $avion->getNombre_Avion(); ?></td>
+                                          <td><?php echo $staffHorario["Fecha"]; ?></td>
+                                          <td><?php echo $staffHorario["Status"]; ?></td>
+                                          <td><?php echo $staffHorario["Precio"]; ?></td>
+                                          <td><?php echo $staffHorario["HoraDespliegue"]; ?></td>
+                                          <td><?php echo $staffHorario["HoraLlegada"]; ?></td>
+                                          <td><?php echo $staffHorario["Cant_AsientosDisponibles"]; ?></td>
+                                          <td><a href="../login/loginView.php" class="buy-btn">Reservar</a></td>
+                                      </tr>
+                                <?php } ?>
+                              </tbody>
+                              <tfoot>
+                                  <tr>
+                                    <th>Ruta</th>
+                                    <th>Avion</th>
+                                    <th>Fecha</th>
+                                    <th>Estado</th>
+                                    <th>Precio</th>
+                                    <th>Hora de Despliegue</th>
+                                    <th>Hora de Llegada</th>
+                                    <th># Asientos Disponibles</th>
+                                    <th></th>
+                                  </tr>
+                              </tfoot>
+                          </table>
                     </div>
 
                 </div>
@@ -371,7 +384,24 @@ $index = 0;
         <script src="assets/vendor/venobox/venobox.min.js"></script>
         <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
         <script src="assets/vendor/aos/aos.js"></script>
+
+        <script src="../dashboard/plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="../dashboard/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+        <script src="../dashboard/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+        <script src="../dashboard/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
         <!-- Template Main JS File -->
         <script src="assets/js/main.js"></script>
+
+        <script type="text/javascript">
+          jQuery(document).ready(function () {
+            $("#example1").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false
+            });
+
+            $('#example1_wrapper .row').css('padding-top', '0px');
+          });
+        </script>
     </body>
 </html>
