@@ -54,7 +54,7 @@ $listaAviones = $avionBO->getAllByEmpresa($currentCompany->getIdEmpresa());
                             <tr>
                                 <td><?php echo $tipo->getDetailTipoAvion(); ?></td>
                                 <td><?php echo $staffAvion["NombreAvion"]; ?></td>
-                                <td><?php if ($counter == 0){ ?><button type="button" class="btn btn-danger" onclick="ConfirmDeleteAvion(<?php echo $staffAvion[0]; ?>);">Eliminar</button><?php } ?></td>
+                                <td><a type="button" class="btn btn-info" href="editAvion.php?id=<?php echo $staffAvion[0]; ?>" >Editar</a> <?php if ($counter == 0){ ?><button type="button" class="btn btn-danger" onclick="ConfirmDeleteAvion(<?php echo $staffAvion[0]; ?>);">Eliminar</button><?php } ?></td>
                             </tr>
                         <?php }  ?>
                       </tbody>

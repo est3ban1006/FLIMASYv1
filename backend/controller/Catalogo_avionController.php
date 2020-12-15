@@ -24,3 +24,13 @@ if(!empty($_POST['addAvion'])){
 	$avionBO->add($avion);
 	header('Location: staffAvion.php');
 }
+
+//POST PARA ACTUALIZAR AVION
+if(!empty($_POST['updateAvion'])){
+	$avion = $avionBO->getById($_GET['id']); 
+	$avion->setIdTipo_Avion($_POST['tipoAvion']);
+	$avion->setNombre_Avion($_POST['nombre']);
+	$avionBO->update($avion);
+	$typeAlert = 1;
+	$msgAlert = "Informacion actualizada correctamente";
+}

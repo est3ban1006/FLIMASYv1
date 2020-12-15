@@ -117,16 +117,19 @@ class Catalogo_avionDao {
     public function update(Catalogo_avion $catalogo_avion) {
         try {
             $sql = sprintf("update Catalogo_avion set NombreAvion = %s, 
-                                                Activo = %s
+                                                Activo = %s,
+                                                idTipo_Avion = %s
                             where idCatalogo_avion = %s", 
                     $this->labAdodb->Param("NombreAvion"), 
                     $this->labAdodb->Param("Activo"), 
+                    $this->labAdodb->Param("idTipo_Avion"), 
                     $this->labAdodb->Param("idCatalogo_avion"));
             $sqlParam = $this->labAdodb->Prepare($sql);
 
             $valores = array();
             $valores["NombreAvion"] = $catalogo_avion->getNombre_Avion();
             $valores["Activo"] = $catalogo_avion->getActivo();
+            $valores["idTipo_Avion"] = $catalogo_avion->getIdTipo_Avion();
             $valores["idCatalogo_avion"] = $catalogo_avion->getIdCatalogo_avion();
             $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
         } catch (Exception $e) {
