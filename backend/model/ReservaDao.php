@@ -8,10 +8,10 @@
 
 class ReservaDao {
 
-    private $conn;
+    private $labAdodb;
 
     function __construct($conn) {
-        $this->conn = $conn;
+        $this->labAdodb = $conn;
     }
 
     public function add(Reserva $reserva) {

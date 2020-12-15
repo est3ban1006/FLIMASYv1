@@ -34,7 +34,6 @@
                 <p>
                   Empresa
                 </p>
-                
               </a>
             </li>
             <li class="nav-item <?php echo $openPersonas;?>">
@@ -139,6 +138,30 @@
       <?php } else { ?>
         <nav class="mt-1">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item">
+              <a href="index.php" class="nav-link <?php echo $activeInicio;?>">
+                <i class="nav-icon fas fa-home"></i>
+                <p>
+                  Inicio
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="index.php" class="nav-link <?php echo $activeVuelos;?>">
+                <i class="nav-icon fas fa-plane"></i>
+                <p>
+                  Vuelos
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="reservaciones.php" class="nav-link <?php echo $activeRes;?>">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Mis Reservas
+                </p>
+              </a>
+            </li>
             <li class="nav-item">
               <a href="javascript:;" onclick="ConfirmCloseSession();" class="nav-link">
                 <i class="nav-icon fas fa-unlock-alt"></i>

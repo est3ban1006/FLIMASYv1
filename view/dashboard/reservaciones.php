@@ -35,23 +35,49 @@ $reservas = $reservaBO->getAll();
                           <th>Avion</th>
                           <th>Cant Asientos</th>
                           <th>Hora Despliegue</th>
+                          <th>Hora Llegada</th>
+                          <th>Duracion</th>
                           <th>Monto Total</th>
                           <th>Descuento</th>
-                          <th>Tipo Cambio</th>
+                          <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                      <?php foreach ($listaAviones as $staffAvion) { 
-                          $tipo = $tipoAvionBO->getById($staffAvion['idTipo_Avion']);
-                          $horarios = $horariBO->getAllByAvion($staffAvion[0]);
+                      <?php foreach ($reservas as $reserva) { 
+                          $person = $personaBO->getById($reserva['idPersona']);
+                          $asientos = $asientoReservaBO->getAllByReserva($reserva['idReserva']);
+                          
                           $counter = 0;
-                          foreach ($horarios as $key => $value) {
+                          $fechaText = $rutaText = $avionText = $horaSalida = $horoaLLegada = $duracionText = "";
+                          foreach ($asientos as $key) {
+                            if($counter == 0){
+                              //TRAER LA RUTA Y EL AVION9
+                              $asientoAvion = $asientoRutaBO->getById($key['idAsiento_Avion']);
+                              $horario = $horariBO->getById($asientoAvion['idRuta']);
+                              $ruta = $rutaBO->getById($horario->getIdRuta());
+                              $avion = $avionBO->getById($horario->getIdCatalogo_avion());
+
+                              $fechaText = $horario->getFecha();
+                              $rutaText = $ruta->getRuta();
+                              $avionText = $avion->getNombre_Avion();
+                              $horaSalida = $horario->getHoraDespliegue();
+                              $horoaLLegada = $horario->getHoraLlegada();
+                              $duracionText = $ruta->getDuracion();
+                            }
                             $counter++;
                           } ?>
                           <tr>
-                              <td><?php echo $tipo->getDetailTipoAvion(); ?></td>
-                              <td><?php echo $staffAvion["NombreAvion"]; ?></td>
-                              <td><a type="button" class="btn btn-sm btn-info" href="editAvion.php?id=<?php echo $staffAvion[0]; ?>" >Editar</a> <?php if ($counter == 0){ ?><button type="button" class="btn btn-danger" onclick="ConfirmDeleteAvion(<?php echo $staffAvion[0]; ?>);">Eliminar</button><?php } ?></td>
+                              <td><?php echo $persona->getFullName(); ?></td>
+                              <td><?php echo $fechaText; ?></td>
+                              <td><?php echo $avionText; ?></td>
+                              <td><?php echo $counter; ?></td>
+                              <td><?php echo $horaSalida; ?></td>
+                              <td><?php echo $horoaLLegada; ?></td>
+                              <td><?php echo $duracionText; ?></td>
+                              <td><?php echo $reserva['Monto_total']; ?></td>
+                              <td><?php echo $reserva['Monto_total']; ?></td>
+                              <td><?php echo $reserva['Descuento']; ?></td>
+                              <td><a type="button" class="btn btn-sm btn-info" href="generateInvoice.php?id=<?php echo $reserva[0]; ?>" >Factura</a></td>
                           </tr>
                       <?php }  ?>
                     </tbody>
@@ -63,9 +89,11 @@ $reservas = $reservaBO->getAll();
                           <th>Avion</th>
                           <th>Cant Asientos</th>
                           <th>Hora Despliegue</th>
+                          <th>Hora Llegada</th>
+                          <th>Duracion</th>
                           <th>Monto Total</th>
                           <th>Descuento</th>
-                          <th>Tipo Cambio</th>
+                          <th></th>
                         </tr>
                     </tfoot>
                   </table>

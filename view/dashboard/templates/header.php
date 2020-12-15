@@ -9,7 +9,7 @@ if(empty($_SESSION['idUsuario'])){
 
     #OPCIONES DEL MENU
     $activeStaff = $activeCustomer = $activeIncio = $activeEmpresa = $activePersonas = $activeAirplane = "";
-    $activeTipoAvion = $activeAvion = $activeRutas = $activeHorarios = $activeDescuentos = $activeCalendar = $activeGaleria = $activeRes = "";
+    $activeTipoAvion = $activeAvion = $activeRutas = $activeHorarios = $activeDescuentos = $activeCalendar = $activeGaleria = $activeRes = $activeVuelos = "";
     $openPersonas = $openAirplane = "";
 
     $currentUser = $usuarioBO->getById($_SESSION['idUsuario']);

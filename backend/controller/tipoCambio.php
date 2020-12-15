@@ -67,7 +67,6 @@ function obtenerIndicadorBCCR($param) {
         $array = "";
         foreach ($respuesta as $key => $value) {
             if ($key === "ObtenerIndicadoresEconomicosXMLResult") {
-
                 $array = explode(" ", $value);
                 $pos = strpos($array[14], '.');
                 $enteros = substr($array[14], $pos - 3, 3);
