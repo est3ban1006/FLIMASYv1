@@ -86,6 +86,32 @@ class ReservaDao {
         return $reserva;
     }
 
+    public function getLastByPersona($idPersona) {
+        try {
+            $sql = sprintf("select * from mydb.Reserva WHERE idPersona = %s ORDER BY idReserva DESC LIMIT 1", 
+                    $this->labAdodb->Param("idPersona"));
+            $sqlParam = $this->labAdodb->Prepare($sql);
+            $valores = array();
+            $valores["idPersona"] = $idPersona;
+            $resultSql = $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
+
+            if ($resultSql->RecordCount() > 0) {
+                $reserva = new Reserva();
+                $reserva->setIdReserva($resultSql->Fields("idReserva"));
+                $reserva->setIdPersona($resultSql->Fields("idPersona"));
+                $reserva->setDiaReserva($resultSql->Fields("DiaReserva"));
+                $reserva->setMonto_total($resultSql->Fields("Monto_total"));
+                $reserva->setEstado($resultSql->Fields("Estado"));
+                $reserva->setDescuento($resultSql->Fields("Descuento"));
+                $reserva->setImpuesto($resultSql->Fields("Impuesto"));
+                $reserva->setFecha_creacion($resultSql->Fields("Fecha_creacion"));
+                return $reserva;
+            }
+        } catch (Exception $e) {
+            throw new Exception('No se pudo obtener los registros (Error generado en el metodo getAllByRuta de la clase Horario_RutaDao), error:' . $e->getMessage());
+        }
+    }
+
     public function getAll() {
         try {
             $sql = sprintf("select * from mydb.Reserva");

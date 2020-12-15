@@ -13,6 +13,46 @@ function initTable(name) {
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 }
 
+function SetReserva(idAsiento) {
+    if($('#asientoReserva'+idAsiento).hasClass('btn-default')){
+        //lo selecciono se debe agregar
+        $('#asientoReserva'+idAsiento).removeClass('btn-default');
+        $('#asientoReserva'+idAsiento).addClass('btn-info');
+        var ids = $('#idAsientos').val()+idAsiento+';';
+        //AGREGAR EL ID AL HIDDEN 
+        $('#idAsientos').val(ids);
+        descuento = parseInt($('#asientoReserva'+idAsiento).data('descuento')) + parseInt($('#descuento').val());
+        total = (parseInt($('#asientoReserva'+idAsiento).data('precio')) - parseInt($('#asientoReserva'+idAsiento).data('descuento'))) + parseInt($('#totalPago').val());
+        subtotal = parseInt($('#asientoReserva'+idAsiento).data('precio')) + parseInt($('#subtotal').val());
+
+        $('#descuento').val(descuento);
+        $('#subtotal').val(subtotal);
+        $('#totalPago').val(total);
+    }else{
+        //lo desselecciono
+        $('#asientoReserva'+idAsiento).removeClass('btn-info');
+        $('#asientoReserva'+idAsiento).addClass('btn-default');
+
+        descuento = parseInt($('#descuento').val()) - parseInt($('#asientoReserva'+idAsiento).data('descuento'));
+        var totalConDescuento = parseInt($('#asientoReserva'+idAsiento).data('precio')) - parseInt($('#asientoReserva'+idAsiento).data('descuento'));
+        total = (parseInt($('#totalPago').val()) - totalConDescuento);
+        subtotal = parseInt($('#subtotal').val()) - parseInt($('#asientoReserva'+idAsiento).data('precio'));
+
+        $('#descuento').val(descuento);
+        $('#subtotal').val(subtotal);
+        $('#totalPago').val(total);
+
+        var arr = $('#idAsientos').val().split(';');
+        var ids = "";
+        for (var i = 0; i < arr.length; i++) {
+            if(arr[i] != idAsiento && $.trim(arr[i]) !== ""){
+                ids = ids + arr[i]+';';
+            }
+        }
+        $('#idAsientos').val(ids);
+    }
+}
+
 function ValidateFormAddReserva() {
     var flag = true;
     if ($.trim($('#idAsientos').val()) === "") {

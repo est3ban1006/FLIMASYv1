@@ -25,6 +25,7 @@ require_once $ruta.'controller/DescuentoController.php';
 require_once $ruta.'controller/RutaController.php';
 require_once $ruta.'controller/Horario_RutaController.php';
 require_once $ruta.'controller/CarpetaController.php';
+require_once $ruta.'controller/ReservaController.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

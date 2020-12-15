@@ -57,7 +57,7 @@ if($currentPerson->getRol() == "Administrador"){
                             if($counter == 0){
                               //TRAER LA RUTA Y EL AVION9
                               $asientoAvion = $asientoRutaBO->getById($key['idAsiento_Avion']);
-                              $horario = $horariBO->getById($asientoAvion['idRuta']);
+                              $horario = $horariBO->getById($asientoAvion->getIdRuta());
                               $ruta = $rutaBO->getById($horario->getIdRuta());
                               $avion = $avionBO->getById($horario->getIdCatalogo_avion());
 
@@ -71,14 +71,14 @@ if($currentPerson->getRol() == "Administrador"){
                             $counter++;
                           } ?>
                           <tr>
-                              <td><?php echo $persona->getFullName(); ?></td>
+                              <td><?php echo $person->getFullName(); ?></td>
                               <td><?php echo $fechaText; ?></td>
+                              <td><?php echo $rutaText; ?></td>
                               <td><?php echo $avionText; ?></td>
                               <td><?php echo $counter; ?></td>
                               <td><?php echo $horaSalida; ?></td>
                               <td><?php echo $horoaLLegada; ?></td>
                               <td><?php echo $duracionText; ?></td>
-                              <td><?php echo $reserva['Monto_total']; ?></td>
                               <td><?php echo $reserva['Monto_total']; ?></td>
                               <td><?php echo $reserva['Descuento']; ?></td>
                               <td><a type="button" class="btn btn-sm btn-info" href="generateInvoice.php?id=<?php echo $reserva[0]; ?>" >Factura</a></td>

@@ -1,6 +1,7 @@
 <?php
 $ruta = "../../backend/";
-require_once '../../backend/controller/EmpresaController.php';
+require_once $ruta.'controller/Init.php';
+require_once $ruta.'controller/EmpresaController.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

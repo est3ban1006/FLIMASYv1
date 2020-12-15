@@ -29,6 +29,10 @@ class ReservaBO {
     public function getById($idReserva) {
        return $this->reservaDao->getById($idReserva);
     }
+
+    public function getLastByPersona($idPersona) {
+       return $this->reservaDao->getLastByPersona($idPersona);
+    }
     
     public function getAll() {
        return $this->reservaDao->getAll();

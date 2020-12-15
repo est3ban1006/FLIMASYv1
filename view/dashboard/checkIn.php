@@ -5,7 +5,7 @@ $activeVuelos = "active";
 $listaAsientos = $asientoRutaBO->getAllBySchedule($_GET['id']);
 $horario = $horariBO->getById($_GET['id']);
 $avion = $avionBO->getById($horario->getIdCatalogo_avion());
-$ruta = $rutaBO->getById($horario->getIdRuta());
+$rutaObj = $rutaBO->getById($horario->getIdRuta());
 $tipoAvion = $tipoAvionBO->getById($avion->getIdTipo_Avion());
 
 $filas = $tipoAvion->getCant_filas();
@@ -37,7 +37,7 @@ if($asientosPoFila == 8){
             <!-- Horizontal Form -->
             <div class="card card-info col-lg-12">
               <div class="card-header">
-                  <h3 class="card-title">Lista de asientos para <?php echo $ruta->getRuta()." ".$avion->getNombre_Avion()." ".$horario->getFecha()." ".$horario->getHoraDespliegue();?></h3>
+                  <h3 class="card-title">Lista de asientos para <?php echo $rutaObj->getRuta()." ".$avion->getNombre_Avion()." ".$horario->getFecha()." ".$horario->getHoraDespliegue();?></h3>
                     <div class="text-right">
                       <a href="vuelos.php" class="btn btn-default text-info">Regresar a vuelos</a>
                   </div>
@@ -49,7 +49,40 @@ if($asientosPoFila == 8){
                 <input type="hidden" name="idAsientos" id="idAsientos" value="">
                 <div class="card-body">
                     <table class='table'>
-                        <td style="width: 55%"></td>
+                        <td style="width: 55%">
+                          <table style="width: 100%">
+                            <tr>
+                              <td style="width: 50%">
+                                <div class="form-group ">
+                                  <label for="" class="col-form-label">Ruta</label><br>
+                                  <input type="text" class="form-control" name="" id="" placeholder="" value="<?php echo $rutaObj->getRuta()." (".$rutaObj->getDuracion().")";?>" readonly>
+                                </div>
+                                <div class="form-group ">
+                                  <label for="" class="col-form-label">Horario</label><br>
+                                  <input type="text" class="form-control" name="" id="" placeholder="" value="<?php echo $horario->getFecha()." ".$horario->getHoraDespliegue()."";?>" readonly>
+                                </div>
+                                <div class="form-group ">
+                                  <label for="" class="col-form-label">Avion</label><br>
+                                  <input type="text" class="form-control" name="" id="" placeholder="" value="<?php echo $avion->getNombre_Avion();?>" readonly>
+                                </div>
+                              </td>
+                              <td style="width: 50%">
+                                <div class="form-group ">
+                                  <label for="subtotal" class="col-form-label">SubTotal</label><br>
+                                  <input type="text" class="form-control" name="subtotal" id="subtotal" placeholder="" value="0" readonly>
+                                </div>
+                                <div class="form-group ">
+                                  <label for="descuento" class="col-form-label">Descuento</label><br>
+                                  <input type="text" class="form-control" name="descuento" id="descuento" placeholder="" value="0" readonly>
+                                </div>
+                                <div class="form-group ">
+                                  <label for="totalPago" class="col-form-label">Total a cancelar</label><br>
+                                  <input type="text" class="form-control" name="totalPago" id="totalPago" placeholder="" value="0" readonly>
+                                </div>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
                         <td style="width: 45%">
                           <table style="width: 100%">
                             <?php while($counterFilas <= $filas) { ?>
@@ -65,15 +98,29 @@ if($asientosPoFila == 8){
                                         $validacion = ($asientosPasillo2);
                                       }
                                       while($counterAsientosPorTD <= $validacion && $counterAsientos <= $tipoAvion->getCant_asientos()){
+                                        $numeroAsiento = "00".$counterAsientos;
+                                        if($counterAsientos > 9){
+                                          $numeroAsiento = "0".$counterAsientos;
+                                        }elseif($counterAsientos > 99){
+                                          $numeroAsiento = $counterAsientos;
+                                        }
                                         $class = "btn-default";
-                                        $method = "";
+                                        $method = "SetReserva(".$listaAsientos[$counterAsientos-1]['idAsiento_Ruta'].");";
 
                                         if($listaAsientos[$counterAsientos-1]['Estado'] != "Disponible"){
                                           $class = "btn-danger";
-                                          $method = "SetReserva(".$listaAsientos[$counterAsientos-1]['idAsiento_Ruta'].");";
+                                          $method = "";
+                                        }
+                                        $montoDescuento = 0;
+                                        if($listaAsientos[$counterAsientos-1]['idDescuento'] != 0){
+                                          //TRAER EL DESCUENTO
+                                          $descuento = $descuentoBO->getById($listaAsientos[$counterAsientos-1]['idDescuento']);
+                                          if(!empty($descuento)){
+                                            $montoDescuento = $listaAsientos[$counterAsientos-1]['Precio'] / $descuento->getPorcentaje();
+                                          }
                                         }
                                         ?>
-                                        <button type='button' id="asientoReserva<?php echo $listaAsientos[$counterAsientos-1]['idAsiento_Ruta'];?>" class="btn <?php echo $class; ?> btn-sm"><img src="../assets/img/asiento.png" onclick="<?php echo $method; ?>" style="width: 15px;"></button>
+                                        <button type='button' id="asientoReserva<?php echo $listaAsientos[$counterAsientos-1]['idAsiento_Ruta'];?>" style='margin:3px;' data-precio="<?php echo $listaAsientos[$counterAsientos-1]['Precio'];?>" data-descuento="<?php echo $montoDescuento;?>" class="btn <?php echo $class; ?> btn-sm" onclick="<?php echo $method; ?>"><img src="../assets/img/asiento.png" style="width: 15px;"><br><?php echo $numeroAsiento;?></button>
                                       <?php $counterAsientosPorTD++;
                                         $counterAsientos++;
                                       }
