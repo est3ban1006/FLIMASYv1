@@ -102,7 +102,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a href="pages/calendar.html" class="nav-link">
+              <a href="calendar.php" class="nav-link <?php echo $activeCalendar;?>">
                 <i class="nav-icon fas fa-calendar-alt"></i>
                 <p>
                   Calendario
@@ -110,7 +110,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="pages/gallery.html" class="nav-link">
+              <a href="gallery.php" class="nav-link <?php echo $activeGaleria;?>">
                 <i class="nav-icon far fa-image"></i>
                 <p>
                   Galeria

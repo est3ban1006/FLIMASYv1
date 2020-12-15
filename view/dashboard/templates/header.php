@@ -9,7 +9,7 @@ if(empty($_SESSION['idUsuario'])){
 
     #OPCIONES DEL MENU
     $activeStaff = $activeCustomer = $activeIncio = $activeEmpresa = $activePersonas = $activeAirplane = "";
-    $activeTipoAvion = $activeAvion = $activeRutas = $activeHorarios = $activeDescuentos = "";
+    $activeTipoAvion = $activeAvion = $activeRutas = $activeHorarios = $activeDescuentos = $activeCalendar = $activeGaleria = "";
     $openPersonas = $openAirplane = "";
 
     $currentUser = $usuarioBO->getById($_SESSION['idUsuario']);
@@ -67,6 +67,8 @@ require_once $ruta.'controller/Horario_RutaController.php';
         <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
         <link rel="stylesheet" href="plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
         <link rel="stylesheet" href="plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+        <link rel="stylesheet" href="plugins/fullcalendar/main.css">
     </head>
     <body class="hold-transition sidebar-mini">
         <form id="formCloseSession" method="POST">

@@ -43,6 +43,9 @@
         <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
         <script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
+
+        <script src="plugins/moment/moment.min.js"></script>
+        <script src="plugins/fullcalendar/main.js"></script>
         
         <?php if(!empty($typeAlert)){
             if($typeAlert == 1){
