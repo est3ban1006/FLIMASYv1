@@ -13,6 +13,30 @@ function initTable(name) {
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 }
 
+function ConfirmDeleteCarpeta(idRuta) {
+    //mostrar un confirm box
+    alertify.confirm('Desea eliminar la carpeta?', 'Una vez realizada la accion no se podran recuperar los datos', function() {
+        $('#idDelete').val(idRuta);
+        $('#formDeleteCarpeta').submit();
+    }, function() {
+        $('#idDelete').val(0);
+    }).set('closable', false).set('defaultFocus', 'cancel');
+}
+
+function ValidateFormAddCarpeta() {
+    var flag = true;
+    if ($.trim($('#name').val()) === "") {
+        flag = false;
+        $('#name').css('border', '1px solid red');
+    } else {
+        $('#name').css('border', '1px solid gray');
+    }
+    if (flag) {} else {
+        alertify.error("Por favor ingrese los valores de los campos en rojo");
+    }
+    return flag;
+}
+
 function ValidateFormUpdateDescuento() {
     var flag = true;
     if ($.trim($('#nombre').val()) === "") {

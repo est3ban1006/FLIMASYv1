@@ -118,18 +118,10 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="pages/gallery.html" class="nav-link">
-                <i class="nav-icon far fa-card"></i>
+              <a href="reservaciones.php" class="nav-link <?php echo $activeRes;?>">
+                <i class="nav-icon fas fa-book"></i>
                 <p>
                   Reservaciones
-                </p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="pages/gallery.html" class="nav-link">
-                <i class="nav-icon far fa "></i>
-                <p>
-                  Vuelos
                 </p>
               </a>
             </li>

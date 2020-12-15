@@ -88,7 +88,7 @@ class RecursoDao {
     
     public function getAllByCarpeta($idCarpeta) {
         try {
-            $sql = sprintf("select * from mydb.Recurso WHERE idEmpresa = %s", 
+            $sql = sprintf("select * from mydb.Recurso WHERE idCarpeta = %s", 
                     $this->labAdodb->Param("idCarpeta"));
             $sqlParam = $this->labAdodb->Prepare($sql);
             $valores = array();

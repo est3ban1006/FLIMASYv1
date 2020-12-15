@@ -9,7 +9,7 @@ if(empty($_SESSION['idUsuario'])){
 
     #OPCIONES DEL MENU
     $activeStaff = $activeCustomer = $activeIncio = $activeEmpresa = $activePersonas = $activeAirplane = "";
-    $activeTipoAvion = $activeAvion = $activeRutas = $activeHorarios = $activeDescuentos = $activeCalendar = $activeGaleria = "";
+    $activeTipoAvion = $activeAvion = $activeRutas = $activeHorarios = $activeDescuentos = $activeCalendar = $activeGaleria = $activeRes = "";
     $openPersonas = $openAirplane = "";
 
     $currentUser = $usuarioBO->getById($_SESSION['idUsuario']);
@@ -24,6 +24,7 @@ require_once $ruta.'controller/Catalogo_avionController.php';
 require_once $ruta.'controller/DescuentoController.php';
 require_once $ruta.'controller/RutaController.php';
 require_once $ruta.'controller/Horario_RutaController.php';
+require_once $ruta.'controller/CarpetaController.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

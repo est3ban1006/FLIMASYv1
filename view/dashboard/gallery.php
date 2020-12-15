@@ -48,7 +48,7 @@ $carpetas = $carpetaBO->getAllByEmpresa($currentCompany->getIdEmpresa());
                             <tr>
                                 <td><?php echo $carpeta['Nombre']; ?></td>
                                 <td><?php echo $counter; ?></td>
-                                <td><a type="button" class="btn btn-sm btn-info" href="seeFiles.php?id=<?php echo $carpeta[0]; ?>" >Archivos</a> <?php if ($carpeta[0] != 1){ ?><button type="button" class="btn btn-danger" onclick="ConfirmDeleteCarpeta(<?php echo $carpeta[0]; ?>);">Eliminar</button><?php } ?></td>
+                                <td><a type="button" class="btn btn-sm btn-info" href="seeFiles.php?id=<?php echo $carpeta[0]; ?>" >Archivos</a> <?php if ($carpeta[0] != 1){ ?><button type="button" class="btn btn-danger btn-sm" onclick="ConfirmDeleteCarpeta(<?php echo $carpeta[0]; ?>);">Eliminar</button><?php } ?></td>
                             </tr>
                         <?php }  ?>
                       </tbody>
