@@ -46,7 +46,7 @@ $activeEmpresa = "active";
                                 </div>
                                 <div class="form-group ">
                                     <label for="descripcion" class="col-form-label">Descripcion</label><br>
-                                    <textarea type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion" value=""><?php echo $currentCompany->getDireccion();?></textarea>
+                                    <textarea type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Descripcion" value=""><?php echo $currentCompany->getDescripcion();?></textarea>
                                 </div>                                          
                             </td>
                             <td style="width: 33%;">

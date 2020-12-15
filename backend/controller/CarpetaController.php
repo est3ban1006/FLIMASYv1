@@ -31,6 +31,7 @@ if(!empty($_POST['deleteRecurso'])){
 if(!empty($_POST['addFile'])){
 	$logo = "";
 	$storeFolder = 'C:/xampp/htdocs/FLIMASYv1/view/assets/recurses/files';
+        $storeFolder2 = 'http://localhost/FLIMASYv1/view/assets/recurses/files';
     $tamano      = $_FILES["recurso"]['size'];
     $tipo        = $_FILES["recurso"]['type'];
     $error       = $_FILES["recurso"]['error'];
@@ -42,14 +43,14 @@ if(!empty($_POST['addFile'])){
     if ($archivo != "") {
         $destino    = $prefijo . "." . $ext;
         $targetPath = $storeFolder . DIRECTORY_SEPARATOR.$currentCompany->getIdEmpresa()."/";
-
+        $storeFolder2 .= DIRECTORY_SEPARATOR.$currentCompany->getIdEmpresa()."/".$destino;
         if(!file_exists($targetPath)){
         	mkdir($targetPath);
         }
 
         $targetFile = $targetPath . $destino;
         if (move_uploaded_file($tmp, $targetFile)) {
-        	$logo = $targetFile;
+        	$logo = $storeFolder2;
         }
     }
 

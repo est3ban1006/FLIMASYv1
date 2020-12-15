@@ -2,7 +2,7 @@
 $ruta = "../../backend/";
 require_once $ruta.'controller/Init.php';
 require_once $ruta.'controller/EmpresaController.php';
-$recursos = $recursoBO->getByCarpet(1);
+$recursos = $recursoBO->getAllByCarpeta(1);
 $countImg = 0;
 foreach ($recursos as $key => $value) {
     $countImg++;
