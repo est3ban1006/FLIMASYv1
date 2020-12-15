@@ -54,7 +54,7 @@ $listaCustomers = $personaBO->getAllByRol("Cliente");
                                     <td><?php echo $customer["Telefono"]; ?></td>
                                     <td><?php echo $customer["Celular"]; ?></td>
                                     <td><?php echo $customer["FechaNacimiento"]; ?></td>
-                                    <td><button type="button" class="btn btn-danger" onclick="ConfirmDeletePerson(<?php echo $customer["idPersona"]; ?>);">Eliminar</button></td>
+                                    <td><button type="button" class="btn btn-sm btn-danger" onclick="ConfirmDeletePerson(<?php echo $customer["idPersona"]; ?>);">Eliminar</button></td>
                                 </tr>
                             <?php }
                         } ?>

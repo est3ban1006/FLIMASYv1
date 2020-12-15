@@ -1,8 +1,9 @@
 <?php include 'templates/header.php'; 
-$titlePage = "Nuevo Descuento";
-$subPage = "Nuevo Descuento";
+$titlePage = "Editar Descuento";
+$subPage = "Editar Descuento";
 $activeDescuentos = $activeAirplane = "active";
 $openAirplane = " menu-open";
+$descuento = $descuentoBO->getById($_GET['id']); 
 ?>
 <div class="wrapper">
 
@@ -23,27 +24,27 @@ $openAirplane = " menu-open";
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal" id='formAddPerson' method='POST' onsubmit="return ValidateFormAddDescuento();">
-                <input type="hidden" name='addDescuento' value="1" />
+              <form class="form-horizontal" id='formUpdateDescuento' method='POST' onsubmit="return ValidateFormUpdateDescuento();">
+                <input type="hidden" name='updateDescuento' value="1" />
                 <div class="card-body">
                     <table class='table'>
                         <tr>
                             <td style="width: 33%;">
                                 <div class="form-group ">
                                     <label for="nombre" class="col-form-label">Nombre</label><br>
-                                    <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $newName;?>">
+                                    <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $descuento->getNombre();?>">
                                 </div>
                             </td>
                             <td style="width: 33%;">
                                 <div class="form-group ">
                                     <label for="porcentaje" class="col-form-label">Porcentaje</label><br>
-                                    <input type="number" class="form-control" step="any" name="porcentaje" id="porcentaje" placeholder="Porcentaje" value="<?php echo $newName;?>">
+                                    <input type="number" class="form-control" step="any" name="porcentaje" id="porcentaje" placeholder="Porcentaje" value="<?php echo $descuento->getPorcentaje();?>">
                                 </div>
                             </td>
                             <td style="width: 33%;">
                                 <div class="form-group ">
                                     <label for="valor" class="col-form-label">Valor</label><br>
-                                    <input type="number" class="form-control" step="any" name="valor" id="valor" placeholder="Valor" value="<?php echo $newName;?>">
+                                    <input type="number" class="form-control" step="any" name="valor" id="valor" placeholder="Valor" value="<?php echo $descuento->getValor();?>">
                                 </div>
                             </td>
                         </tr>

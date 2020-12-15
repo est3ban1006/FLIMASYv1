@@ -104,6 +104,20 @@ class Asiento_RutaDao {
         }
     }
 
+    public function getAllByDescuento($idDescuento) {
+        try {
+            $sql = sprintf("select * from mydb.Asiento_Ruta WHERE idDescuento = %s", 
+                    $this->labAdodb->Param("idDescuento"));
+            $sqlParam = $this->labAdodb->Prepare($sql);
+            $valores = array();
+            $valores["idDescuento"] = $idDescuento;
+            $resultSql = $this->labAdodb->Execute($sqlParam, $valores) or die($this->labAdodb->ErrorMsg());
+            return $resultSql;
+        } catch (Exception $e) {
+            throw new Exception('No se pudo obtener los registros (Error generado en el metodo getAll de la clase Asiento_RutaDao), error:' . $e->getMessage());
+        }
+    }
+
     public function update(Asiento_Ruta $asiento_ruta) {
         try {
             $sql = sprintf("update Asiento_Ruta set NumeroAsiento = %s, 

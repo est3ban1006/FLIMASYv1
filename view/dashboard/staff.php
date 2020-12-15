@@ -54,7 +54,7 @@ $listaStaff = $personaBO->getAllByRol("Administrador");
                                     <td><?php echo $staff["Telefono"]; ?></td>
                                     <td><?php echo $staff["Celular"]; ?></td>
                                     <td><?php echo $staff["FechaNacimiento"]; ?></td>
-                                    <td><button type="button" class="btn btn-danger" onclick="ConfirmDeletePerson(<?php echo $staff["idPersona"]; ?>);">Eliminar</button></td>
+                                    <td><button type="button" class="btn btn-sm btn-danger" onclick="ConfirmDeletePerson(<?php echo $staff["idPersona"]; ?>);">Eliminar</button></td>
                                 </tr>
                             <?php }
                         } ?>

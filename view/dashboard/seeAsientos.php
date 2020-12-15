@@ -49,7 +49,9 @@ $ruta = $rutaBO->getById($horario->getIdRuta());
                           $nombreDescuento = "";
                           if($asient['idDescuento'] != 0){
                             $descuento = $descuentoBO->getById($asient['idDescuento']);
-                            $nombreDescuento = $descuento->getNombre()." (".$descuento->getPorcentaje()."%)";
+                            if(!empty($descuento)){
+                              $nombreDescuento = $descuento->getNombre()." (".$descuento->getPorcentaje()."%)";
+                            }
                           }
                           ?>
                             <tr>

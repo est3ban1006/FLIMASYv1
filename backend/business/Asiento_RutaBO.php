@@ -31,6 +31,10 @@ class Asiento_RutaBO {
     public function getAllBySchedule($idSchedule){
         return $this->asientoRutaDao->getAllBySchedule($idSchedule);
     }
+
+    public function getAllByDescuento($idDescuento) {
+        return $this->asientoRutaDao->getAllByDescuento($idDescuento);
+    }
     
     public function update(Asiento_Ruta $asiento_ruta) {
         return $this->asientoRutaDao->update($asiento_ruta);

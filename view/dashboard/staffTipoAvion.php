@@ -62,9 +62,9 @@ $listaTipos = $tipoAvionBO->getAllByEmpresa($currentCompany->getIdEmpresa());
                                 <td><?php echo $tipo["Cant_pasajeros"]; ?></td> 
                                 <td><?php echo $tipo["Cant_filas"]; ?></td> 
                                 <td><?php echo $tipo["Cant_asientos"]; ?></td> 
-                                <td><a href="editTipoAvion.php?id=<?php echo $tipo["idTipo_Avion"]; ?>" type="button" class="btn btn-info">Editar</a> 
+                                <td><a href="editTipoAvion.php?id=<?php echo $tipo["idTipo_Avion"]; ?>" type="button" class="btn btn-sm btn-info">Editar</a> 
                                   <?php if(($countAviones) == 0){ ?>
-                                    <button type="button" class="btn btn-danger" onclick="ConfirmDeleteTipoAvion(<?php echo $tipo["idTipo_Avion"]; ?>);">Eliminar</button></td>
+                                    <button type="button" class="btn btn-sm btn-danger" onclick="ConfirmDeleteTipoAvion(<?php echo $tipo["idTipo_Avion"]; ?>);">Eliminar</button></td>
                                   <?php } ?>
                             </tr>
                         <?php } ?>

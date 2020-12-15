@@ -48,7 +48,7 @@ $listaDescuento = $descuentoBO->getAllByEmpresa($currentCompany->getIdEmpresa())
                                   <td><?php echo $staffDescuento["Nombre"]; ?></td>
                                   <td><?php echo $staffDescuento["Porcentaje"]; ?></td>
                                   <td><?php echo $staffDescuento["Valor"]; ?></td>
-                                  <td><button type="button" class="btn btn-danger" onclick="ConfirmDeleteDescuento(<?php echo $staffDescuento["idDescuento"]; ?>);">Eliminar</button></td>
+                                  <td><a type="button" class="btn btn-sm btn-info" href="editDescuento.php?id=<?php echo $staffDescuento["idDescuento"]; ?>">Editar</a>  <button type="button" class="btn btn-sm btn-danger" onclick="ConfirmDeleteDescuento(<?php echo $staffDescuento["idDescuento"]; ?>);">Eliminar</button></td>
                               </tr>
                           <?php }
                          ?>

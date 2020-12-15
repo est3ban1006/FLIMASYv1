@@ -13,6 +13,32 @@ function initTable(name) {
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 }
 
+function ValidateFormUpdateDescuento() {
+    var flag = true;
+    if ($.trim($('#nombre').val()) === "") {
+        flag = false;
+        $('#nombre').css('border', '1px solid red');
+    } else {
+        $('#nombre').css('border', '1px solid gray');
+    }
+    if ($.trim($('#porcentaje').val()) === "") {
+        flag = false;
+        $('#porcentaje').css('border', '1px solid red');
+    } else {
+        $('#porcentaje').css('border', '1px solid gray');
+    }
+    if ($.trim($('#valor').val()) === "") {
+        flag = false;
+        $('#valor').css('border', '1px solid red');
+    } else {
+        $('#valor').css('border', '1px solid gray');
+    }
+    if (flag) {} else {
+        alertify.error("Por favor ingrese los valores de los campos en rojo");
+    }
+    return flag;
+}
+
 function ValidateFormUpdateAvion() {
     var flag = true;
     if ($.trim($('#tipoAvion').val()) === "") {

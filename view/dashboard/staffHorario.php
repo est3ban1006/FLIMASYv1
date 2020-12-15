@@ -43,15 +43,15 @@ foreach ($listRutas as $ruta) {
                     <table id="example1" class="table table-bordered table-striped">
                       <thead>
                           <tr>
-                            <th>Ruta</th>
-                            <th>Avion</th>
+                            <th style="width: 15%;">Ruta</th>
+                            <th style="width: 15%;">Avion</th>
                             <th>Fecha</th>
                             <th>Estado</th>
                             <th>Precio</th>
-                            <th>Hora de Despliegue</th>
-                            <th>Hora de Llegada</th>
-                            <th># Asientos Disponibles</th>
-                            <th></th>
+                            <th style="width: 5%;">Hora de Despliegue</th>
+                            <th style="width: 5%;">Hora de Llegada</th>
+                            <th style="width: 5%;"># Asientos Disponibles</th>
+                            <th style="width: 13%;"></th>
                           </tr>
                       </thead>
                       <tbody>
